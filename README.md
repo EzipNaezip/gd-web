@@ -28,3 +28,16 @@
 
 - Airbnb react 컨벤션을 사용합니다.
 - Eslint와 같은 도구 사용을 추천드립니다.
+
+## Preitter 세팅
+
+```
+{
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "endOfLine": "auto"
+}
+
+```
