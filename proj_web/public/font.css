@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'suiteMedium';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./Fonts/SUITE-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'suiteBold';
+  src: url('./Fonts/SUITE-ExtraBold.ttf');
+}

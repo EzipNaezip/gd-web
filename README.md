@@ -39,5 +39,11 @@
   "trailingComma": "all",
   "endOfLine": "auto"
 }
-
 ```
+
+## commit message 컨벤션
+
+add : 새로운 기능 추가
+feat : 기존에 있던 기능을 개선, 부가적인 기능 추가를 할 때
+fix : 오류를 수정했을 때
+docs : readme와 같은 문서를 수정했을 때

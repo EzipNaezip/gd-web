@@ -1,11 +1,13 @@
-import './App.css';
-import LoginComponent from './Component/LoginComponent';
 import { RecoilRoot } from 'recoil';
+import 'tailwindcss/tailwind.css';
+import LoginComponent from './Components/LoginComponent';
 
 function App() {
   return (
     <RecoilRoot>
-      <LoginComponent />
+      <div className="font-suiteMedium">
+        <LoginComponent />
+      </div>
     </RecoilRoot>
   );
 }
