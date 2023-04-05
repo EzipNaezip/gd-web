@@ -20,6 +20,10 @@
 
   - CSS 스타일링에 사용
 
+- HeadlessUI, Heroicons
+
+  - 스타일링 된 컴포넌트를 load
+
 - React-Bootstrap
 
   - 스타일링 된 컴포넌트를 load
