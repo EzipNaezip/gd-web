@@ -4,6 +4,7 @@ module.exports = {
   darkMode: false, // 라이트 모드 설정
   theme: {
     fontFamily: {
+      suiteLight: ['"suiteLight"', 'sans-serif'],
       suiteMedium: ['"suiteMedium"', 'sans-serif'],
       suiteBold: ['"suiteBold"', 'sans-serif'],
     },

@@ -1,4 +1,9 @@
 @font-face {
+  font-family: 'suiteLight';
+  src: url('./Fonts/SUITE-Light.ttf');
+}
+
+@font-face {
   font-family: 'suiteMedium';
   font-weight: normal;
   font-style: normal;
