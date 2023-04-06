@@ -8,16 +8,18 @@ module.exports = {
       suiteMedium: ['"suiteMedium"', 'sans-serif'],
       suiteBold: ['"suiteBold"', 'sans-serif'],
     },
-    colors: {
-      white: '#FFFFFF',
-      white_hover: '#CCCCCC',
-      kakao: '#FEE500',
-      kakao_hover: '#CBB700',
-    },
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      colors: {
+        white: '#FFFFFF',
+        white_hover: '#CCCCCC',
+        kakao: '#FEE500',
+        kakao_hover: '#CBB700',
+        beige: '#FAEBD7',
+      },
+    },
   },
   variants: {
     extend: {},

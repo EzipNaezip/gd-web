@@ -42,7 +42,7 @@ export default function NavbarComponent() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-                  <h1 className="text-white">내일의 집</h1>
+                  <h1 className="font-suiteBold text-white">내일의 집</h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -113,16 +113,6 @@ export default function NavbarComponent() {
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             마이페이지
-                          </Link>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            회원 탈퇴
                           </Link>
                         )}
                       </Menu.Item>

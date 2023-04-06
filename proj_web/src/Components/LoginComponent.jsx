@@ -10,14 +10,14 @@ function LoginComponent() {
           </div>
           <div>
             <div className="text-4xl mb-4 text-center">LOGIN</div>
-            <div className="font-suiteLight mb-3 text-center">다음의 방법으로 로그인 할 수 있어요</div>
-            <div className="grid grid-cols-2 transition ease-in-out delay-100 font-suiteLight bg-kakao hover:bg-kakao_hover text-sm rounded-md p-2 mb-2 text-right shadow-md">
-              <img className="inline w-6 h-6" src={process.env.PUBLIC_URL + '/Images/kakao_logo.svg'} alt="kakao" />
-              <p className="flex items-center justify-end">카카오계정으로 로그인</p>
+            <div className="font-suiteLight mb-4 text-center">다음의 방법으로 로그인 할 수 있어요</div>
+            <div className="grid grid-cols-4 transition ease-in-out delay-100 font-suiteLight bg-kakao hover:bg-kakao_hover text-sm rounded-md p-2 mb-2 text-right shadow-md">
+              <img className="inline w-5 h-5" src={process.env.PUBLIC_URL + '/Images/kakao_logo.svg'} alt="kakao" />
+              <p className="col-span-3 flex items-center justify-start">카카오계정으로 로그인</p>
             </div>
-            <div className="grid grid-cols-2 transition ease-in-out delay-100 font-suiteLight bg-white hover:bg-white_hover  text-sm rounded-md p-2 text-right shadow-md">
-              <img className="inline w-6 h-6" src={process.env.PUBLIC_URL + '/Images/google_logo.svg'} alt="kakao" />
-              <p className="flex items-center justify-end">구글계정으로 로그인</p>
+            <div className="grid grid-cols-4 transition ease-in-out delay-100 font-suiteLight bg-white hover:bg-white_hover  text-sm rounded-md p-2 text-right shadow-md">
+              <img className="inline w-5 h-5" src={process.env.PUBLIC_URL + '/Images/google_logo.svg'} alt="kakao" />
+              <p className="col-span-3 flex items-center justify-start">구글계정으로 로그인</p>
             </div>
           </div>
         </div>
