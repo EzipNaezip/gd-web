@@ -14,7 +14,7 @@ export default function NavbarComponent() {
   }
 
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="border-b">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ export default function NavbarComponent() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-                  <h1 className="font-suiteBold text-white">내일의 집</h1>
+                  <h1 className="text-lg font-suiteBold text-black">내일의 집</h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -51,8 +51,10 @@ export default function NavbarComponent() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium',
+                          item.current
+                            ? 'bg-gray-900 text-white font-suiteBold'
+                            : 'text-black hover:bg-gray-100 hover:text-nav_blue',
+                          'rounded-md px-3 py-2 text-sm font-suiteBold',
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
