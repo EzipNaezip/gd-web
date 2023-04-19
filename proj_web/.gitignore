@@ -22,5 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+*.gitignore
 *.idea
-.prettierrc.json
+*.iml
+*.prettierrc.json
