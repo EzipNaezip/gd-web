@@ -3,6 +3,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import 'tailwindcss/tailwind.css';
 import LoginPage from './Pages/LoginPage';
 import MainPage from './Pages/MainPage';
+import MainLoadingComponent from './Components/MainLoadingComponent';
 
 function App() {
   return (

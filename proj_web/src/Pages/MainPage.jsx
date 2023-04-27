@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarComponent from '../Components/NavbarComponent';
-import MainComponent from '../Components/MainComponent';
+import MainPromptComponent from '../Components/MainPromptComponent';
+import MainGalleryComponent from '../Components/MainGalleryComponent';
+import MainLoadingComponent from '../Components/MainLoadingComponent';
 
 function MainPage() {
+  const [loading, setLoading] = useState(false);
+
   return (
     <div>
       <NavbarComponent />
-      <MainComponent />
+      {loading ? <MainPromptComponent /> : <MainLoadingComponent load_percent={40} />}
+      <MainGalleryComponent />
     </div>
   );
 }
