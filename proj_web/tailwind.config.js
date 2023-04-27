@@ -1,7 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit', // Just-In-Time 컴파일 모드 설정
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'], // 불필요한 CSS 코드 제거를 위한 설정
-  darkMode: false, // 라이트 모드 설정
+  content: ['./src/**/*.{js,jsx,ts,tsx}', 'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
       suiteLight: ['"suiteLight"', 'sans-serif'],
@@ -24,8 +23,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 };
