@@ -1,20 +1,21 @@
 import { RecoilRoot } from "recoil";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import "tailwindcss/tailwind.css";
 import LoginPage from "./Pages/LoginPage";
 import MainPage from "./Pages/MainPage";
+import NavbarComponent from "../src/Components/NavbarComponent.jsx";
 
 function App() {
   return (
     <RecoilRoot>
-      <BrowserRouter>
-        <div className="font-suiteMedium">
+      <NavbarComponent />
+      <section className="content">
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/main" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </section>
     </RecoilRoot>
   );
 }
