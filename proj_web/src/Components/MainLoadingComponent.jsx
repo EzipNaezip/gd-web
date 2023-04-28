@@ -1,5 +1,5 @@
-import React from 'react';
-import { Progress } from 'flowbite-react';
+import React from "react";
+import { Progress } from "flowbite-react";
 
 export default function MainLoadingComponent({ load_percent }) {
   return (
