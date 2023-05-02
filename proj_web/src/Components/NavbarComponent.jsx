@@ -4,11 +4,11 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 export default function NavbarComponent() {
   return (
     <section className="nav">
-      <Navbar className="border-b" fluid={true} rounded={true}>
+      <Navbar className="border-b" fluid={true} rounded={false}>
         <div className="grid grid-cols-2 items-center justify-items-end">
-          <Navbar.Brand href="https://flowbite.com/" className="mr-2">
+          <Navbar.Brand href="/" className="mr-2">
             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white">내일의 집</span>
+            <span className="self-center whitespace-nowrap text-xl font-bold dark:text-white">내일의 집</span>
           </Navbar.Brand>
 
           <Navbar.Collapse>
