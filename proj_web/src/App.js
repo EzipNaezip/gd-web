@@ -1,6 +1,5 @@
 import { RecoilRoot } from 'recoil';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { useState } from 'react';
 import LoginPage from './Pages/LoginPage';
 import MainPage from './Pages/MainPage';
 import Navigator from './Components/Navigator.jsx';
@@ -8,11 +7,9 @@ import DiscoverPage from './Pages/DiscoverPage';
 import PostPage from './Pages/PostPage';
 
 function App() {
-  const [login, setLogin] = useState(false);
-
   return (
     <RecoilRoot>
-      <Navigator islogin={login} />
+      <Navigator islogin="true" />
       <section className="content sm:container sm:mx-auto mt-6 mb-6 px-4">
         <BrowserRouter>
           <Routes>
