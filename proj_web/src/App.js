@@ -7,9 +7,11 @@ import DiscoverPage from './Pages/DiscoverPage';
 import PostPage from './Pages/PostPage';
 
 function App() {
+  let isLogin = false;
+
   return (
     <RecoilRoot>
-      <Navigator islogin="true" />
+      <Navigator islogin={isLogin} />
       <section className="content sm:container sm:mx-auto mt-6 mb-6 px-4">
         <BrowserRouter>
           <Routes>

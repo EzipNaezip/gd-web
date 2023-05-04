@@ -8,7 +8,7 @@ export default function PostComment({ comment }) {
           <img className="w-8 h-8 rounded-full shadow-lg" src={comment.src} alt="" />
           <div className="ml-3 text-sm font-normal">
             <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">{comment.id}</span>
-            <div className="mb-2 text-sm font-normal">{comment.value}</div>
+            <div className="mb-1 text-sm font-normal">{comment.value}</div>
           </div>
         </div>
       </div>
