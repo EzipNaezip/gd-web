@@ -1,13 +1,12 @@
 import React from 'react';
 import PostMainItem from './PostMainItem';
 import PostImageGrid from './PostImageGrid';
-import PostDescription from './PostDescription';
 
-export default function PostGallery({ images, mainImage }) {
+export default function PostGallery({ images, mainImage, imageSelection }) {
   return (
     <div className="grid gap-4 w-2/3">
       <PostMainItem src={mainImage} />
-      <PostImageGrid srcs={images} />
+      <PostImageGrid srcs={images} imageSelection={imageSelection} />
     </div>
   );
 }
