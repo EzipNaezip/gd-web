@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import MainPromptComponent from "../Components/MainPromptComponent";
-import MainLoadingComponent from "../Components/MainLoadingComponent";
-import ScrollToDiscover from "../Components/ScrollToDiscover";
-import GalleryComponent from "../Components/GalleryComponent";
+import React, { useEffect, useState } from 'react';
+import MainPrompt from '../Components/Main/MainPrompt';
+import MainLoading from '../Components/Main/MainLoading';
+import ScrollToDiscover from '../Components/Main/ScrollToDiscover';
+import MainGallery from '../Components/MainGallery';
 
 function MainPage() {
   const [loading, setLoading] = useState(false);
@@ -13,9 +13,9 @@ function MainPage() {
 
   return (
     <>
-      {loading ? <MainLoadingComponent load_percent={50} /> : <MainPromptComponent />}
+      {loading ? <MainLoading load_percent={50} /> : <MainPrompt />}
       <ScrollToDiscover />
-      <GalleryComponent />
+      <MainGallery />
     </>
   );
 }

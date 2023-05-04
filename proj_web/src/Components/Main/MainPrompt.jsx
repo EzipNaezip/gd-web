@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export default function MainPromptComponent() {
+export default function MainPrompt() {
   return (
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">
       <h1 className="text-2xl font-bold text-center mb-4">새로운 아이디어를 찾아보세요!</h1>
@@ -11,7 +11,10 @@ export default function MainPromptComponent() {
             placeholder="원하시는 스타일을 입력해주세요."
             required
           />
-          <button type="submit" className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg border px-6 h-full border-gray-300">
+          <button
+            type="submit"
+            className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg border px-6 h-full border-gray-300"
+          >
             생성
           </button>
         </div>

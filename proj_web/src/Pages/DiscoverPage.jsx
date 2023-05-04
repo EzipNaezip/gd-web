@@ -1,18 +1,11 @@
-import React from "react";
-import MainGalleryComponent from "../Components/GalleryComponent";
-import FilterButton from "../Components/Discover/FilterButton";
+import React from 'react';
+import DiscoverButtons from '../Components/Discover/DiscoverButtons';
+import MainGalleryComponent from '../Components/MainGallery';
 
 function DiscoverPage() {
   return (
     <>
-      <div className="flex gap-4">
-        <FilterButton name="TOP 30" />
-        <FilterButton name="인기급상승" />
-        <FilterButton name="모던" />
-        <FilterButton name="클래식" />
-        <FilterButton name="내추럴" />
-      </div>
-
+      <DiscoverButtons />
       <div className="mt-6">
         <MainGalleryComponent />
         <MainGalleryComponent />

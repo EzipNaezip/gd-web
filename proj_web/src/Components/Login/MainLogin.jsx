@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function LoginComponent() {
+export default function MainLogin() {
   return (
     <div className="container flex justify-center items-center h-screen">
       <div className="box flex justify-center items-center bg-white rounded-md shadow-xl w-1/4 h-1/2">

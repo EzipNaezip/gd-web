@@ -1,7 +1,7 @@
-import React from "react";
-import GalleryCard from "./Gallery/GalleryCard";
+import React from 'react';
+import GalleryCard from './Gallery/GalleryCard';
 
-export default function GalleryComponent() {
+export default function MainGallery() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">
       <div className="grid gap-2">
