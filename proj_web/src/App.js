@@ -9,7 +9,7 @@ function App() {
   return (
     <RecoilRoot>
       <Navigator />
-      <section className="content sm:container sm:mx-auto mt-6 mb-6 px-4">
+      <section className="content md:container md:mx-auto mt-6 mb-6 px-4">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />
