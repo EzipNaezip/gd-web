@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Dropdown, Avatar, TextInput, Button } from 'flowbite-react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { useRecoilValue } from 'recoil';
+import { LoginState } from '../Atoms/LoginState';
+import MainLogin from './Login/MainLogin';
+
 export default function Navigator({ isLogin }) {
+  const [show, setShow] = useState(false);
+  const login = useRecoilValue(LoginState);
+
+  const modalHandler = () => {
+    setShow(!show);
+  };
+  const modalClose = () => {
+    setShow(false);
+  };
+
   return (
     <section className="nav">
       <Navbar className="border-b" fluid={true} rounded={false}>
@@ -23,7 +37,7 @@ export default function Navigator({ isLogin }) {
 
         <div className="flex flex-row items-center justify-items-end">
           <TextInput className="w-80 hidden md:block mr-4" icon={MagnifyingGlassIcon} sizing="sm" />
-          {isLogin ? (
+          {login ? (
             <>
               <Dropdown
                 arrowIcon={false}
@@ -47,7 +61,8 @@ export default function Navigator({ isLogin }) {
             </>
           ) : (
             <>
-              <Button>로그인</Button>
+              <Button onClick={modalHandler}>로그인</Button>
+              <MainLogin show={show} onClose={modalClose} />
             </>
           )}
         </div>
