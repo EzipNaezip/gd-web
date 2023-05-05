@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const GalleryCard = ({ url }) => {
+GalleryCard.propTypes = {
+  url: PropTypes.string.isRequired,
+};
+
+export default function GalleryCard({ url }) {
   return (
     <div>
       <Link to="/post">
@@ -10,10 +14,4 @@ const GalleryCard = ({ url }) => {
       </Link>
     </div>
   );
-};
-
-GalleryCard.propTypes = {
-  url: PropTypes.string.isRequired,
-};
-
-export default GalleryCard;
+}
