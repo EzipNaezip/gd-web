@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Modal } from 'flowbite-react';
 
 export default function MainLogin({ show, onClose, onLogin }) {
