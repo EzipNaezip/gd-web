@@ -10,6 +10,9 @@ module.exports = {
     container: {
       center: true,
     },
+    minHeight: {
+      '1/2': '50%',
+    },
     extend: {
       colors: {
         white: '#FFFFFF',

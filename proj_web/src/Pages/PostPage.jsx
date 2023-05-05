@@ -4,10 +4,22 @@ import PostDescription from '../Components/Post/PostDescription';
 
 export default function PostPage() {
   const mockSrcs = [
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg',
-    'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg',
+    {
+      key: 1,
+      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
+    },
+    {
+      key: 2,
+      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg',
+    },
+    {
+      key: 3,
+      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg',
+    },
+    {
+      key: 4,
+      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg',
+    },
   ];
   const mockWriterInfo = {
     src: 'https://picsum.photos/200/300',
@@ -33,12 +45,31 @@ export default function PostPage() {
       id: '이태용',
       value: '테스트 댓글 입니다.',
     },
+    {
+      src: 'https://picsum.photos/200/300',
+      id: '김관식',
+      value: '테스트 댓글 입니다.',
+    },
+    {
+      src: 'https://picsum.photos/200/300',
+      id: '한종걸',
+      value: '테스트 댓글 입니다.',
+    },
   ];
 
   return (
-    <div className="flex items-center justify-center gap-5">
-      <PostGallery images={mockSrcs} />
-      <PostDescription writer={mockWriterInfo} description={mockDescription} comments={mockComments} />
+    <div className="flex-col">
+      <div className="lg:flex h-fit items-center justify-center gap-5">
+        <PostGallery images={mockSrcs} />
+        <div className="mt-3">
+          <PostDescription
+            className="lg:mt-0"
+            writer={mockWriterInfo}
+            description={mockDescription}
+            comments={mockComments}
+          />
+        </div>
+      </div>
     </div>
   );
 }
