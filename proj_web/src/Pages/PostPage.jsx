@@ -58,16 +58,11 @@ export default function PostPage() {
   ];
 
   return (
-    <div className="flex-col">
-      <div className="lg:flex h-fit items-center justify-center gap-5">
+    <div className="flex items-center justify-center">
+      <div className="flex-col max-w-3xl gap-5">
         <PostGallery images={mockSrcs} />
         <div className="mt-3">
-          <PostDescription
-            className="lg:mt-0"
-            writer={mockWriterInfo}
-            description={mockDescription}
-            comments={mockComments}
-          />
+          <PostDescription writer={mockWriterInfo} description={mockDescription} comments={mockComments} />
         </div>
       </div>
     </div>

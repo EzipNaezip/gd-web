@@ -9,7 +9,7 @@ export default function FilterButton({ data, cursor, filterHandler }) {
   return (
     <>
       {data.key === cursor ? (
-        <div className="text-sm px-2">
+        <div className="text-sm px-1">
           <button
             id={data.key}
             onClick={filterHandler}

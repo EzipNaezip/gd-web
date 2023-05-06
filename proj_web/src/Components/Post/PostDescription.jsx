@@ -4,7 +4,7 @@ import PostComment from './PostComment';
 
 export default function PostDescription({ writer, description, comments }) {
   return (
-    <div className="flex-col lg:max-w-sm h-full rounded-lg shadow-md font-suiteMedium">
+    <div className="flex-col h-full rounded-lg shadow-md font-suiteMedium">
       <div className="flex items-center text-xl mb-4 p-4 border-b">
         <img className="w-8 h-8 rounded-full shadow-lg mr-3" src={writer.src} alt="" />
         <h1 className="font-suiteBold">{writer.id}</h1>
