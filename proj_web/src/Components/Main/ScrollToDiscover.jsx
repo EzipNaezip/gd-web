@@ -2,7 +2,7 @@ import React from 'react';
 
 const ScrollToDiscover = () => {
   return (
-    <div className="flex flex-col items-center my-2 animate-pulse">
+    <div className="flex flex-col items-center my-2 animate-bounce">
       <h1 className="text-slate-400 text-center">스크롤 하여 탐색하기</h1>
       <svg
         xmlns="http://www.w3.org/2000/svg"
