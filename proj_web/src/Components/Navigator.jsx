@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Dropdown, Avatar, TextInput, Button } from 'flowbite-react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import MainLogin from './Login/MainLogin';
 import { useRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
-import MainLogin from './Login/MainLogin';
 
 export default function Navigator() {
-  const [show, setShow] = useState(false);
   const [login, setLogin] = useRecoilState(LoginState);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
@@ -45,17 +45,10 @@ export default function Navigator() {
             </Dropdown>
           ) : (
             <>
-              <Button onClick={() => setShow(!show)} className="mr-3">
+              <Button onClick={() => setShow(true)} className="mr-3">
                 로그인
               </Button>
-              <MainLogin
-                show={show}
-                onClose={() => setShow(false)}
-                onLogin={() => {
-                  setShow(false);
-                  setLogin(true);
-                }}
-              />
+              <MainLogin show={show} setShow={setShow} onClose={() => setShow(false)} />
             </>
           )}
           <Navbar.Toggle />
