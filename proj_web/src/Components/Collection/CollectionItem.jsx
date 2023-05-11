@@ -11,7 +11,7 @@ export default function CollectionItem({ itemId }) {
         />
         <div className="font-suiteLight mt-2 p-1">
           <h1 className="font-suiteBold">Sample Title</h1>
-          <p>Sample Description</p>
+          <p className="text-sm">Sample Description</p>
         </div>
       </div>
     </>
