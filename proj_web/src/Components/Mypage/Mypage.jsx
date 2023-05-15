@@ -12,6 +12,7 @@ export default function Mypage() {
               src="data:,"
               onerror="this.style.display='none';"
               className="rounded-full bg-gray-500 w-24 h-24 mb-5"
+              alt="user profile"
             ></img>
             <h2 className="text-2xl font-bold text-black sm:text-4xl dark:text-white">김관식</h2>
             <p className="mt-2.5 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">연무동 개발자</p>
