@@ -3,7 +3,6 @@ import MainPage from './Pages/MainPage';
 import Navigator from './Components/Navigator.jsx';
 import DiscoverPage from './Pages/DiscoverPage';
 import PostPage from './Pages/PostPage';
-import CollectionPage from './Pages/CollectionPage';
 
 export default function App() {
   return (
