@@ -23,6 +23,7 @@ export default function Navigator() {
         <div className="flex md:order-2">
           {login ? (
             <Dropdown
+              className="transition ease-in"
               arrowIcon={false}
               inline={true}
               label={
