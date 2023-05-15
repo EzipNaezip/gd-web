@@ -38,7 +38,7 @@ export default function Navigator() {
                 <span className="block text-sm">Bonnie Green</span>
                 <span className="block truncate text-sm font-medium">name@flowbite.com</span>
               </Dropdown.Header>
-              <Dropdown.Item className="font-suiteLight">마이페이지</Dropdown.Item>
+              <Dropdown.Item className="font-suiteLight"><Navbar.Link href="/mypage">마이페이지</Navbar.Link></Dropdown.Item>
               <Dropdown.Item onClick={() => setLogin(false)} className="font-suiteLight">
                 로그아웃
               </Dropdown.Item>
