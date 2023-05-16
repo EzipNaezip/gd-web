@@ -39,7 +39,9 @@ export default function Navigator() {
                 <span className="block text-sm">Bonnie Green</span>
                 <span className="block truncate text-sm font-medium">name@flowbite.com</span>
               </Dropdown.Header>
-              <Dropdown.Item className="font-suiteLight"><Navbar.Link href="/mypage">마이페이지</Navbar.Link></Dropdown.Item>
+              <Dropdown.Item className="font-suiteLight">
+                <Navbar.Link href="/mypage">마이페이지</Navbar.Link>
+              </Dropdown.Item>
               <Dropdown.Item onClick={() => setLogin(false)} className="font-suiteLight">
                 로그아웃
               </Dropdown.Item>
@@ -57,9 +59,6 @@ export default function Navigator() {
         <Navbar.Collapse className="mr-auto">
           <Navbar.Link className="transition ease-in font-suiteMedium text-base text-slate-400" href="/discover">
             발견
-          </Navbar.Link>
-          <Navbar.Link className="transition ease-in font-suiteMedium text-base text-slate-400" href="/collection">
-            컬렉션
           </Navbar.Link>
         </Navbar.Collapse>
         <TextInput className="w-80 hidden md:block mr-4 ml-auto" icon={MagnifyingGlassIcon} sizing="sm" />
