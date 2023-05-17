@@ -1,7 +1,5 @@
 import React from 'react';
-// import PostGallery from '../Components/Post/PostGallery';
-import PostDescription from '../Components/Post/PostDescription';
-import PostCarousel from '../Components/Post/PostCarousel';
+import MainPost from '../Components/Post/MainPost';
 
 export default function PostPage() {
   const mockSrcs = [
@@ -61,11 +59,7 @@ export default function PostPage() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex-col max-w-3xl gap-5">
-        {/*<PostGallery images={mockSrcs} />*/}
-        <PostCarousel images={mockSrcs} />
-        <div className="mt-3">
-          <PostDescription writer={mockWriterInfo} description={mockDescription} comments={mockComments} />
-        </div>
+        <MainPost images={mockSrcs} writer={mockWriterInfo} description={mockDescription} comments={mockComments} />
       </div>
     </div>
   );

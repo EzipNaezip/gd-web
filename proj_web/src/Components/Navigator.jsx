@@ -15,7 +15,7 @@ export default function Navigator() {
 
   return (
     <>
-      <Navbar className="sticky z-50 top-0 border-b" fluid={true} rounded={true}>
+      <Navbar className="sticky z-50 top-0 border-b opacity-90" fluid={true} rounded={true}>
         <Navbar.Brand href="/">
           <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
           <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">내일의 집</span>

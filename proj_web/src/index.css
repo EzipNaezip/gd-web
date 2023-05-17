@@ -1,7 +1,8 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 body {
   font-family: 'Spoqa Han Sans Neo', 'Courier New', Courier, monospace;
@@ -9,6 +10,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+div {
+   scrollbar-width: none; /* Firefox */
+   -ms-overflow-style: none; /* IE and Edge */
+   scrollbar-color: transparent transparent; /* Chrome, Safari, Opera */
+ }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
