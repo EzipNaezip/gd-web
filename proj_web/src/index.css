@@ -11,12 +11,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-div {
-   scrollbar-width: none; /* Firefox */
-   -ms-overflow-style: none; /* IE and Edge */
-   scrollbar-color: transparent transparent; /* Chrome, Safari, Opera */
- }
+::-webkit-scrollbar {
+  display: none;
+}
 
+div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
