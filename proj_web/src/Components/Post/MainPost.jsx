@@ -11,11 +11,11 @@ export default function MainPost({ images, writer, description, comments }) {
     <div className="flex-col rounded-lg h-full font-suiteMedium">
       <PostCarousel images={images} />
       <div>
-        <div className="flex items-center text-xl mb-4 p-4 border-b">
+        <div className="flex items-center border-l border-r text-xl p-4 border-b">
           <img className="w-8 h-8 rounded-full shadow-lg mr-3" src={writer.src} alt="" />
           <h1 className="font-suiteBold">{writer.id}</h1>
         </div>
-        <div className="overflow-y-scroll border-b text-sm">
+        <div className="overflow-y-scroll border-l border-r border-b text-sm">
           <p className="p-4">{description}</p>
           <div className="text-gray-600 font-suiteMedium text-sm p-3"># 태그 1</div>
           <div className="font-suiteBold text-sm p-3">좋아요 60개</div>
@@ -82,14 +82,14 @@ export default function MainPost({ images, writer, description, comments }) {
             <div className="font-suiteMedium text-right mr-3">2023-05-17</div>
           </div>
         </div>
-        <div>
+        <div className="border-r border-l">
           {comments.length ? (
             <h1 className="p-4 font-suiteBold">댓글 {comments.length}개</h1>
           ) : (
             <h1 className="p-4 font-suiteBold">작성된 댓글이 없습니다</h1>
           )}
         </div>
-        <div className="flex-col max-h-60 overflow-y-scroll">
+        <div className="flex-col border-r border-l max-h-60 overflow-y-scroll">
           {comments.map((data) => {
             return <PostComment comment={data} />;
           })}

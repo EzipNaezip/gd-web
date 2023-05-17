@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function PostUserComment() {
   return (
-    <form className="rounded-b ">
+    <form>
       <label htmlFor="chat" className="sr-only">
         Your message
       </label>
-      <div className="flex items-center px-3 py-2 bg-gray-50 dark:bg-gray-700">
+      <div className="flex rounded-b-lg border items-center px-3 py-2 bg-gray-50 dark:bg-gray-700">
         <textarea
           id="chat"
           rows="1"
