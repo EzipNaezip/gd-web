@@ -1,6 +1,6 @@
 import React from 'react';
 import DiscoverButtons from '../Components/Discover/DiscoverButtons';
-import MainGalleryComponent from '../Components/MainGallery';
+import MainGalleryComponent from '../Components/Gallery/MainGallery';
 
 function DiscoverPage() {
   return (

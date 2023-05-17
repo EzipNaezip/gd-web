@@ -1,5 +1,5 @@
 import React from 'react';
-import GalleryCard from './Gallery/GalleryCard';
+import GalleryCard from './GalleryCard';
 
 export default function MainGallery() {
   return (

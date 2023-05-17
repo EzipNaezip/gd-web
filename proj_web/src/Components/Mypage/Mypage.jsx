@@ -1,6 +1,6 @@
 import React from 'react';
 import MypageButtons from './MypageButtons';
-import MainGalleryComponent from '../MainGallery';
+import MainGalleryComponent from '../Gallery/MainGallery';
 
 export default function Mypage() {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MainPrompt from '../Components/Main/MainPrompt';
 import MainLoading from '../Components/Main/MainLoading';
 import ScrollToDiscover from '../Components/Main/ScrollToDiscover';
-import MainGallery from '../Components/MainGallery';
+import MainGallery from '../Components/Gallery/MainGallery';
 
 function MainPage() {
   const [loading, setLoading] = useState(false);
