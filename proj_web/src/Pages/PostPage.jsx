@@ -5,19 +5,19 @@ export default function PostPage() {
   const mockSrcs = [
     {
       key: 1,
-      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
+      src: 'https://picsum.photos/1024/1024',
     },
     {
       key: 2,
-      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg',
+      src: 'https://picsum.photos/1024/1024',
     },
     {
       key: 3,
-      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg',
+      src: 'https://picsum.photos/1024/1024',
     },
     {
       key: 4,
-      src: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg',
+      src: 'https://picsum.photos/1024/1024',
     },
   ];
   const mockWriterInfo = {

@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PostUserComment from './PostUserComment';
 import PostComment from './PostComment';
 import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
+import ImageModal from '../Modals/ImageModal';
 
 export default function MainPost({ images, writer, description, comments }) {
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imgShow, setImgShow] = useState(false);
+
+  useEffect(() => {
+    if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
+  }, [imgShow]);
+
+  const onImageHandler = (e) => {
+    setImage(e.target.src);
+    setImgShow(true);
+  };
 
   return (
     <div className="flex-col rounded-lg h-full font-suiteMedium">
-      <PostCarousel images={images} />
+      <PostCarousel images={images} onImageHandler={onImageHandler} />
+      <ImageModal img={image} imgShow={imgShow} onClose={() => setImgShow(false)} />
       <div>
         <div className="grid grid-cols-2 border rounded-t-lg p-4">
           <div className="flex items-center">
