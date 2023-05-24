@@ -18,7 +18,7 @@ export default function Navigator() {
       <Navbar className="sticky z-50 top-0 border-b opacity-90" fluid={true} rounded={true}>
         <Navbar.Brand href="/">
           <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-          <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">내일의 집</span>
+          <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">이집내집</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
           {login ? (
@@ -39,10 +39,16 @@ export default function Navigator() {
                 <span className="block text-sm">Bonnie Green</span>
                 <span className="block truncate text-sm font-medium">name@flowbite.com</span>
               </Dropdown.Header>
-              <Dropdown.Item className="font-suiteLight">
-                <Navbar.Link href="/mypage">마이페이지</Navbar.Link>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setLogin(false)} className="font-suiteLight">
+              <Navbar.Link className="w-full" href="/mypage">
+                <Dropdown.Item className="font-suiteLight">마이페이지</Dropdown.Item>
+              </Navbar.Link>
+              <Dropdown.Item
+                onClick={() => {
+                  setLogin(false);
+                  setShow(false);
+                }}
+                className="transition ease-in font-suiteLight hover:text-red-500"
+              >
                 로그아웃
               </Dropdown.Item>
             </Dropdown>
