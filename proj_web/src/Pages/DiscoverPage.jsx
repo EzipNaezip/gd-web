@@ -7,8 +7,8 @@ function DiscoverPage() {
     <>
       <DiscoverButtons />
       <div className="mt-6">
-        <MainGalleryComponent />
-        <MainGalleryComponent />
+        <MainGalleryComponent isMain={false} />
+        <MainGalleryComponent isMain={false} />
       </div>
     </>
   );

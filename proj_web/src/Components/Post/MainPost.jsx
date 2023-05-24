@@ -126,12 +126,12 @@ export default function MainPost({ images, writer, description, comments }) {
             <h1 className="p-4 font-suiteBold">작성된 댓글이 없습니다</h1>
           )}
         </div>
-        <div className="flex-col border-r border-l max-h-72 overflow-y-scroll">
+        <PostUserComment className="p-4" />
+        <div className="flex-col rounded-b-lg border-l border-r border-b max-h-96 overflow-y-scroll">
           {comments.map((data) => {
             return <PostComment comment={data} />;
           })}
         </div>
-        <PostUserComment className="p-4" />
       </div>
     </div>
   );

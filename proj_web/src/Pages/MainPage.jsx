@@ -15,7 +15,7 @@ function MainPage() {
     <>
       {loading ? <MainLoading load_percent={50} /> : <MainPrompt />}
       <ScrollToDiscover />
-      <MainGallery />
+      <MainGallery isMain={true} />
     </>
   );
 }

@@ -5,19 +5,19 @@ export default function PostPage() {
   const mockSrcs = [
     {
       key: 1,
-      src: 'https://picsum.photos/1024/1024',
+      src: 'https://picsum.photos/512/512',
     },
     {
       key: 2,
-      src: 'https://picsum.photos/1024/1024',
+      src: 'https://picsum.photos/512/512',
     },
     {
       key: 3,
-      src: 'https://picsum.photos/1024/1024',
+      src: 'https://picsum.photos/512/512',
     },
     {
       key: 4,
-      src: 'https://picsum.photos/1024/1024',
+      src: 'https://picsum.photos/512/512',
     },
   ];
   const mockWriterInfo = {
