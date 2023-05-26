@@ -3,11 +3,10 @@ import FilterButton from './FilterButton';
 
 export default function DiscoverButtons() {
   const filterArray = [
-    { key: 0, name: 'TOP 30' },
-    { key: 1, name: '인기급상승' },
-    { key: 2, name: '모던' },
-    { key: 3, name: '클래식' },
-    { key: 4, name: '내추럴' },
+    { key: 0, name: '인기급상승' },
+    { key: 1, name: '모던' },
+    { key: 2, name: '클래식' },
+    { key: 3, name: '내추럴' },
   ];
   const [cursor, setCursor] = useState(0);
 
