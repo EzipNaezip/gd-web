@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'flowbite-react';
-import { useSetRecoilState } from 'recoil';
-import { LoginState } from '../../Atoms/LoginState';
+// import { useSetRecoilState } from 'recoil';
+// import { LoginState } from '../../Atoms/LoginState';
+import OAuthModal from './OAuthModal';
 
 export default function MainLogin({ show, setShow, onClose }) {
-  const setLogin = useSetRecoilState(LoginState);
+  // const setLogin = useSetRecoilState(LoginState);
+  const [OAuthShow, setOAuthShow] = useState(false);
 
-  const loginHandler = () => {
-    setShow(true);
-    setLogin(true);
-  };
+  // const loginHandler = () => {
+  //   setShow(true);
+  //   setLogin(true);
+  // };
 
   return (
     <Modal className="h-screen animate-fade-in-down" size="sm" show={show} onClose={onClose}>
+      <OAuthModal
+        OAuthShow={OAuthShow}
+        onClose={() => {
+          setOAuthShow(false);
+          setShow(false);
+        }}
+      />
       <div className="g-white rounded-md shadow-xl">
         <div className="grid items-center grid-rows-1 gap-10">
           <Modal.Header>
@@ -24,7 +33,10 @@ export default function MainLogin({ show, setShow, onClose }) {
               <div className="mb-4 font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
               <div className="flex flex-col justify-center">
                 <div
-                  onClick={loginHandler}
+                  onClick={() => {
+                    setOAuthShow(true);
+                    setShow(false);
+                  }}
                   className="grid grid-cols-4 transition ease-in-out delay-100 font-suiteLight bg-kakao hover:bg-kakao_hover text-sm rounded-md p-3 mb-3 text-right shadow-md"
                 >
                   <img
@@ -35,7 +47,10 @@ export default function MainLogin({ show, setShow, onClose }) {
                   <p className="col-span-3 flex items-center justify-start">카카오계정으로 로그인</p>
                 </div>
                 <div
-                  onClick={loginHandler}
+                  onClick={() => {
+                    setOAuthShow(true);
+                    setShow(false);
+                  }}
                   className="grid grid-cols-4 transition ease-in-out delay-100 font-suiteLight bg-white hover:bg-white_hover text-sm rounded-md p-3 text-right shadow-md mb-10"
                 >
                   <img

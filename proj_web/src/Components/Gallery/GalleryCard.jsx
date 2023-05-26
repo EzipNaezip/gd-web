@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MainImageModal from '../Modals/MainImageModal';
+import { useRecoilValue } from 'recoil';
+import { LoginState } from '../../Atoms/LoginState';
 
 GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
@@ -12,6 +14,7 @@ export default function GalleryCard({ url, isMain }) {
   const [buttonShow, setButtonShow] = useState(false);
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
+  const isLogin = useRecoilValue(LoginState);
 
   const onImageHandler = (e) => {
     setModalShow(false);
@@ -30,9 +33,9 @@ export default function GalleryCard({ url, isMain }) {
       {!isMain ? (
         <>
           <Link to="/post">
-            <img className="transition ease-in h-auto max-w-full rounded-md hover:blur-xs" src={url} alt="img" />
+            <img className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70" src={url} alt="img" />
           </Link>
-          {buttonShow ? (
+          {buttonShow && isLogin ? (
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-black px-2 py-2 rounded">
               <div className="flex">
                 {!like ? (
@@ -110,7 +113,7 @@ export default function GalleryCard({ url, isMain }) {
       ) : (
         <>
           <img
-            className="transition ease-in h-auto max-w-full rounded-md hover:blur-xs"
+            className="transition ease-in h-auto max-w-full rounded-md hover:scale-105"
             src={url}
             alt="img"
             onClick={() => setModalShow(true)}
