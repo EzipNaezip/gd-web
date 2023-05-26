@@ -7,7 +7,7 @@ export default function GoogleOAuth({ setShow }) {
 
     const messageListener = (event) => {
       if (event.data === 'authenticationSuccess') {
-        console.log('success');
+        console.log(event);
       }
     };
 
