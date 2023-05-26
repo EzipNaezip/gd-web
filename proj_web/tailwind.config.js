@@ -25,6 +25,8 @@ module.exports = {
         nav_blue: '#014DA1',
         'gd-blue': '#0095f6',
         'gd-blue_hover': '#0080d3',
+        'ezip-green': '#64BC52',
+        'ezip-green_hover': '#8CA540',
       },
       blur: {
         xs: '2px',
