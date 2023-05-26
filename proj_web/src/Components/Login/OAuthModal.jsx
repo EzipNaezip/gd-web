@@ -6,7 +6,12 @@ export default function OAuthModal({ OAuthShow, onClose }) {
   return (
     <Modal show={OAuthShow} onClose={onClose}>
       <ModalHeader className="font-suiteBold text-xl">LOGIN</ModalHeader>
-      <iframe className="w-full h-screen" title="OAuth" src="https://ezipnaezip.life/login" id="oauth_login"></iframe>
+      <iframe
+        className="w-full h-screen"
+        title="OAuth"
+        src="http://api.ezipnaezip.life:8080/login"
+        id="oauth_login"
+      ></iframe>
     </Modal>
   );
 }
