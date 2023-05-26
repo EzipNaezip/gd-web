@@ -18,7 +18,20 @@ export default function Navigator() {
     <>
       <Navbar className="sticky z-50 top-0 border-b opacity-90" fluid={true} rounded={true}>
         <Navbar.Brand href="/">
-          <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 mr-2 text-ezip-green_hover"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
+            />
+          </svg>
           <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">이집내집</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
@@ -70,7 +83,7 @@ export default function Navigator() {
         </div>
         <Navbar.Collapse className="mr-auto">
           <Navbar.Link
-            className="transition ease-in font-suiteBold text-base text-slate-400 hover:text-ezip-green_hover md:hover:text-ezip-green_hover"
+            className="transition ease-in font-suiteMedium text-base text-slate-400 hover:text-ezip-green_hover md:hover:text-ezip-green_hover"
             href="/discover"
           >
             발견
