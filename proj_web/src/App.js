@@ -7,18 +7,18 @@ import MypagePage from './Components/Mypage/Mypage';
 
 export default function App() {
   return (
-    <>
-      <Navigator />
-      <section className="content md:container md:mx-auto mt-6 mb-6 px-4">
-        <BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Navigator />
+        <section className="content md:container md:mx-auto mt-6 mb-6 px-4">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/post" element={<PostPage />} />
             <Route path="/mypage" element={<MypagePage />} />
           </Routes>
-        </BrowserRouter>
-      </section>
-    </>
+        </section>
+      </BrowserRouter>
+    </div>
   );
 }

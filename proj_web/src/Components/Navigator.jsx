@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import MainLogin from './Login/MainLogin';
 import { useRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
+import { Link } from 'react-router-dom';
 
 export default function Navigator() {
   const [login, setLogin] = useRecoilState(LoginState);
@@ -39,9 +40,11 @@ export default function Navigator() {
                 <span className="block text-sm">Bonnie Green</span>
                 <span className="block truncate text-sm font-medium">name@flowbite.com</span>
               </Dropdown.Header>
-              <Navbar.Link className="w-full" href="/mypage">
-                <Dropdown.Item className="font-suiteLight">마이페이지</Dropdown.Item>
-              </Navbar.Link>
+              <Dropdown.Item className="transition ease-in font-suiteLight hover:text-ezip-green">
+                <Link to="/mypage" className="w-full">
+                  마이페이지
+                </Link>
+              </Dropdown.Item>
               <Dropdown.Item
                 onClick={() => {
                   setLogin(false);
@@ -54,7 +57,10 @@ export default function Navigator() {
             </Dropdown>
           ) : (
             <>
-              <Button onClick={() => setShow(true)} className="mr-3">
+              <Button
+                onClick={() => setShow(true)}
+                className="transition ease-in mr-3 bg-ezip-green hover:bg-ezip-green_hover"
+              >
                 로그인
               </Button>
               <MainLogin show={show} setShow={setShow} onClose={() => setShow(false)} />
@@ -63,7 +69,10 @@ export default function Navigator() {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse className="mr-auto">
-          <Navbar.Link className="transition ease-in font-suiteMedium text-base text-slate-400" href="/discover">
+          <Navbar.Link
+            className="transition ease-in font-suiteBold text-base text-slate-400 hover:text-ezip-green_hover md:hover:text-ezip-green_hover"
+            href="/discover"
+          >
             발견
           </Navbar.Link>
         </Navbar.Collapse>
