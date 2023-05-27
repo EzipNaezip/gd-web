@@ -12,7 +12,7 @@ export default function MainLogin({ show, setShow, onClose }) {
       <div className="g-white rounded-md shadow-xl">
         <div className="grid items-center grid-rows-1 gap-10">
           <Modal.Header>
-            <h1 className="text-xl font-suiteBold text-gray-800">내일의 집</h1>
+            <h1 className="text-xl font-suiteBold text-gray-800">이집내집</h1>
           </Modal.Header>
           <Modal.Body>
             <div className="flex-col justify-center items-center">

@@ -4,8 +4,8 @@ import React from 'react';
 const Login = () => {
   const googleSocialLogin = useGoogleLogin({
     scope: 'email profile',
-    onSuccess: ({ code }) => {
-      console.log(code);
+    onSuccess: (res) => {
+      console.log(res);
     },
     onError: (errorResponse) => {
       console.error(errorResponse);
