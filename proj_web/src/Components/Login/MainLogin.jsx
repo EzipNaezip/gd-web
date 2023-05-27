@@ -16,6 +16,18 @@ export default function MainLogin({ show, setShow, onClose }) {
   //   setShow(false); // 부모 컴포넌트에 이벤트 전달
   // };
 
+  window.addEventListener('message', handleMessage);
+
+  function handleMessage(event) {
+    if (event.origin === 'http://118.67.132.250') {
+      if (event.data.type === 'authenticationSuccess') {
+        const token = event.data.token;
+        console.log('Authentication success. Token:', token);
+        // 토큰을 처리하거나 필요한 작업을 수행합니다.
+      }
+    }
+  }
+
   return (
     <Modal className="h-screen animate-fade-in-down" size="sm" show={show} onClose={onClose}>
       <div className="g-white rounded-md shadow-xl">

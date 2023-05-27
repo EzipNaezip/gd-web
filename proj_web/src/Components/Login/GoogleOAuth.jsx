@@ -6,7 +6,7 @@ export default function GoogleOAuth({ handleToken }) {
   useEffect(() => {
     const handleAuthenticationSuccess = (event) => {
       if (event.origin === 'http://api.ezipnaezip.life:8080' && event.data === 'authenticationSuccess') {
-        const token = event.data.token; // 수정: 토큰은 event.data에 저장되어 있습니다.
+        const token = event.source.localStorage.getItem('token');
         console.log('Authentication success. Token:', token);
         // 팝업 처리가 완료되었으므로, 메시지 수신 이벤트 리스너를 제거합니다.
         window.removeEventListener('message', handleAuthenticationSuccess);
@@ -30,8 +30,6 @@ export default function GoogleOAuth({ handleToken }) {
     const intervalId = setInterval(() => {
       if (oauthWindow.closed) {
         clearInterval(intervalId);
-        // 팝업 창이 닫히면 부모 창에 메시지를 보냅니다.
-        window.opener.postMessage('authenticationSuccess', 'http://api.ezipnaezip.life:8080');
       }
     }, 1000);
   };
