@@ -6,10 +6,11 @@ import PostPage from './Pages/PostPage';
 import MypagePage from './Components/Mypage/Mypage';
 import ScrollToTop from './Utilities/ScrollToTop';
 import React from 'react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function App() {
   return (
-    <div>
+    <GoogleOAuthProvider clientId="164566727064-ldq29hf1m3klv9rb3eukt53d9qdfn7jp.apps.googleusercontent.com">
       <BrowserRouter>
         <ScrollToTop />
         <Navigator />
@@ -22,6 +23,6 @@ export default function App() {
           </Routes>
         </section>
       </BrowserRouter>
-    </div>
+    </GoogleOAuthProvider>
   );
 }
