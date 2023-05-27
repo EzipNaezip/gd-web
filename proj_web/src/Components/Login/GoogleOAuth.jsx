@@ -1,7 +1,7 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import React from 'react';
 
-const Login = () => {
+export default function GoogleOAuth() {
   const googleSocialLogin = useGoogleLogin({
     scope: 'email profile',
     onSuccess: (res) => {
@@ -21,6 +21,4 @@ const Login = () => {
       </div>
     </button>
   );
-};
-
-export default Login;
+}
