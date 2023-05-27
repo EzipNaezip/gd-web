@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'flowbite-react';
-// import { useSetRecoilState } from 'recoil';
-// import { LoginState } from '../../Atoms/LoginState';
 import GoogleOAuth from './GoogleOAuth';
 import KakaoOAuth from './KakaoOAuth';
 
 export default function MainLogin({ show, setShow, onClose }) {
-  // const setLogin = useSetRecoilState(LoginState);
+  const [token, setToken] = useState(null);
 
-  // const loginHandler = () => {
-  //   setShow(true);
-  //   setLogin(true);
+  const handleToken = (t) => {
+    // 토큰을 받아 처리하는 로직을 작성합니다.
+    setToken(t);
+    console.log(token);
+  };
+
+  // const modalHandler = () => {
+  //   setShow(false); // 부모 컴포넌트에 이벤트 전달
   // };
 
   return (
@@ -25,8 +28,8 @@ export default function MainLogin({ show, setShow, onClose }) {
               <div className="text-4xl mb-4 text-center">LOGIN</div>
               <div className="mb-4 font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
               <div className="flex flex-col justify-center">
-                <KakaoOAuth setShow={setShow} />
-                <GoogleOAuth setShow={setShow} />
+                <KakaoOAuth />
+                <GoogleOAuth handleToken={handleToken} />
               </div>
             </div>
           </Modal.Body>
