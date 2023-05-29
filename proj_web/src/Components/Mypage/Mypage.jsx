@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MypageButtons from './MypageButtons';
 import MainGalleryComponent from '../Gallery/MainGallery';
-import FollowerModal from './FollowerModal';
+import FollowerModal from './FollowModal';
 import { Avatar } from 'flowbite-react';
 
 export default function Mypage() {
@@ -9,7 +9,7 @@ export default function Mypage() {
   const onFollowerHandler = (e) => {
     setFollowerShow(false);
   };
-
+  const [followingDirection, setFollowingDirection] = useState(-1);
   return (
     <div className="flex flex-col gap-y-5">
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
@@ -31,19 +31,34 @@ export default function Mypage() {
               <p className="text-lg font-normal text-gray-500 dark:text-gray-400 m-0">Post</p>
             </div>
 
-            <button onClick={() => setFollowerShow(true)}>
+            <button
+              onClick={() => {
+                setFollowerShow(true);
+                setFollowingDirection(0);
+              }}
+            >
               <div className="w-20">
                 <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">10</h3>
                 <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Following</p>
               </div>
             </button>
 
-            <FollowerModal followerShow={followerShow} onClose={onFollowerHandler} />
-
-            <div className="w-20">
-              <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
-            </div>
+            <button
+              onClick={() => {
+                setFollowerShow(true);
+                setFollowingDirection(1);
+              }}
+            >
+              <div className="w-20">
+                <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
+                <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
+              </div>
+            </button>
+            <FollowerModal
+              followDirection={followingDirection}
+              followerShow={followerShow}
+              onClose={onFollowerHandler}
+            />
           </div>
         </div>
       </section>

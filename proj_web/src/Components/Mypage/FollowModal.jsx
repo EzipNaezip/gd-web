@@ -1,11 +1,12 @@
 import React from 'react';
 import { Avatar, ListGroup, Modal } from 'flowbite-react';
 
-export default function FollowerModal({ followerShow, onClose }) {
+export default function FollowerModal({ followDirection, followerShow, onClose }) {
+  const followingDirection = [`follower`, `following`];
   return (
     <Modal dismissible className="animate-fade-in-down" size="md" popup={true} show={followerShow} onClick={onClose}>
       <Modal.Header>
-        <span className="pl-4">Followers</span>
+        <span className="pl-4">{`${followingDirection[followDirection]}`}</span>
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
