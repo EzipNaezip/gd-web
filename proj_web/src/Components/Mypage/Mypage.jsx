@@ -1,6 +1,7 @@
 import React from 'react';
 import MypageButtons from './MypageButtons';
 import MainGalleryComponent from '../Gallery/MainGallery';
+import { Avatar, Dropdown } from 'flowbite-react';
 
 export default function Mypage() {
   return (
@@ -8,12 +9,18 @@ export default function Mypage() {
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
         <div className="min-w-fit max-w-screen-xl px-4 py-5 lg:px-6 sm:py-5 lg:py-5">
           <div className="max-w-2xl mx-auto grid justify-items-center text-center">
-            <img
+            {/* <img
               src="data:,"
               onerror="this.style.display='none';"
               className="rounded-full bg-gray-500 w-24 h-24 mb-5"
               alt="user profile"
-            ></img>
+            ></img> */}
+            <Avatar
+              className="rounded-full bg-gray-500 w-24 h-24 mb-5"
+              alt="User Profile"
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded={true}
+            />
             <h2 className="text-2xl font-bold text-black sm:text-4xl dark:text-white">김관식</h2>
             <p className="mt-2.5 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">연무동 개발자</p>
           </div>
@@ -24,15 +31,102 @@ export default function Mypage() {
               <p className="text-lg font-normal text-gray-500 dark:text-gray-400 m-0">Post</p>
             </div>
 
-            <div className="w-20">
-              <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">10</h3>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Following</p>
-            </div>
+            <Dropdown
+              className="transition ease-in bg-white"
+              inline
+              arrowIcon={false}
+              label={
+                <div className="w-20">
+                  <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">10</h3>
+                  <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Following</p>
+                </div>
+              }
+            >
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Following User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+                <p className="text-xl font-normal text-black sm:text-base dark:text-white">
+                  김상후 loremasdkajsdasdasdalsd
+                </p>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Following User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+                <p className="text-xl font-normal text-black sm:text-base dark:text-white">김상후</p>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Following User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+                <p className="text-xl font-normal text-black sm:text-base dark:text-white">
+                  김상후 loremasdkajsdasdasdalsd
+                </p>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Following User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </Dropdown.Item>
+            </Dropdown>
 
-            <div className="w-20">
-              <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
-              <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
-            </div>
+            <Dropdown
+              className="transition ease-in bg-white"
+              inline
+              arrowIcon={false}
+              label={
+                <div className="w-20">
+                  <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
+                  <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
+                </div>
+              }
+            >
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Follower User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Follower User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Follower User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Avatar
+                  className="mr-3"
+                  alt="Follower User profile"
+                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  rounded={true}
+                />
+              </Dropdown.Item>
+            </Dropdown>
           </div>
         </div>
       </section>
