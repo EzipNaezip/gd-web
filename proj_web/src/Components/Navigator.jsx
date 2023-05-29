@@ -35,7 +35,8 @@ export default function Navigator() {
           <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">이집내집</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          {login ? (
+          {true ? (
+            //{login ? ( 작업용 로그인 고정
             <Dropdown
               className="transition ease-in"
               arrowIcon={false}

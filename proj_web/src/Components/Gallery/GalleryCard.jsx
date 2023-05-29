@@ -35,7 +35,8 @@ export default function GalleryCard({ url, isMain }) {
           <Link to="/post">
             <img className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70" src={url} alt="img" />
           </Link>
-          {buttonShow && isLogin ? (
+          {buttonShow && true ? (
+            //{buttonShow && isLogin ? (작업용 로그인 고정
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-black px-2 py-2 rounded">
               <div className="flex">
                 {!like ? (

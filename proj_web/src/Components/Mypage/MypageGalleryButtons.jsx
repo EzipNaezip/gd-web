@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FilterButton from '../Discover/FilterButton';
 
-export default function MypageButton() {
+export default function MypageGalleryButton() {
   const filterArray = [
     { key: 0, name: '갤러리' },
     { key: 1, name: '북마크' },
