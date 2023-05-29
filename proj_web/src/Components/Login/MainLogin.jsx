@@ -19,7 +19,7 @@ export default function MainLogin({ show, setShow, onClose }) {
               <div className="text-4xl mb-4 text-center">LOGIN</div>
               <div className="mb-4 font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
               <div className="flex flex-col justify-center">
-                <GoogleOAuth />
+                <GoogleOAuth loginShow={setShow} />
               </div>
             </div>
           </Modal.Body>
