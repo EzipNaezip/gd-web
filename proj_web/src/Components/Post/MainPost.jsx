@@ -31,7 +31,7 @@ export default function MainPost({ images, writer, description, comments }) {
             <h1 className="font-suiteBold text-lg">{writer.id}</h1>
           </div>
           <div className="flex justify-end">
-            <Button className="transition ease-in">팔로우</Button>
+            <Button className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover">팔로우</Button>
           </div>
         </div>
         <div className="overflow-y-scroll border-l border-r border-b text-sm">
@@ -90,7 +90,7 @@ export default function MainPost({ images, writer, description, comments }) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-blue-500 duration-300 w-6 h-6"
+                    className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -105,7 +105,7 @@ export default function MainPost({ images, writer, description, comments }) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="fill-blue-500 duration-300 w-6 h-6"
+                    className="fill-ezip-green duration-300 w-6 h-6"
                   >
                     <path
                       strokeLinecap="round"
