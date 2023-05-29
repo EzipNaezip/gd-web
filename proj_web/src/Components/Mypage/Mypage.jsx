@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MypageButtons from './MypageButtons';
 import MainGalleryComponent from '../Gallery/MainGallery';
-import { Avatar, Dropdown } from 'flowbite-react';
+import FollowerModal from './FollowerModal';
+import { Avatar } from 'flowbite-react';
 
 export default function Mypage() {
+  const [followerShow, setFollowerShow] = useState(false);
+  const onFollowerHandler = (e) => {
+    setFollowerShow(false);
+  };
+
   return (
     <div className="flex flex-col gap-y-5">
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
         <div className="min-w-fit max-w-screen-xl px-4 py-5 lg:px-6 sm:py-5 lg:py-5">
           <div className="max-w-2xl mx-auto grid justify-items-center text-center">
-            {/* <img
-              src="data:,"
-              onerror="this.style.display='none';"
-              className="rounded-full bg-gray-500 w-24 h-24 mb-5"
-              alt="user profile"
-            ></img> */}
             <Avatar
               className="rounded-full bg-gray-500 w-24 h-24 mb-5"
               alt="User Profile"
@@ -31,105 +31,23 @@ export default function Mypage() {
               <p className="text-lg font-normal text-gray-500 dark:text-gray-400 m-0">Post</p>
             </div>
 
-            <Dropdown
-              className="transition ease-in bg-white"
-              inline
-              arrowIcon={false}
-              label={
-                <div className="w-20">
-                  <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">10</h3>
-                  <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Following</p>
-                </div>
-              }
-            >
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Following User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-                <p className="text-xl font-normal text-black sm:text-base dark:text-white">
-                  김상후 loremasdkajsdasdasdalsd
-                </p>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Following User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-                <p className="text-xl font-normal text-black sm:text-base dark:text-white">김상후</p>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Following User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-                <p className="text-xl font-normal text-black sm:text-base dark:text-white">
-                  김상후 loremasdkajsdasdasdalsd
-                </p>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Following User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              </Dropdown.Item>
-            </Dropdown>
+            <button onClick={() => setFollowerShow(true)}>
+              <div className="w-20">
+                <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">10</h3>
+                <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Following</p>
+              </div>
+            </button>
 
-            <Dropdown
-              className="transition ease-in bg-white"
-              inline
-              arrowIcon={false}
-              label={
-                <div className="w-20">
-                  <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
-                  <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
-                </div>
-              }
-            >
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Follower User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Follower User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Follower User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Avatar
-                  className="mr-3"
-                  alt="Follower User profile"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              </Dropdown.Item>
-            </Dropdown>
+            <FollowerModal followerShow={followerShow} onClose={onFollowerHandler} />
+
+            <div className="w-20">
+              <h3 className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">123</h3>
+              <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
+            </div>
           </div>
         </div>
       </section>
+
       <MypageButtons />
       <div>
         <MainGalleryComponent />
