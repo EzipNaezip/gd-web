@@ -1,10 +1,13 @@
-import React from 'react';
-import CollectionItem from './CollectionItem';
+import React from "react";
+import CollectionItem from "./CollectionItem";
 
 export default function MainCollection() {
   const iterate = new Array(24);
 
-  for (let i = 0; i < iterate.length; i++) iterate[i] = i;
+  for (let i = 0; i < iterate.length; i++) {
+    iterate[i] = i;
+    console.log(i);
+  }
 
   return (
     <>

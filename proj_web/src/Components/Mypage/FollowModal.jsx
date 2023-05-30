@@ -1,111 +1,24 @@
-import React from 'react';
-import { Avatar, ListGroup, Modal } from 'flowbite-react';
+import React from "react";
+import { Avatar, ListGroup, Modal } from "flowbite-react";
+import FollowButton from "./FollowButton";
+import UserCard from "./userProfileCard";
+import CollectionItem from "../Collection/CollectionItem";
 
 export default function FollowerModal({ followDirection, followerShow, onClose }) {
-  const followingDirection = [`follower`, `following`];
+  const followingDirection = ["Following", "Follower"];
+  const userList = new Array(24);
+  for (let i = 0; i < userList.length; i++) userList[i] = i;
+
   return (
-    <Modal dismissible className="animate-fade-in-down" size="md" popup={true} show={followerShow} onClick={onClose}>
+    <Modal dismissible className="animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
         <span className="pl-4">{`${followingDirection[followDirection]}`}</span>
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Avatar
-              className="mr-3"
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
-            <div className="grid justify-items-start">
-              <h2 className="text-sm font-medium text-black sm:text-base">김관식</h2>
-              <p className="text-sm font-normal text-gray-500 sm:text-sm">연무동 개발자</p>
-            </div>
-          </ListGroup.Item>
+          {userList.map((val) => (
+            <UserCard userId={val} />
+          ))}
         </ListGroup>
       </Modal.Body>
     </Modal>
