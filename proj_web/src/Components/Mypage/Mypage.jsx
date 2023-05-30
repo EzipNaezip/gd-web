@@ -31,7 +31,7 @@ export default function Mypage() {
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
         <div className="min-w-fit max-w-screen-xl px-4 py-5 lg:px-6 sm:py-5 lg:py-5">
           <div className="max-w-2xl mx-auto grid justify-items-center text-center gap-2">
-            {isLogin && whoami && profile ? (
+            {isLogin && !whoami && profile ? (
               <>
                 <Avatar
                   className="rounded-full bg-gray-500 w-24 h-24 mb-2"
@@ -40,13 +40,26 @@ export default function Mypage() {
                   rounded={true}
                 />
                 <form>
-                  <div className="mb-2 block">
-                    <input type="text" name="username" placeholder="김관식"></input>
-                    <input type="text" name="userDescription" placeholder="연무동 개발자"></input>
+                  <div className="flex flex-col gap-2">
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder="사용자 이름을 입력하세요."
+                      defaultValue="김관식"
+                      className="bg-ezip-bg rounded-lg"
+                    />
+                    <input
+                      type="text"
+                      name="userDescription"
+                      placeholder="당신을 소개하세요."
+                      defaultValue="연무동 개발자"
+                      className="bg-ezip-bg rounded-lg"
+                    />
+                    <Button className="bg-ezip-green hover:bg-ezip-green_hover" onClick={onProfileHandler}>
+                      저장하기
+                    </Button>
                   </div>
                 </form>
-                <h2 className="text-2xl font-bold text-black sm:text-4xl dark:text-white">김관식</h2>
-                <p className="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">연무동 개발자</p>
               </>
             ) : (
               <>
@@ -58,6 +71,18 @@ export default function Mypage() {
                 />
                 <h2 className="text-2xl font-bold text-black sm:text-4xl dark:text-white">김관식</h2>
                 <p className="text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">연무동 개발자</p>
+                {isLogin && !whoami ? (
+                  <Button
+                    size="xs"
+                    color="light"
+                    className="w-full h-7 ring-1 ring-gray-300 hover:ring-1"
+                    onClick={() => setProfile(true)}
+                  >
+                    <span className="text-base">프로필 수정</span>
+                  </Button>
+                ) : (
+                  <FollowButton></FollowButton>
+                )}
               </>
             )}
           </div>
@@ -91,20 +116,6 @@ export default function Mypage() {
               </div>
             </button>
             <FollowerModal followDirection={followingDirection} followerShow={followShow} onClose={onFollowHandler} />
-          </div>
-          <div className="my-5 w-full">
-            {isLogin && whoami ? (
-              <Button
-                size="xs"
-                color="light"
-                className="mt-5 w-full h-7 ring-1 ring-gray-300 hover:ring-1"
-                onClick={() => setProfile(true)}
-              >
-                <span className="text-base">프로필 수정</span>
-              </Button>
-            ) : (
-              <FollowButton></FollowButton>
-            )}
           </div>
         </div>
       </section>
