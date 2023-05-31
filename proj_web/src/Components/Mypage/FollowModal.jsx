@@ -1,11 +1,11 @@
-import React from "react";
-import { Avatar, ListGroup, Modal } from "flowbite-react";
-import FollowButton from "./FollowButton";
-import UserCard from "./userProfileCard";
-import CollectionItem from "../Collection/CollectionItem";
+import React from 'react';
+import { ListGroup, Modal } from 'flowbite-react';
+// import FollowButton from "./FollowButton";
+import UserCard from './userProfileCard';
+// import CollectionItem from "../Collection/CollectionItem";
 
 export default function FollowerModal({ followDirection, followerShow, onClose }) {
-  const followingDirection = ["Following", "Follower"];
+  const followingDirection = ['Following', 'Follower'];
   const userList = new Array(24);
   for (let i = 0; i < userList.length; i++) userList[i] = i;
 
