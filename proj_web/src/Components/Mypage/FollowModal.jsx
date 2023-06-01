@@ -10,9 +10,9 @@ export default function FollowerModal({ followDirection, followerShow, onClose }
   for (let i = 0; i < userList.length; i++) userList[i] = i;
 
   return (
-    <Modal dismissible className="animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
+    <Modal className="animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
-        <span className="pl-4">{`${followingDirection[followDirection]}`}</span>
+        <h1 className="pl-4">{`${followingDirection[followDirection]}`}</h1>
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
