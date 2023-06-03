@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 export default function DalleImage({ id, url, serial }) {
   const [show, setShow] = useState(false);
-
   return (
     <div>
       <img

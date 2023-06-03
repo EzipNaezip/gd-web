@@ -3,7 +3,7 @@ import MainPage from './Pages/MainPage';
 import Navigator from './Components/Navigator.jsx';
 import DiscoverPage from './Pages/DiscoverPage';
 import PostPage from './Pages/PostPage';
-import MypagePage from './Components/Mypage/Mypage';
+import MypagePage from './Components/Mypage/MainMypage';
 import ScrollToTop from './Utilities/ScrollToTop';
 import React, { useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';

@@ -5,33 +5,47 @@ export default function ProfileSettingModal({ profileShow, onClose }) {
   return (
     <Modal className="animate-fade-in-down" dismissible size="md" popup={true} show={profileShow} onClose={onClose}>
       <Modal.Header>
-        <h1 className="pl-4">프로필 수정</h1>
+        <h1 className="pl-4 font-suiteBold">프로필 수정</h1>
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col items-center w-full">
           <Avatar
-            className="rounded-full bg-gray-500 w-24 h-24 mb-2"
+            className="rounded-full bg-gray-500 w-48 h-48 mb-2"
             alt="User Profile"
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             rounded={true}
           />
-          <form className="w-full">
+          <form className="mt-6 w-full">
             <div className="flex flex-col items-center gap-2 w-full">
-              <input
-                type="text"
-                name="username"
-                placeholder="사용자 이름을 입력하세요."
-                defaultValue="김관식"
-                className="w-4/5 bg-ezip-bg rounded-lg"
-              />
-              <input
-                type="text"
-                name="userDescription"
-                placeholder="당신을 소개하세요."
-                defaultValue="연무동 개발자"
-                className="w-4/5 bg-ezip-bg rounded-lg"
-              />
-              <Button className="bg-ezip-green hover:bg-ezip-green_hover" onClick={onClose}>
+              <div className="flex justify-center items-center w-full">
+                <h3 className="font-suiteLight text-sm w-1/6 mr-3">이름</h3>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="사용자 이름을 입력하세요."
+                  className="h-10 block w-3/4 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="flex justify-center items-center w-full">
+                <h3 className="font-suiteLight text-sm w-1/6 mr-3">소개</h3>
+                <input
+                  type="text"
+                  name="userDescription"
+                  placeholder="당신을 소개하세요."
+                  className="h-10 block w-3/4 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <div className="flex justify-center items-center w-full">
+                <h3 className="font-suiteLight text-sm w-1/6 mr-3">KEY</h3>
+                <div></div>
+                <input
+                  type="text"
+                  name="userDescription"
+                  placeholder="DALL.E API KEY를 입력해주세요."
+                  className="h-10 block w-3/4 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              </div>
+              <Button className="mt-6 bg-ezip-green hover:bg-ezip-green_hover w-full" onClick={onClose}>
                 저장하기
               </Button>
             </div>

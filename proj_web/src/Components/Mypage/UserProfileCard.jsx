@@ -1,8 +1,8 @@
-import React from "react";
-import { Avatar, ListGroup } from "flowbite-react";
-import FollowButton from "./FollowButton";
+import React from 'react';
+import { Avatar, ListGroup } from 'flowbite-react';
+import FollowButton from './FollowButton';
 
-export default function UserCard({ userId }) {
+export default function UserProfileCard({ state, userId }) {
   return (
     <ListGroup.Item>
       <div className="flex justify-between w-full">
@@ -20,7 +20,7 @@ export default function UserCard({ userId }) {
         </div>
 
         <div className="w-24">
-          <FollowButton></FollowButton>
+          <FollowButton state={state} />
         </div>
       </div>
     </ListGroup.Item>

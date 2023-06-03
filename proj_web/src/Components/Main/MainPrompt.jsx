@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import CreateDalleImageAxios from '../../Query/CreateDalleImageAxios';
 import DalleImage from './DalleImage';
+import StopDalleImageAxios from '../../Query/StopDalleImageAxios';
 
 export default function MainPrompt() {
   const [prompt, setPrompt] = useState('');
@@ -13,19 +14,14 @@ export default function MainPrompt() {
       setCreated(true);
     },
   });
+  const stop = useMutation(StopDalleImageAxios);
 
   return (
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">
       {!dalle.isLoading ? (
         <h1 className="text-2xl font-bold text-center mb-4">새로운 아이디어를 찾아보세요!</h1>
       ) : (
-        <>
-          {!dalle.isSuccess ? (
-            <h1 className="text-2xl font-bold text-center mb-4">디자이너가 열심히 그리는 중...</h1>
-          ) : (
-            <h1 className="text-2xl font-bold text-center mb-4">당신의 아이디어가 완성되었습니다!</h1>
-          )}
-        </>
+        <h1 className="text-2xl font-bold text-center mb-4">디자이너가 열심히 그리는 중...</h1>
       )}
 
       <form>
@@ -60,6 +56,7 @@ export default function MainPrompt() {
               <button
                 onClick={(e) => {
                   e.preventDefault();
+                  stop.mutate();
                 }}
                 className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg border px-6 h-full border-gray-300"
               >

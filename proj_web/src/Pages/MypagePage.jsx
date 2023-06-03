@@ -1,10 +1,10 @@
 import React from 'react';
-import MypageProfile from '../Components/Mypage/Mypage';
+import MainMypage from '../Components/Mypage/MainMypage';
 
 export default function MypagePage() {
   return (
     <>
-      <MypageProfile />
+      <MainMypage />
     </>
   );
 }

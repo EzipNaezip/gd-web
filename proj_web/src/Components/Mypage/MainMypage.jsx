@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import MypageButtons from './MypageGalleryButtons';
 import MainGalleryComponent from '../Gallery/MainGallery';
-import FollowerModal from './FollowModal';
+import FollowModal from './FollowModal';
 import FollowButton from './FollowButton';
 import ProfileSettingModal from './ProfileSettingModal';
 import { Avatar, Button } from 'flowbite-react';
 import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 
-export default function Mypage() {
+export default function MainMypage() {
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
+  const [followState, setFollowState] = useState(null);
   const [followingDirection, setFollowingDirection] = useState(-1);
   //follow list show & following or follower
   const [whoami, setWhoami] = useState(false);
@@ -66,6 +67,7 @@ export default function Mypage() {
               onClick={() => {
                 setFollowShow(true);
                 setFollowingDirection(0);
+                setFollowState('following');
               }}
             >
               <div className="w-20">
@@ -78,6 +80,7 @@ export default function Mypage() {
               onClick={() => {
                 setFollowShow(true);
                 setFollowingDirection(1);
+                setFollowState('follower');
               }}
             >
               <div className="w-20">
@@ -85,7 +88,12 @@ export default function Mypage() {
                 <p className="text-lg font-normal text-gray-500 dark:text-gray-400">Follower</p>
               </div>
             </button>
-            <FollowerModal followDirection={followingDirection} followerShow={followShow} onClose={onFollowHandler} />
+            <FollowModal
+              state={followState}
+              followDirection={followingDirection}
+              followerShow={followShow}
+              onClose={onFollowHandler}
+            />
           </div>
         </div>
       </section>
