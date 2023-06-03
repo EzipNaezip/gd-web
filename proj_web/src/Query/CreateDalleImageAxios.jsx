@@ -7,5 +7,5 @@ export default async function CreateDalleImageAxios(command) {
     { sentence: command },
     { headers: { Authorization: `Bearer ${token}` } },
   );
-  return images.data.data.response;
+  return images.data.data;
 }
