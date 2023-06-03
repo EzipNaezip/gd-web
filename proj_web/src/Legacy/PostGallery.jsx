@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { PostMainState } from '../../Atoms/PostMainState';
+import { PostMainState } from './PostMainState';
 import PostSubItem from './PostSubItem';
 
 export default function PostGallery({ images }) {

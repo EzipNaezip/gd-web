@@ -12,7 +12,7 @@ export default function DiscoverButtons() {
 
   return (
     <>
-      <div className="flex gap-4">
+      <div className="grid grid-cols-4 justify-items-center sm:flex gap-4">
         {filterArray.map((filter) => (
           <DiscoverFilterButton
             data={filter}

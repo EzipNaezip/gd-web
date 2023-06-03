@@ -16,10 +16,6 @@ export default function GalleryCard({ url, isMain }) {
   const [bookMark, setBookMark] = useState(false);
   const isLogin = useRecoilValue(LoginState);
 
-  const onImageHandler = (e) => {
-    setModalShow(false);
-  };
-
   const handleMouseEnter = () => {
     setButtonShow(true);
   };
@@ -29,9 +25,9 @@ export default function GalleryCard({ url, isMain }) {
   };
 
   return (
-    <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="relative">
       {!isMain ? (
-        <>
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link to="/post">
             <img className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70" src={url} alt="img" />
           </Link>
@@ -110,7 +106,7 @@ export default function GalleryCard({ url, isMain }) {
           ) : (
             <></>
           )}
-        </>
+        </div>
       ) : (
         <>
           <img
@@ -119,7 +115,7 @@ export default function GalleryCard({ url, isMain }) {
             alt="img"
             onClick={() => setModalShow(true)}
           />
-          <MainImageModal img={url} imgShow={modalShow} onClose={onImageHandler} />
+          <MainImageModal img={url} imgShow={modalShow} onClose={() => setModalShow(false)} />
         </>
       )}
     </div>

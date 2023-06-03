@@ -3,7 +3,14 @@ import { Avatar, Modal, Button } from 'flowbite-react';
 
 export default function ProfileSettingModal({ profileShow, onClose }) {
   return (
-    <Modal className="animate-fade-in-down" dismissible size="md" popup={true} show={profileShow} onClose={onClose}>
+    <Modal
+      className="h-screen animate-fade-in-down"
+      dismissible
+      size="md"
+      popup={true}
+      show={profileShow}
+      onClose={onClose}
+    >
       <Modal.Header>
         <h1 className="pl-4 font-suiteBold">프로필 수정</h1>
       </Modal.Header>

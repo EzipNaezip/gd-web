@@ -4,7 +4,7 @@ import FollowButton from './FollowButton';
 
 export default function UserProfileCard({ state, userId }) {
   return (
-    <ListGroup.Item>
+    <ListGroup.Item className="focus:ring-0">
       <div className="flex justify-between w-full">
         <div className="flex justify-start">
           <Avatar
