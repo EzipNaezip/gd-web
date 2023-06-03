@@ -4,7 +4,7 @@ import { Carousel } from 'flowbite-react';
 export default function PostCarousel({ images, onImageHandler }) {
   return (
     <>
-      <Carousel className="h-60 sm:h-[30rem]">
+      <Carousel className="h-52 sm:h-[30rem]">
         {images.map((image) => {
           return <img onClick={onImageHandler} src={image.src} alt="..." />;
         })}

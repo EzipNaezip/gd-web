@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FilterButton from '../Discover/FilterButton';
+import MypageFilterButton from './MypageFilterButton';
 
 export default function MypageGalleryButton() {
   const filterArray = [
@@ -10,9 +10,9 @@ export default function MypageGalleryButton() {
 
   return (
     <>
-      <div className="flex gap-4">
+      <div className="grid grid-cols-2 justify-items-center sm:flex gap-4">
         {filterArray.map((filter) => (
-          <FilterButton
+          <MypageFilterButton
             data={filter}
             cursor={cursor}
             filterHandler={(e) => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import FilterButton from './FilterButton';
+import DiscoverFilterButton from './DiscoverFilterButton';
 
 export default function DiscoverButtons() {
   const filterArray = [
-    { key: 0, name: '인기급상승' },
+    { key: 0, name: 'TOP 30' },
     { key: 1, name: '모던' },
     { key: 2, name: '클래식' },
     { key: 3, name: '내추럴' },
@@ -14,7 +14,7 @@ export default function DiscoverButtons() {
     <>
       <div className="flex gap-4">
         {filterArray.map((filter) => (
-          <FilterButton
+          <DiscoverFilterButton
             data={filter}
             cursor={cursor}
             filterHandler={(e) => {

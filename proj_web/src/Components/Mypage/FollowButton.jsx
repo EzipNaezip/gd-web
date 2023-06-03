@@ -21,7 +21,7 @@ export default function FollowButton({ state }) {
             setFollowed(false);
           }}
         >
-          <span className="text-base font-light text-ezip-green">Following</span>
+          <span className="text-sm font-suiteLight text-ezip-green">팔로잉</span>
         </Button>
       ) : (
         <Button
@@ -32,7 +32,7 @@ export default function FollowButton({ state }) {
             setFollowed(true);
           }}
         >
-          <span className="text-base font-light">Follow</span>
+          <span className="text-sm font-suiteLight">팔로우</span>
         </Button>
       )}
     </div>
