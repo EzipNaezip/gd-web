@@ -22,6 +22,7 @@ export default function MainDiscover() {
 
   useEffect(() => {
     topData.mutate();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -34,6 +34,7 @@ export default function MainPrompt() {
 
   useEffect(() => {
     setCreated(false);
+    // eslint-disable-next-line
   }, []);
 
   return (
