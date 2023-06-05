@@ -34,7 +34,7 @@ export default function MainPrompt() {
 
   useEffect(() => {
     setCreated(false);
-  });
+  }, []);
 
   return (
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">

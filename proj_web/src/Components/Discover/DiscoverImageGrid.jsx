@@ -5,12 +5,14 @@ export default function DiscoverImageGrid({ thumbnails }) {
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">
-      <div className="grid gap-2">
+    <div className="container max-w-xl md:max-w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-2">
         {thumbnails ? (
           <>
             {thumbnails.map((image) => (
-              <GalleryCard url={`${baseURL}${image.thumbnailImgUrl}`} />
+              <div className="grid gap-2">
+                <GalleryCard url={`${baseURL}${image.thumbnailImgUrl}`} />
+              </div>
             ))}
           </>
         ) : (

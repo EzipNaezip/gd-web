@@ -22,7 +22,7 @@ export default function MainDiscover() {
 
   useEffect(() => {
     topData.mutate();
-  });
+  }, []);
 
   return (
     <>
