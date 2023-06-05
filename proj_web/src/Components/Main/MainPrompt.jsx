@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
-import { createDalleImage, stopDalleImage } from '../../Query/DalleImageQuery';
+import { stopDalleImage } from '../../Query/DalleImageQuery';
 import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
 import { useRecoilState } from 'recoil';
@@ -12,7 +12,8 @@ export default function MainPrompt() {
   const [description, setDescription] = useState(null);
   const [created, setCreated] = useRecoilState(PromptCreateState);
   const [errored, setErrored] = useState(null);
-  const dalle = useMutation(testDalleAxios, {
+
+  const createDalle = useMutation(testDalleAxios, {
     onSuccess: (data) => {
       setImages(data.response);
       setDescription(data.description);
@@ -22,11 +23,18 @@ export default function MainPrompt() {
       setErrored(error);
     },
   });
-  const stop = useMutation(stopDalleImage);
+  const stopDalle = useMutation(stopDalleImage, {
+    onSuccess: (data) => {
+      setCreated(false);
+    },
+    onError: (error) => {
+      setCreated(error);
+    },
+  });
 
   useEffect(() => {
     setCreated(false);
-  }, [setCreated]);
+  });
 
   return (
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">
@@ -38,7 +46,7 @@ export default function MainPrompt() {
             </>
           ) : (
             <>
-              {!dalle.isLoading ? (
+              {!createDalle.isLoading ? (
                 <h1 className="text-2xl font-suiteBold text-center mb-4">새로운 아이디어를 찾아보세요!</h1>
               ) : (
                 <h1 className="text-2xl animate-pulse delay-50 font-suiteBold text-center mb-4">
@@ -60,7 +68,7 @@ export default function MainPrompt() {
         <div className="relative">
           {!errored ? (
             <>
-              {!dalle.isLoading ? (
+              {!createDalle.isLoading ? (
                 <div>
                   <input
                     className="h-10 block w-full p-6 font-suiteLight text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -73,7 +81,7 @@ export default function MainPrompt() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      dalle.mutate(prompt);
+                      createDalle.mutate(prompt);
                     }}
                     className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none font-suiteMedium rounded-r-lg border px-6 h-full border-gray-300"
                   >
@@ -90,7 +98,7 @@ export default function MainPrompt() {
                   <button
                     onClick={(e) => {
                       e.preventDefault();
-                      stop.mutate();
+                      stopDalle.mutate();
                     }}
                     className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none font-suiteMedium rounded-r-lg border px-6 h-full border-gray-300"
                   >

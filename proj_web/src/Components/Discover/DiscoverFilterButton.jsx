@@ -5,14 +5,16 @@ DiscoverFilterButton.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export default function DiscoverFilterButton({ data, cursor, filterHandler }) {
+export default function DiscoverFilterButton({ data, cursor, topHandler, filterHandler }) {
+  let handler = data.name === 'TOP 30' ? topHandler : filterHandler;
+
   return (
     <>
-      {data.key === cursor ? (
+      {data.name === cursor ? (
         <div className="text-xs px-0.5">
           <button
             id={data.key}
-            onClick={filterHandler}
+            onClick={handler}
             className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover lg:text-sm text-white p-1 px-4 rounded-lg font-suiteBold"
           >
             {data.name}
@@ -22,7 +24,7 @@ export default function DiscoverFilterButton({ data, cursor, filterHandler }) {
         <div className="text-xs px-0.5">
           <button
             id={data.key}
-            onClick={filterHandler}
+            onClick={handler}
             className="transition ease-in hover:bg-ezip-green lg:text-sm text-slate-600 hover:text-white p-1 px-4 rounded-lg font-suiteBold"
           >
             {data.name}

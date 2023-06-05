@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DiscoverFilterButton from './DiscoverFilterButton';
 
-export default function DiscoverButtons() {
+export default function DiscoverButtons({ cursor, setCursor, topHandler, filterHandler }) {
   const filterArray = [
     { key: 0, name: 'TOP 30' },
     { key: 1, name: '모던' },
@@ -17,7 +17,6 @@ export default function DiscoverButtons() {
     { key: 11, name: '쉐비' },
     { key: 12, name: '정크' },
   ];
-  const [cursor, setCursor] = useState(0);
 
   return (
     <>
@@ -26,8 +25,15 @@ export default function DiscoverButtons() {
           <DiscoverFilterButton
             data={filter}
             cursor={cursor}
+            topHandler={(e) => {
+              e.preventDefault();
+              setCursor(e.target.innerText);
+              topHandler();
+            }}
             filterHandler={(e) => {
-              setCursor(Number(e.target.id));
+              e.preventDefault();
+              setCursor(e.target.innerText);
+              filterHandler(e.target.innerText);
             }}
           />
         ))}
