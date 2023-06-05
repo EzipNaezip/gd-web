@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
-// import CreateDalleImageAxios from '../../Query/CreateDalleImageAxios';
+import { createDalleImage, stopDalleImage } from '../../Query/DalleImageQuery';
 import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
-import StopDalleImageAxios from '../../Query/StopDalleImageAxios';
 import { useRecoilState } from 'recoil';
 import { PromptCreateState } from '../../Atoms/PromptCreateState';
 
@@ -23,7 +22,7 @@ export default function MainPrompt() {
       setErrored(error);
     },
   });
-  const stop = useMutation(StopDalleImageAxios);
+  const stop = useMutation(stopDalleImage);
 
   useEffect(() => {
     setCreated(false);

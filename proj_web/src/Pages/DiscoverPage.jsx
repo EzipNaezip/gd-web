@@ -1,14 +1,16 @@
 import React from 'react';
 import DiscoverButtons from '../Components/Discover/DiscoverButtons';
-import MainGalleryComponent from '../Components/Gallery/MainGallery';
+// import MainGalleryComponent from '../Components/Gallery/MainGallery';
+import DiscoverImageGrid from '../Components/Discover/DiscoverImageGrid';
 
 function DiscoverPage() {
   return (
     <>
       <DiscoverButtons />
       <div className="mt-6">
-        <MainGalleryComponent isMain={false} />
-        <MainGalleryComponent isMain={false} />
+        <DiscoverImageGrid />
+        {/*<MainGalleryComponent isMain={false} />*/}
+        {/*<MainGalleryComponent isMain={false} />*/}
       </div>
     </>
   );

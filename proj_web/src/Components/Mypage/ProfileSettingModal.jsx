@@ -43,14 +43,23 @@ export default function ProfileSettingModal({ profileShow, onClose }) {
                 />
               </div>
               <div className="flex justify-center items-center w-full">
-                <h3 className="font-suiteLight text-sm w-1/6 mr-3">KEY</h3>
-                <div></div>
-                <input
-                  type="text"
-                  name="userDescription"
-                  placeholder="DALL.E API KEY를 입력해주세요."
-                  className="h-10 block w-3/4 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
+                <h3 className="font-suiteLight text-sm w-1/6 mr-3">API</h3>
+                <div className="flex w-3/4">
+                  <input
+                    type="text"
+                    name="userDescription"
+                    placeholder="DALL.E API KEY"
+                    className="h-10 block p-4 text-sm text-gray-900 border-l border-t border-b border-gray-300 rounded-l-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                  <button
+                    className="w-full text-sm font-suiteLight border-t border-r border-b border-gray-300 rounded-r-lg"
+                    onClick={(e) => {
+                      e.preventDefault();
+                    }}
+                  >
+                    등록
+                  </button>
+                </div>
               </div>
               <Button className="mt-6 bg-ezip-green hover:bg-ezip-green_hover w-full" onClick={onClose}>
                 저장하기
