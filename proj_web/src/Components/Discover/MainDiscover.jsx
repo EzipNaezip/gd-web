@@ -36,7 +36,8 @@ export default function MainDiscover() {
           filteredData.mutate(cursor);
         }}
       />
-      <div className="mt-6">
+      <hr className="mt-6" />
+      <div className="mt-10">
         {thumbnails ? (
           <>
             <DiscoverImageGrid thumbnails={thumbnails} />

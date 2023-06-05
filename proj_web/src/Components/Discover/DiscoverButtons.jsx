@@ -19,8 +19,8 @@ export default function DiscoverButtons({ cursor, setCursor, topHandler, filterH
   ];
 
   return (
-    <>
-      <div className="grid grid-cols-4 justify-items-center lg:flex gap-4">
+    <div className="flex justify-center w-full">
+      <div className="grid grid-cols-4 md:grid-cols-6 items-center justify-items-center lg:flex gap-4">
         {filterArray.map((filter) => (
           <DiscoverFilterButton
             data={filter}
@@ -38,6 +38,6 @@ export default function DiscoverButtons({ cursor, setCursor, topHandler, filterH
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }

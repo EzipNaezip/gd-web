@@ -11,21 +11,21 @@ export default function DiscoverFilterButton({ data, cursor, topHandler, filterH
   return (
     <>
       {data.name === cursor ? (
-        <div className="text-xs px-0.5">
+        <div className="xl:px-2">
           <button
             id={data.key}
             onClick={handler}
-            className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover lg:text-sm text-white p-1 px-4 rounded-lg font-suiteBold"
+            className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover text-sm text-white p-1 lg:p-2 rounded-lg font-suiteBold"
           >
             {data.name}
           </button>
         </div>
       ) : (
-        <div className="text-xs px-0.5">
+        <div className="xl:px-2">
           <button
             id={data.key}
             onClick={handler}
-            className="transition ease-in hover:bg-ezip-green lg:text-sm text-slate-600 hover:text-white p-1 px-4 rounded-lg font-suiteBold"
+            className="transition ease-in hover:bg-ezip-green text-sm text-slate-600 hover:text-white p-1 lg:p-2 rounded-lg font-suiteBold"
           >
             {data.name}
           </button>
