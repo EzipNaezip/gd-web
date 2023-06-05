@@ -7,8 +7,12 @@ import MypagePage from './Components/Mypage/MainMypage';
 import ScrollToTop from './Utilities/ScrollToTop';
 import React, { useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useRecoilValue } from 'recoil';
+import { PostNumState } from './Atoms/PostNumState';
 
 export default function App() {
+  const postNum = useRecoilValue(PostNumState);
+
   useEffect(() => {
     window.localStorage.setItem(
       'test',
@@ -25,7 +29,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/discover" element={<DiscoverPage />} />
-            <Route path="/post" element={<PostPage />} />
+            <Route path={`/post/${postNum}`} element={<PostPage />} />
             <Route path="/mypage" element={<MypagePage />} />
           </Routes>
         </section>

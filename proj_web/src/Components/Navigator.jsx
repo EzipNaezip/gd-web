@@ -18,20 +18,21 @@ export default function Navigator() {
     <>
       <Navbar className="sticky z-50 top-0 border-b opacity-90" fluid={true} rounded={true}>
         <Navbar.Brand href="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6 mr-2 text-ezip-green_hover"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
-            />
-          </svg>
+          {/*<svg*/}
+          {/*  xmlns="http://www.w3.org/2000/svg"*/}
+          {/*  fill="none"*/}
+          {/*  viewBox="0 0 24 24"*/}
+          {/*  strokeWidth={1.5}*/}
+          {/*  stroke="currentColor"*/}
+          {/*  className="w-6 h-6 mr-2 text-ezip-green_hover"*/}
+          {/*>*/}
+          {/*  <path*/}
+          {/*    strokeLinecap="round"*/}
+          {/*    strokeLinejoin="round"*/}
+          {/*    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"*/}
+          {/*  />*/}
+          {/*</svg>*/}
+          <img className="w-8 h-8 mr-2" src={process.env.PUBLIC_URL + '/Images/logo.png'} alt="logo" />
           <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">이집내집</span>
         </Navbar.Brand>
         <div className="flex md:order-2">

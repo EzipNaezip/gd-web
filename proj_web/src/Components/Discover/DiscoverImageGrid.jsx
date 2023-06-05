@@ -11,7 +11,7 @@ export default function DiscoverImageGrid({ thumbnails }) {
           <>
             {thumbnails.map((image) => (
               <div className="grid gap-2">
-                <GalleryCard url={`${baseURL}${image.thumbnailImgUrl}`} />
+                <GalleryCard url={`${baseURL}${image.thumbnailImgUrl}`} postNum={image.postNum} isMe={image.isMe} />
               </div>
             ))}
           </>

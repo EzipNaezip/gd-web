@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const token = window.localStorage.getItem('test');
 
-export async function getComment({ start, display, postNum }) {
+export async function getComment({ postNum, start, display }) {
   return await axios.get(`http://api.ezipnaezip.life:8080/comments/list/${postNum}`, {
     headers: { Authorization: `Bearer ${token}` },
   });

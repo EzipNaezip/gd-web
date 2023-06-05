@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MainImageModal from '../Modals/MainImageModal';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
+import { PostNumState } from '../../Atoms/PostNumState';
 
 GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default function GalleryCard({ url, isMain }) {
+export default function GalleryCard({ url, postNum, isMe, isMain }) {
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
+  const setPostNum = useSetRecoilState(PostNumState);
   const isLogin = useRecoilValue(LoginState);
 
   const handleMouseEnter = () => {
@@ -28,7 +30,12 @@ export default function GalleryCard({ url, isMain }) {
     <div className="relative">
       {!isMain ? (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <Link to="/post">
+          <Link
+            to={`/post/${postNum}`}
+            onClick={() => {
+              setPostNum(postNum);
+            }}
+          >
             <img className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60" src={url} alt="img" />
           </Link>
           {buttonShow && isLogin ? (
