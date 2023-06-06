@@ -4,6 +4,7 @@ import Navigator from './Components/Navigator.jsx';
 import DiscoverPage from './Pages/DiscoverPage';
 import PostPage from './Pages/PostPage';
 import MypagePage from './Pages/MypagePage';
+import PolicyPage from './Pages/PolicyPage';
 import ScrollToTop from './Utilities/ScrollToTop';
 import React, { useEffect, useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/discover" element={<DiscoverPage />} />
             <Route path="/post/:postNum" element={<PostPage />} />
             <Route path="/mypage/:userId" element={<MypagePage setApiCall={setCall} />} />
+            <Route path="/policy" element={<PolicyPage />} />
           </Routes>
         </section>
       </BrowserRouter>
