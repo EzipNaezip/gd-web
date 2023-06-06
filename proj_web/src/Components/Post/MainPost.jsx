@@ -4,8 +4,9 @@ import PostComment from './PostComment';
 import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
 import ImageModal from '../Modals/ImageModal';
+import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
 
-export default function MainPost({ post, comments }) {
+export default function MainPost({ post, comment, fetch }) {
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
   const [image, setImage] = useState(null);
@@ -48,7 +49,11 @@ export default function MainPost({ post, comments }) {
             </div>
             <div className="overflow-y-scroll border-l border-r border-b text-sm">
               <p className="mt-2 p-4">{post.description}</p>
-              <div className="text-gray-600 font-suiteMedium text-sm p-3"># 태그 1</div>
+              <div className="text-gray-600 font-suiteMedium text-sm p-3">
+                {post.tagIds.map((tag) => (
+                  <p># {DiscoverFilterList.get(tag)}</p>
+                ))}
+              </div>
               <div className="font-suiteBold text-sm p-3">좋아요 {post.likesCount}개</div>
               <div className="grid grid-cols-2 p-3">
                 <div>
@@ -90,60 +95,74 @@ export default function MainPost({ post, comments }) {
                       </svg>
                     )}
                   </button>
-                  <button
-                    onClick={() => {
-                      setBookMark(!bookMark);
-                    }}
-                  >
-                    {!bookMark ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="fill-ezip-green duration-300 w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                        />
-                      </svg>
-                    )}
-                  </button>
+                  {!post.isMe ? (
+                    <button
+                      onClick={() => {
+                        setBookMark(!bookMark);
+                      }}
+                    >
+                      {!bookMark ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="fill-ezip-green duration-300 w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                          />
+                        </svg>
+                      )}
+                    </button>
+                  ) : (
+                    <></>
+                  )}
                 </div>
                 <div className="font-suiteMedium text-right mr-3">{post.timestamp}</div>
               </div>
             </div>
-            <div className="border-r border-l">
-              {comments.length ? (
-                <h1 className="p-4 font-suiteBold">댓글 {comments.length}개</h1>
-              ) : (
-                <h1 className="p-4 font-suiteBold">작성된 댓글이 없습니다</h1>
-              )}
-            </div>
-            <PostUserComment className="p-4" />
-            <div className="flex-col rounded-b-lg border-l border-r border-b max-h-96 overflow-y-scroll">
-              {comments.map((data) => {
-                return <PostComment comment={data} />;
-              })}
-            </div>
+            <>
+              <div className="border-r border-l">
+                {comment && comment.length ? (
+                  <h1 className="p-4 font-suiteBold">댓글 {comment.length}개</h1>
+                ) : (
+                  <h1 className="p-4 font-suiteBold">댓글 0개</h1>
+                )}
+              </div>
+              <PostUserComment className="p-4" postNum={post.postNum} fetch={fetch} />
+              <div className="flex-col rounded-b-lg border-l border-r border-b max-h-96 overflow-y-scroll">
+                {comment && comment.length > 0 ? (
+                  <>
+                    {comment.map((data) => {
+                      return <PostComment comment={data} fetch={fetch} />;
+                    })}
+                  </>
+                ) : (
+                  <>
+                    <p className="p-4 text-sm font-suiteLight">아이디어에 대한 댓글을 남겨보세요!</p>
+                  </>
+                )}
+              </div>
+            </>
           </div>
         </div>
       ) : (

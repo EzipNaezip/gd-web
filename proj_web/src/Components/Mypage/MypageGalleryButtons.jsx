@@ -10,7 +10,7 @@ export default function MypageGalleryButton() {
 
   return (
     <>
-      <div className="grid grid-cols-2 justify-items-center sm:flex gap-4">
+      <div className="grid grid-cols-2 justify-items-center md:flex gap-4">
         {filterArray.map((filter) => (
           <MypageFilterButton
             data={filter}

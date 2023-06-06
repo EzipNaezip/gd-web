@@ -1,12 +1,21 @@
 import React from 'react';
 import MainPrompt from '../Components/Main/MainPrompt';
 import ScrollToDiscover from '../Components/Main/ScrollToDiscover';
-import MainGallery from '../Components/Gallery/MainGallery';
 import { useRecoilValue } from 'recoil';
 import { PromptCreateState } from '../Atoms/PromptCreateState';
+import { useQuery } from 'react-query';
+import { getExample } from '../Query/MainExampleQuery';
+import MainImageGrid from '../Components/Main/MainImageGrid';
 
 function MainPage() {
   const isCreated = useRecoilValue(PromptCreateState);
+  const getImages = useQuery('getExample', getExample, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (data) => {
+      console.log('example : ', data);
+    },
+  });
 
   return (
     <>
@@ -14,7 +23,7 @@ function MainPage() {
       {!isCreated ? (
         <>
           <ScrollToDiscover />
-          <MainGallery isMain={true} />
+          {getImages.data ? <MainImageGrid thumbnails={getImages.data.data.data.example} /> : <></>}
         </>
       ) : (
         <></>

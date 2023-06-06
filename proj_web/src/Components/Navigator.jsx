@@ -2,13 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { Navbar, Dropdown, Avatar, TextInput, Button } from 'flowbite-react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import MainLogin from './Login/MainLogin';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
+import { useMutation } from 'react-query';
+import { getUserInfo } from '../Query/MypageQuery';
+import { MypageState } from '../Atoms/MypageState';
 import { Link } from 'react-router-dom';
 
 export default function Navigator() {
+  const [userInfo, setUserInfo] = useState(null);
   const [login, setLogin] = useRecoilState(LoginState);
+  const setMypage = useSetRecoilState(MypageState);
   const [show, setShow] = useState(false);
+  const myId = window.localStorage.getItem('testID');
+  const baseURL = 'http://api.ezipnaezip.life:8080';
+  const getInfo = useMutation(getUserInfo, {
+    onSuccess: (data) => {
+      console.log('navigator : ', data);
+      setUserInfo(data.data.data.user);
+      setMypage(myId);
+    },
+  });
+
+  useEffect(() => {
+    getInfo.mutate(myId);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
@@ -18,59 +37,51 @@ export default function Navigator() {
     <>
       <Navbar className="sticky z-50 top-0 border-b opacity-90" fluid={true} rounded={true}>
         <Navbar.Brand href="/">
-          {/*<svg*/}
-          {/*  xmlns="http://www.w3.org/2000/svg"*/}
-          {/*  fill="none"*/}
-          {/*  viewBox="0 0 24 24"*/}
-          {/*  strokeWidth={1.5}*/}
-          {/*  stroke="currentColor"*/}
-          {/*  className="w-6 h-6 mr-2 text-ezip-green_hover"*/}
-          {/*>*/}
-          {/*  <path*/}
-          {/*    strokeLinecap="round"*/}
-          {/*    strokeLinejoin="round"*/}
-          {/*    d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"*/}
-          {/*  />*/}
-          {/*</svg>*/}
           <img className="w-8 h-8 mr-2" src={process.env.PUBLIC_URL + '/Images/logo.png'} alt="logo" />
           <span className="self-center whitespace-nowrap text-xl font-suiteBold dark:text-white mr-10">이집내집</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
           {login ? (
             //{login ? ( 작업용 로그인 고정
-            <Dropdown
-              className="transition ease-in"
-              arrowIcon={false}
-              inline={true}
-              label={
-                <Avatar
-                  className="mr-3"
-                  alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded={true}
-                />
-              }
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-              </Dropdown.Header>
-              <Dropdown.Item className="transition ease-in font-suiteLight hover:text-ezip-green">
-                <Link to="/mypage" className="w-full">
-                  마이페이지
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={() => {
-                  setLogin(false);
-                  window.localStorage.removeItem('token');
-                  setShow(false);
-                }}
-                className="transition ease-in font-suiteLight hover:text-red-500"
-              >
-                로그아웃
-              </Dropdown.Item>
-            </Dropdown>
+            <>
+              {userInfo ? (
+                <Dropdown
+                  className="transition ease-in"
+                  arrowIcon={false}
+                  inline={true}
+                  label={
+                    <Avatar
+                      className="rounded-full border mr-3"
+                      alt="User settings"
+                      img={`${baseURL}${userInfo.profileImgUrl}`}
+                      rounded={true}
+                    />
+                  }
+                >
+                  <Dropdown.Header>
+                    <span className="block text-sm">{userInfo.name}</span>
+                    <span className="block truncate text-sm font-medium">{userInfo.email}</span>
+                  </Dropdown.Header>
+                  <Dropdown.Item className="transition ease-in font-suiteLight hover:text-ezip-green">
+                    <Link to={`/mypage/${myId}`} className="w-full">
+                      마이페이지
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => {
+                      setLogin(false);
+                      window.localStorage.removeItem('token');
+                      setShow(false);
+                    }}
+                    className="transition ease-in font-suiteLight hover:text-red-500"
+                  >
+                    로그아웃
+                  </Dropdown.Item>
+                </Dropdown>
+              ) : (
+                <></>
+              )}
+            </>
           ) : (
             <>
               <Button

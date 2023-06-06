@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MypageGalleryButtons from './MypageGalleryButtons';
-import MainGalleryComponent from '../Gallery/MainGallery';
 import FollowModal from './FollowModal';
 import FollowButton from './FollowButton';
 import ProfileSettingModal from './ProfileSettingModal';
-import { Avatar, Button } from 'flowbite-react';
+import { Button } from 'flowbite-react';
 import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
+import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
 
-export default function MainMypage() {
+export default function MainMypage({ data, fetch, setApiCall }) {
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
   const [followingDirection, setFollowingDirection] = useState(-1);
   //follow list show & following or follower
-  const [whoami, setWhoami] = useState(false);
-  // user본인의 마이페이지인지 확인
+  const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
   const onFollowHandler = () => {
     setFollowShow(false);
@@ -24,27 +23,26 @@ export default function MainMypage() {
     setProfileShow(false);
   };
 
-  useEffect(() => {
-    setWhoami(false);
-  }, []);
-
   return (
     <div className="flex flex-col gap-y-5">
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
         <div className="min-w-fit max-w-screen-xl px-4 py-5 lg:px-6 sm:py-5 lg:py-5">
           <div className="max-w-2xl mx-auto grid justify-items-center text-center gap-2">
-            <Avatar
-              className="rounded-full bg-gray-500 w-36 h-36 sm:w-48 sm:h-48 mb-2"
-              alt="User Profile"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
+            <img
+              className="border rounded-full w-48 h-48 mb-2"
+              src={`${baseURL}${data.user.profileImgUrl}`}
+              alt="profile"
             />
-            <h2 className="text-3xl font-suiteBold text-black sm:text-4xl dark:text-white">김관식</h2>
-            <p className="text-base font-suiteMedium text-gray-500 sm:text-xl dark:text-gray-400">연무동 개발자</p>
+            <h2 className="text-3xl font-suiteBold text-black sm:text-4xl dark:text-white">{data.user.name}</h2>
+            <p className="text-base font-suiteMedium text-gray-500 sm:text-xl dark:text-gray-400">
+              {data.user.description}
+            </p>
           </div>
           <div className="min-w-fit max-w-screen-xl flex justify-center mt-3 text-center gap-x-16 gap-y-5">
             <div className="w-20">
-              <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">2</h3>
+              <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">
+                {data.myPosts.length}
+              </h3>
               <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400 m-0">Post</p>
             </div>
             <button
@@ -55,7 +53,9 @@ export default function MainMypage() {
               }}
             >
               <div className="w-20">
-                <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">10</h3>
+                <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">
+                  {data.user.followCount}
+                </h3>
                 <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400">Following</p>
               </div>
             </button>
@@ -67,7 +67,9 @@ export default function MainMypage() {
               }}
             >
               <div className="w-20">
-                <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">123</h3>
+                <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">
+                  {data.user.followerCount}
+                </h3>
                 <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400">Follower</p>
               </div>
             </button>
@@ -79,7 +81,7 @@ export default function MainMypage() {
             />
           </div>
           <div className="mt-3">
-            {isLogin && !whoami ? (
+            {isLogin && data.user.isMe ? (
               <>
                 <Button
                   size="xs"
@@ -89,18 +91,23 @@ export default function MainMypage() {
                 >
                   <span className="text-base">프로필 수정</span>
                 </Button>
-                <ProfileSettingModal profileShow={profileShow} onClose={onProfileHandler} />
+                <ProfileSettingModal
+                  user={data.user}
+                  profileShow={profileShow}
+                  fetch={fetch}
+                  setApiCall={setApiCall}
+                  onClose={onProfileHandler}
+                />
               </>
             ) : (
-              <FollowButton></FollowButton>
+              <FollowButton />
             )}
           </div>
         </div>
       </section>
       <MypageGalleryButtons />
-      <div>
-        <MainGalleryComponent />
-        <MainGalleryComponent />
+      <div className="container">
+        <DiscoverImageGrid thumbnails={data.myPosts} />
       </div>
     </div>
   );

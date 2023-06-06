@@ -23,3 +23,9 @@ export async function storeDalleImage(serialNum) {
     { headers: { Authorization: `Bearer ${token}` } },
   );
 }
+
+export async function deleteDalleImage(serialNum) {
+  return await axios.delete(`http://api.ezipnaezip.life:8080/gpt/delete/${serialNum}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+}

@@ -10,12 +10,13 @@ GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default function GalleryCard({ url, postNum, isMe, isMain }) {
+export default function GalleryCard({ data, isMain }) {
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
   const setPostNum = useSetRecoilState(PostNumState);
+  const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
   const handleMouseEnter = () => {
@@ -31,12 +32,16 @@ export default function GalleryCard({ url, postNum, isMe, isMain }) {
       {!isMain ? (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link
-            to={`/post/${postNum}`}
+            to={`/post/${data.postNum}`}
             onClick={() => {
-              setPostNum(postNum);
+              setPostNum(data.postNum);
             }}
           >
-            <img className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60" src={url} alt="img" />
+            <img
+              className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60"
+              src={`${baseURL}${data.thumbnailImgUrl}`}
+              alt="img"
+            />
           </Link>
           {buttonShow && isLogin ? (
             //{buttonShow && isLogin ? (작업용 로그인 고정
@@ -75,38 +80,44 @@ export default function GalleryCard({ url, postNum, isMe, isMain }) {
                     />
                   </svg>
                 )}
-                {!bookMark ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
-                    onClick={() => setBookMark(!bookMark)}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                    />
-                  </svg>
+                {!data.isMe ? (
+                  <>
+                    {!bookMark ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
+                        onClick={() => setBookMark(!bookMark)}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="fill-ezip-green duration-300 w-6 h-6"
+                        onClick={() => setBookMark(!bookMark)}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                        />
+                      </svg>
+                    )}
+                  </>
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="fill-ezip-green duration-300 w-6 h-6"
-                    onClick={() => setBookMark(!bookMark)}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                    />
-                  </svg>
+                  <></>
                 )}
               </div>
             </button>
@@ -118,11 +129,11 @@ export default function GalleryCard({ url, postNum, isMe, isMain }) {
         <>
           <img
             className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70"
-            src={url}
+            src={`${baseURL}${data.imgUrl}`}
             alt="img"
             onClick={() => setModalShow(true)}
           />
-          <MainImageModal img={url} imgShow={modalShow} onClose={() => setModalShow(false)} />
+          <MainImageModal img={data} imgShow={modalShow} onClose={() => setModalShow(false)} />
         </>
       )}
     </div>

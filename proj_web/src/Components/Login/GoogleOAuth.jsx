@@ -9,6 +9,8 @@ export default function GoogleOAuth({ loginShow }) {
   const googleSocialLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       window.localStorage.setItem('token', tokenResponse.access_token);
+      window.localStorage.setItem('userID', tokenResponse.authUser);
+      console.log('login : ', tokenResponse);
       setLogin(true);
       loginShow(false);
     },
