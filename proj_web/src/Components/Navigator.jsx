@@ -35,6 +35,7 @@ export default function Navigator() {
 
   useEffect(() => {
     if (login && myId) getInfo.mutate(myId);
+    else setLogin(false);
     // eslint-disable-next-line
   }, []);
 
