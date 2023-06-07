@@ -123,9 +123,9 @@ export default function MainPrompt() {
           )}
         </div>
         <>
-          {created && images ? (
+          {images ? (
             <>
-              {images.response.length >= 1 ? (
+              {images.response.length > 1 ? (
                 <div className="grid w-full">
                   <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
                     {images.map((image) => (
@@ -194,9 +194,13 @@ export default function MainPrompt() {
               ) : (
                 <div className="grid">
                   <div className="mt-14 grid grid-cols-1 justify-items-center gap-3">
-                    {images.map((image) => (
-                      <DalleImage id={image.itemId} url={image.url} serial={image.chatLogSerialNumber} />
-                    ))}
+                    <div className="flex justify-center w-5/6">
+                      <DalleImage
+                        id={images.response[0].itemId}
+                        url={images.response[0].url}
+                        serial={images.response[0].chatLogSerialNumber}
+                      />
+                    </div>
                   </div>
                   <div className="mt-14 rounded-lg border font-suiteLight p-4">
                     <p>{images.description}</p>
