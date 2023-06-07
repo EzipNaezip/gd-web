@@ -18,6 +18,7 @@ export default function Navigator() {
     onSuccess: (data) => {
       console.log('navigator : ', data);
       setUserInfo(data.data.data.user);
+      getInfo.mutate(myId);
     },
   });
 
