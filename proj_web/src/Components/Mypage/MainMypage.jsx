@@ -18,9 +18,11 @@ export default function MainMypage({ data, fetch, setApiCall }) {
   const isLogin = useRecoilValue(LoginState);
 
   const checkImgURL = () => {
-    const regExp = /http:/g;
+    const regExpHttp = /http:/g;
+    const regExpHttps = /https:/g;
 
-    if (regExp.test(data.user.profileImgUrl)) return data.user.profileImgUrl;
+    if (regExpHttp.test(data.user.profileImgUrl) || regExpHttps.test(data.user.profileImgUrl))
+      return data.user.profileImgUrl;
     else return `${baseURL}${data.user.profileImgUrl}`;
   };
 

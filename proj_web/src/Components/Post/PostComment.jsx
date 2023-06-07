@@ -24,9 +24,11 @@ export default function PostComment({ comment, fetch }) {
   });
 
   const checkImgURL = () => {
-    const regExp = /http:/g;
+    const regExpHttp = /http:/g;
+    const regExpHttps = /https:/g;
 
-    if (regExp.test(comment.user.profileImgUrl)) return comment.user.profileImgUrl;
+    if (regExpHttp.test(comment.user.profileImgUrl) || regExpHttps.test(comment.user.profileImgUrl))
+      return comment.user.profileImgUrl;
     else return `${baseURL}${comment.user.profileImgUrl}`;
   };
 

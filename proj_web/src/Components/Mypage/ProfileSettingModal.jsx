@@ -33,9 +33,10 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
   });
 
   const checkImgURL = () => {
-    const regExp = /http:/g;
+    const regExpHttp = /http:/g;
+    const regExpHttps = /https:/g;
 
-    if (regExp.test(user.profileImgUrl)) return user.profileImgUrl;
+    if (regExpHttp.test(user.profileImgUrl) || regExpHttps.test(user.profileImgUrl)) return user.profileImgUrl;
     else return `${baseURL}${user.profileImgUrl}`;
   };
 

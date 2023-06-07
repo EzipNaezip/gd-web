@@ -23,9 +23,11 @@ export default function MainPost({ post, comment, fetch }) {
   };
 
   const checkImgURL = () => {
-    const regExp = /http:/g;
+    const regExpHttp = /http:/g;
+    const regExpHttps = /https:/g;
 
-    if (regExp.test(post.writerId.profileImgUrl)) return post.writerId.profileImgUrl;
+    if (regExpHttp.test(post.writerId.profileImgUrl) || regExpHttps.test(post.writerId.profileImgUrl))
+      return post.writerId.profileImgUrl;
     else return `${baseURL}${post.writerId.profileImgUrl}`;
   };
 
@@ -57,7 +59,7 @@ export default function MainPost({ post, comment, fetch }) {
             </div>
             <div className="overflow-y-scroll border-l border-r border-b text-sm">
               <p className="mt-2 p-4">{post.description}</p>
-              <div className="flex text-gray-600 font-suiteMedium text-sm p-3">
+              <div className="flex mr-2 text-gray-600 font-suiteMedium text-sm p-3">
                 {post.tagIds.map((tag) => (
                   <p># {DiscoverFilterList.get(tag)}</p>
                 ))}

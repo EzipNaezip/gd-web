@@ -25,9 +25,11 @@ export default function Navigator() {
   });
 
   const checkImgURL = () => {
-    const regExp = /http:/g;
+    const regExpHttp = /http:/g;
+    const regExpHttps = /https:/g;
 
-    if (regExp.test(userInfo.profileImgUrl)) return userInfo.profileImgUrl;
+    if (regExpHttp.test(userInfo.profileImgUrl) || regExpHttps.test(userInfo.profileImgUrl))
+      return userInfo.profileImgUrl;
     else return `${baseURL}${userInfo.profileImgUrl}`;
   };
 
