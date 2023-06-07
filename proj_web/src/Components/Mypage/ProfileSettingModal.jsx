@@ -94,7 +94,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
             {!uploadState ? (
               <img
                 className="border rounded-full w-48 h-48 mb-2"
-                src={`${baseURL}${user.profileImgUrl}`}
+                src={checkImgURL()}
                 alt="profile"
                 onClick={() => {
                   fileInput.current.click();
