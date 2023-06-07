@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router";
+import jwt_decode from "jwt-decode";
 
 const LoginTokenPage = () => {
   const { token } = useParams();
@@ -10,8 +11,13 @@ const LoginTokenPage = () => {
     sessionStorage.setItem("token", token);
   }
 
-  console.log(token);
-  console.log(navigate);
+  const decodedToken = jwt_decode(token);
+  const payload = decodedToken.payload;
+
+  // 페이로드 사용
+  console.log(payload);
+
+  navigate("/");
 
   return (
     <div>
