@@ -57,7 +57,7 @@ export default function MainPost({ post, comment, fetch }) {
             </div>
             <div className="overflow-y-scroll border-l border-r border-b text-sm">
               <p className="mt-2 p-4">{post.description}</p>
-              <div className="text-gray-600 font-suiteMedium text-sm p-3">
+              <div className="flex text-gray-600 font-suiteMedium text-sm p-3">
                 {post.tagIds.map((tag) => (
                   <p># {DiscoverFilterList.get(tag)}</p>
                 ))}
