@@ -20,35 +20,31 @@ const LoginTokenPage = () => {
   });
 
   useEffect(() => {
-    // 정상적으로 토큰이 들어오면 세션 스토리지에 저장
-    if (token) {
-      const userInfo = jwt_decode(token);
-      const userInfoJson = JSON.stringify(userInfo);
-      const parsedUserInfo = JSON.parse(userInfoJson);
-
-      if (parsedUserInfo.userId) {
-        Toast.fire({
-          icon: "error",
-          title: "로그인 실패! 다시시도 해주세요.",
-        });
-
-        navigate("/");
-        return;
-      }
-
-      sessionStorage.setItem("token", token);
-      sessionStorage.setItem("userId", parsedUserInfo.userId);
-
+    const handleLoginFailure = () => {
       Toast.fire({
-        icon: "success",
-        title: "로그인 성공! 환영합니다.",
+        icon: "error",
+        title: "로그인 실패! 다시시도 해주세요.",
       });
       navigate("/");
-    } else {
-      console.log(`Invalid`);
+    };
+
+    try {
+      const userInfo = jwt_decode(token);
+      if (userInfo.userId === undefined) {
+        handleLoginFailure();
+      } else {
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userId", userInfo.userId);
+        Toast.fire({
+          icon: "success",
+          title: "로그인 성공! 환영합니다.",
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      handleLoginFailure();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [token, navigate, Toast]);
 
   return (
     <div>
