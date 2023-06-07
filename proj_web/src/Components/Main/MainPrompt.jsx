@@ -123,9 +123,9 @@ export default function MainPrompt() {
           )}
         </div>
         <>
-          {images ? (
+          {created && images ? (
             <>
-              {images.reponse.length >= 1 ? (
+              {images.response.length >= 1 ? (
                 <div className="grid w-full">
                   <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
                     {images.map((image) => (
