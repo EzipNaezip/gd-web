@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal } from 'flowbite-react';
-import GoogleOAuth from './GoogleOAuth';
+import React from "react";
+import { Modal } from "flowbite-react";
+import GoogleOAuth from "./GoogleOAuth";
 
 export default function MainLogin({ show, setShow, onClose }) {
   // const modalHandler = () => {
@@ -16,10 +16,13 @@ export default function MainLogin({ show, setShow, onClose }) {
           </Modal.Header>
           <Modal.Body>
             <div className="flex-col justify-center items-center">
-              <div className="text-4xl mb-4 text-center">LOGIN</div>
-              <div className="mb-4 font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
-              <div className="flex flex-col justify-center">
+              <div className="text-4xl mb-2 text-center">LOGIN</div>
+              <div className="font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
+              <div className="flex flex-col justify-center mt-20">
                 <GoogleOAuth loginShow={setShow} />
+                <a href="policy" target="_blank" className="text-center text-xs hover:underline">
+                  개인정보처리방침
+                </a>
               </div>
             </div>
           </Modal.Body>
