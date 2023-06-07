@@ -23,7 +23,7 @@ export default function MainImageModal({ img, imgShow, onClose }) {
       <Card imgAlt="mainImageCard" imgSrc={`${baseURL}${img.imgUrl}`}>
         <p className="font-suiteMedium text-center text-gray-700 dark:text-gray-400">{img.prompt}</p>
         <Button className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover" onClick={handleCopy}>
-          COPY
+          Copy
         </Button>
       </Card>
     </Modal>

@@ -123,7 +123,7 @@ export default function MainPrompt() {
           )}
         </div>
         <>
-          {created && images ? (
+          {images ? (
             <>
               {images.reponse.length >= 1 ? (
                 <div className="grid w-full">
