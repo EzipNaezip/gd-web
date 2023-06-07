@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'flowbite-react';
+import { Carousel } from 'flowbite';
 
 export default function PostCarousel({ images, onImageHandler }) {
   const baseURL = 'http://api.ezipnaezip.life:8080';
