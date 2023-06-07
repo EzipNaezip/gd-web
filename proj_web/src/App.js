@@ -1,13 +1,14 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import MainPage from './Pages/MainPage';
-import Navigator from './Components/Navigator.jsx';
-import DiscoverPage from './Pages/DiscoverPage';
-import PostPage from './Pages/PostPage';
-import MypagePage from './Pages/MypagePage';
-import PolicyPage from './Pages/PolicyPage';
-import ScrollToTop from './Utilities/ScrollToTop';
-import React, { useEffect, useState } from 'react';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import MainPage from "./Pages/MainPage";
+import Navigator from "./Components/Navigator.jsx";
+import DiscoverPage from "./Pages/DiscoverPage";
+import PostPage from "./Pages/PostPage";
+import MypagePage from "./Pages/MypagePage";
+import PolicyPage from "./Pages/PolicyPage";
+import ScrollToTop from "./Utilities/ScrollToTop";
+import React, { useEffect, useState } from "react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import LoginTokenPage from "./Pages/LoginTokenPage";
 
 export default function App() {
   const [apiCall, setApiCall] = useState(false);
@@ -19,10 +20,10 @@ export default function App() {
 
   useEffect(() => {
     window.localStorage.setItem(
-      'test',
-      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2tlbiIsImZvbGxvd0NvdW50IjoiMCIsInJvbGUiOiJBRE1JTiIsInByb3ZpZGVyIjoiR09PR0xFIiwicHJvZmlsZUltZ1VybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS9wcm9maWxlLnBuZyIsIm5hbWUiOiJbMSA6IGFkbWluXSIsImRlc2NyaXB0aW9uIjoiVGhpcyBpcyB0aGUgYWRtaW4gdXNlciIsInBvc3RDb3VudCI6IjAiLCJ1c2VySWQiOiIxIiwiZm9sbG93ZXJDb3VudCI6IjAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg1NTMzMDY4LCJleHAiOjE3MTcxNTU0Njh9.rXmhh-RDdnXszwUKa-G7TsuB1zoa1M7CABwUwY8VxOU',
+      "test",
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2tlbiIsImZvbGxvd0NvdW50IjoiMCIsInJvbGUiOiJBRE1JTiIsInByb3ZpZGVyIjoiR09PR0xFIiwicHJvZmlsZUltZ1VybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS9wcm9maWxlLnBuZyIsIm5hbWUiOiJbMSA6IGFkbWluXSIsImRlc2NyaXB0aW9uIjoiVGhpcyBpcyB0aGUgYWRtaW4gdXNlciIsInBvc3RDb3VudCI6IjAiLCJ1c2VySWQiOiIxIiwiZm9sbG93ZXJDb3VudCI6IjAiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNjg1NTMzMDY4LCJleHAiOjE3MTcxNTU0Njh9.rXmhh-RDdnXszwUKa-G7TsuB1zoa1M7CABwUwY8VxOU"
     );
-    window.localStorage.setItem('testID', '1');
+    window.localStorage.setItem("testID", "1");
     setRefreshNavigator(true);
   }, []);
 
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/post/:postNum" element={<PostPage />} />
             <Route path="/mypage/:userId" element={<MypagePage setApiCall={setCall} />} />
             <Route path="/policy" element={<PolicyPage />} />
+            <Route path="/login/:token" element={<LoginTokenPage />} />
           </Routes>
         </section>
       </BrowserRouter>

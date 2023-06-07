@@ -16,7 +16,7 @@ export default function GoogleOAuth({ loginShow }) {
 
   const handleOpenPopup = () => {
     const width = 500;
-    const height = 800;
+    const height = 400;
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
     const popup = window.open("http://api.ezipnaezip.life:8080/login", "구글 계정으로 로그인", `width=${width},height=${height},top=${top},left=${left}`);
@@ -26,8 +26,12 @@ export default function GoogleOAuth({ loginShow }) {
 
   useEffect(() => {
     const currentUrl = new URL(window.location.href);
-    const searchParams = currentUrl;
-    console.log(searchParams);
+    const searchParams = currentUrl.searchParams;
+    const code = searchParams.get("code");
+
+    if (code) {
+      window.opener.postMessage({ code }, window.location.origin);
+    }
   }, []);
 
   useEffect(() => {
@@ -36,6 +40,8 @@ export default function GoogleOAuth({ loginShow }) {
     }
 
     const githubOAuthCodeListener = (e) => {
+      console.log(e);
+
       // 동일한 Origin 의 이벤트만 처리하도록 제한
       if (e.origin !== window.location.origin) {
         return;
@@ -47,14 +53,23 @@ export default function GoogleOAuth({ loginShow }) {
         console.log(token);
       }
 
-      popup.close();
-      setPopup(null);
+      // 열린 창을 닫을 때 부모 창으로 메시지 전송
+      window.opener.postMessage({ action: "closePopup" }, window.location.origin);
+    };
+
+    const handleParentMessage = (e) => {
+      if (e.data.action === "closePopup") {
+        popup.close();
+        setPopup(null);
+      }
     };
 
     window.addEventListener("message", githubOAuthCodeListener, false);
+    window.addEventListener("message", handleParentMessage, false);
 
     return () => {
       window.removeEventListener("message", githubOAuthCodeListener);
+      window.removeEventListener("message", handleParentMessage);
       popup?.close();
       setPopup(null);
     };
