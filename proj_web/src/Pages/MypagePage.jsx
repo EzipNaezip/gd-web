@@ -20,8 +20,7 @@ export default function MypagePage({ setApiCall }) {
 
   useEffect(() => {
     console.log('curr : ', curr);
-    getInfo.mutate(curr);
-    console.log('params : ', params);
+    getInfo.mutate(params.userId);
     // eslint-disable-next-line
   }, []);
 
