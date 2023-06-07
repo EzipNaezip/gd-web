@@ -6,7 +6,7 @@ export default function PostCarousel({ images, onImageHandler }) {
 
   return (
     <>
-      <Carousel className="h-80 lg:h-[30rem]" alwaysRender>
+      <Carousel className="h-[30rem]" alwaysRender>
         {images.map((path) => {
           return <img onClick={onImageHandler} src={`${baseURL}${path}`} alt="..." />;
         })}
