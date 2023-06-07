@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MainImageModal from '../Main/MainImageModal';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
-import { PostNumState } from '../../Atoms/PostNumState';
 
 GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
@@ -15,7 +14,6 @@ export default function GalleryCard({ data, isMain }) {
   const [buttonShow, setButtonShow] = useState(false);
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
-  const setPostNum = useSetRecoilState(PostNumState);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
@@ -31,12 +29,7 @@ export default function GalleryCard({ data, isMain }) {
     <div className="relative">
       {!isMain ? (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <Link
-            to={`/post/${data.postNum}`}
-            onClick={() => {
-              setPostNum(data.postNum);
-            }}
-          >
+          <Link to={`/post/${data.postNum}`}>
             <img
               className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60"
               src={`${baseURL}${data.thumbnailImgUrl}`}

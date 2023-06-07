@@ -2,25 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { Navbar, Dropdown, Avatar, TextInput, Button } from 'flowbite-react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import MainLogin from './Login/MainLogin';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
 import { useMutation } from 'react-query';
 import { getUserInfo } from '../Query/MypageQuery';
-import { MypageState } from '../Atoms/MypageState';
 import { Link } from 'react-router-dom';
 
 export default function Navigator() {
   const [userInfo, setUserInfo] = useState(null);
   const [login, setLogin] = useRecoilState(LoginState);
   const [show, setShow] = useState(false);
-  const setMypage = useSetRecoilState(MypageState);
   const myId = sessionStorage.getItem('userId');
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const getInfo = useMutation(getUserInfo, {
     onSuccess: (data) => {
       console.log('navigator : ', data);
       setUserInfo(data.data.data.user);
-      setMypage(myId);
     },
   });
 

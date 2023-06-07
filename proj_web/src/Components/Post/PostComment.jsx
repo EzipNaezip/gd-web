@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { deleteComment, editComment } from '../../Query/CommentQuery';
-import { useSetRecoilState } from 'recoil';
-import { MypageState } from '../../Atoms/MypageState';
 import { Link } from 'react-router-dom';
 
 export default function PostComment({ comment, fetch }) {
   const [editState, setEditState] = useState(false);
   const [editText, setEditText] = useState('');
-  const setMypageState = useSetRecoilState(MypageState);
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
   const edit = useMutation(editComment, {
@@ -39,13 +36,7 @@ export default function PostComment({ comment, fetch }) {
           <div className="flex w-full items-center">
             <img className="w-8 h-8 rounded-full shadow-lg" src={checkImgURL()} alt="profileImage" />
             <div className="ml-3 text-sm font-normal">
-              <Link
-                className="w-full"
-                to={`/mypage/${comment.user.userId}`}
-                onClick={() => {
-                  setMypageState(comment.user.userId);
-                }}
-              >
+              <Link className="w-full" to={`/mypage/${comment.user.userId}`}>
                 <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">{comment.user.name}</span>
               </Link>
               <div className="text-sm font-normal">{comment.content}</div>

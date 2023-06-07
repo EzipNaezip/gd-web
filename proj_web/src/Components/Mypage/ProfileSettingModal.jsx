@@ -2,8 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Modal, Button } from 'flowbite-react';
 import { useMutation } from 'react-query';
 import { editUserInfo, upload } from '../../Query/MypageQuery';
-import { useRecoilValue } from 'recoil';
-import { MypageState } from '../../Atoms/MypageState';
+import { useParams } from 'react-router-dom';
 
 export default function ProfileSettingModal({ user, profileShow, fetch, setApiCall, onClose }) {
   const [imgFile, setImgFile] = useState(null);
@@ -13,7 +12,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
   const nameRef = useRef('');
   const descriptionRef = useRef('');
   const fileInput = useRef(null);
-  const curr = useRecoilValue(MypageState);
+  const params = useParams();
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
   const uploadFile = useMutation(upload, {
@@ -26,7 +25,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
   const editProfile = useMutation(editUserInfo, {
     onSuccess: (data) => {
       console.log('edit : ', data);
-      fetch(curr);
+      fetch(params.userId);
       setApiCall();
       setUploadState(false);
     },
