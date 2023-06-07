@@ -34,7 +34,7 @@ export default function Navigator() {
   };
 
   useEffect(() => {
-    getInfo.mutate(myId);
+    if (login && myId) getInfo.mutate(myId);
     // eslint-disable-next-line
   }, []);
 
