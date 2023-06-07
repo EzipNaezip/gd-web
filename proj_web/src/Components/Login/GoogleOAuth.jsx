@@ -1,21 +1,18 @@
-import { useGoogleLogin } from "@react-oauth/google";
 import React, { useEffect, useState } from "react";
-import { useSetRecoilState } from "recoil";
-import { LoginState } from "../../Atoms/LoginState";
 
 export default function GoogleOAuth({ loginShow }) {
   const [popup, setPopup] = useState();
-  const setLogin = useSetRecoilState(LoginState);
+  // const setLogin = useSetRecoilState(LoginState);
 
-  const googleSocialLogin = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      window.localStorage.setItem("token", tokenResponse.access_token);
-      window.localStorage.setItem("userID", tokenResponse.authUser);
-      console.log("login : ", tokenResponse);
-      setLogin(true);
-      loginShow(false);
-    },
-  });
+  // const googleSocialLogin = useGoogleLogin({
+  //   onSuccess: (tokenResponse) => {
+  //     window.localStorage.setItem("token", tokenResponse.access_token);
+  //     window.localStorage.setItem("userID", tokenResponse.authUser);
+  //     console.log("login : ", tokenResponse);
+  //     setLogin(true);
+  //     loginShow(false);
+  //   },
+  // });
 
   const handleOpenPopup = () => {
     const width = 500;
