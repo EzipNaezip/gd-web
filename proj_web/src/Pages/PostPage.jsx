@@ -3,14 +3,11 @@ import MainPost from '../Components/Post/MainPost';
 import { useMutation } from 'react-query';
 import { inquirePost } from '../Query/PostQuery';
 import { getComment } from '../Query/CommentQuery';
-// import { useRecoilValue } from 'recoil';
-// import { PostNumState } from '../Atoms/PostNumState';
 import { useParams } from 'react-router';
 
 export default function PostPage() {
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState(null);
-  // const currPostNum = useRecoilValue(PostNumState);
   const params = useParams();
 
   const posts = useMutation(inquirePost, {
@@ -32,6 +29,7 @@ export default function PostPage() {
   };
 
   useEffect(() => {
+    console.log('params : ', params);
     fetchData();
     // eslint-disable-next-line
   }, []);
