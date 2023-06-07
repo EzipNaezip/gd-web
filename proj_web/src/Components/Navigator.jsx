@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 export default function Navigator() {
   const [userInfo, setUserInfo] = useState(null);
   const [login, setLogin] = useRecoilState(LoginState);
-  const setMypage = useSetRecoilState(MypageState);
   const [show, setShow] = useState(false);
+  const setMypage = useSetRecoilState(MypageState);
   const myId = sessionStorage.getItem('userId');
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const getInfo = useMutation(getUserInfo, {

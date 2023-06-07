@@ -4,10 +4,12 @@ import { useMutation } from 'react-query';
 import { getUserInfo } from '../Query/MypageQuery';
 import { useRecoilValue } from 'recoil';
 import { MypageState } from '../Atoms/MypageState';
+import { useParams } from 'react-router-dom';
 
 export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
   const curr = useRecoilValue(MypageState);
+  const params = useParams();
 
   const getInfo = useMutation(getUserInfo, {
     onSuccess: (data) => {
@@ -19,6 +21,7 @@ export default function MypagePage({ setApiCall }) {
   useEffect(() => {
     console.log('curr : ', curr);
     getInfo.mutate(curr);
+    console.log('params : ', params);
     // eslint-disable-next-line
   }, []);
 
