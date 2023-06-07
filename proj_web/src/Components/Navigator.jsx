@@ -24,6 +24,13 @@ export default function Navigator() {
     },
   });
 
+  const checkImgURL = () => {
+    const regExp = /http:/g;
+
+    if (regExp.test(userInfo.profileImgUrl)) return userInfo.profileImgUrl;
+    else return `${baseURL}${userInfo.profileImgUrl}`;
+  };
+
   useEffect(() => {
     getInfo.mutate(myId);
     // eslint-disable-next-line
@@ -53,7 +60,7 @@ export default function Navigator() {
                     <Avatar
                       className="rounded-full border mr-3"
                       alt="User settings"
-                      img={`${baseURL}${userInfo.profileImgUrl}`}
+                      img={checkImgURL()}
                       rounded={true}
                     />
                   }

@@ -32,6 +32,13 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
     },
   });
 
+  const checkImgURL = () => {
+    const regExp = /http:/g;
+
+    if (regExp.test(user.profileImgUrl)) return user.profileImgUrl;
+    else return `${baseURL}${user.profileImgUrl}`;
+  };
+
   const handleFileImage = (e) => {
     const reader = new FileReader();
     const file = e.target.files[0];
