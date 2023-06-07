@@ -11,6 +11,7 @@ export default function MainPost({ post, comment, fetch }) {
   const [bookMark, setBookMark] = useState(false);
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
+  const baseURL = 'http://api.ezipnaezip.life:8080';
 
   useEffect(() => {
     if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
@@ -30,7 +31,11 @@ export default function MainPost({ post, comment, fetch }) {
           <div>
             <div className="grid grid-cols-2 border rounded-t-lg p-4">
               <div className="flex items-center">
-                <img className="w-8 h-8 rounded-full shadow-lg mr-3" src={post.writerId.profileImgUrl} alt="" />
+                <img
+                  className="w-8 h-8 rounded-full shadow-lg mr-3"
+                  src={`${baseURL}${post.writerId.profileImgUrl}`}
+                  alt=""
+                />
                 <h1 className="font-suiteBold text-lg">{post.writerId.name}</h1>
               </div>
               <div className="flex justify-end">

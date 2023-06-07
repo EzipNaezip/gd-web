@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = window.localStorage.getItem('test');
+const token = sessionStorage.getItem('test');
 
 export async function getApiKeys() {
   return await axios.get('http://api.ezipnaezip.life:8080/api-keys/list', {

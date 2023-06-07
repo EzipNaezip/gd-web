@@ -1,12 +1,8 @@
-import React from "react";
-import { Modal } from "flowbite-react";
-import GoogleOAuth from "./GoogleOAuth";
+import React from 'react';
+import { Modal } from 'flowbite-react';
+import GoogleOAuth from './GoogleOAuth';
 
-export default function MainLogin({ show, setShow, onClose }) {
-  // const modalHandler = () => {
-  //   setShow(false); // 부모 컴포넌트에 이벤트 전달
-  // };
-
+export default function MainLogin({ show, onClose }) {
   return (
     <Modal className="h-screen animate-fade-in-down" size="sm" show={show} onClose={onClose}>
       <div className="g-white rounded-md shadow-xl">
@@ -19,7 +15,7 @@ export default function MainLogin({ show, setShow, onClose }) {
               <div className="text-4xl mb-2 text-center">LOGIN</div>
               <div className="font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
               <div className="flex flex-col justify-center mt-20">
-                <GoogleOAuth loginShow={setShow} />
+                <GoogleOAuth />
                 <a href="policy" target="_blank" className="text-center text-xs hover:underline">
                   개인정보처리방침
                 </a>

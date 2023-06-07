@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const token = window.localStorage.getItem('test');
+const token = sessionStorage.getItem('token');
 
 export async function getUserInfo(userId) {
-  return await axios.get(`http://api.ezipnaezip.life:8080/user/info/${Number(userId)}`, {
+  return await axios.get(`http://api.ezipnaezip.life:8080/user/info/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 }

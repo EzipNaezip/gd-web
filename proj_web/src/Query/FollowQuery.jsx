@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = window.localStorage.getItem('test');
+const token = sessionStorage.getItem('token');
 
 export async function getFollower() {
   return await axios.get('http://api.ezipnaezip.life:8080/follow/followers', {

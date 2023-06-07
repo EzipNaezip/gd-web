@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function testDalleAxios(command) {
-  const token = window.localStorage.getItem('test');
+  const token = sessionStorage.getItem('token');
   const images = await axios.post(
     'http://api.ezipnaezip.life:8080/test/images',
     { sentence: command },

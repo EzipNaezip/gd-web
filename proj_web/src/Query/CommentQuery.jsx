@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = window.localStorage.getItem('test');
+const token = sessionStorage.getItem('token');
 
 export async function getComment({ postNum }) {
   return await axios.get(`http://api.ezipnaezip.life:8080/comments/list/${postNum}`, {

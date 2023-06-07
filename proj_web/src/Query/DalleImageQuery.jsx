@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = window.localStorage.getItem('test');
+const token = sessionStorage.getItem('token');
 export async function createDalleImage(sentence) {
   const images = await axios.post(
     'http://api.ezipnaezip.life:8080/gpt/images',

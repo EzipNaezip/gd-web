@@ -14,7 +14,7 @@ export default function Navigator() {
   const [login, setLogin] = useRecoilState(LoginState);
   const setMypage = useSetRecoilState(MypageState);
   const [show, setShow] = useState(false);
-  const myId = window.localStorage.getItem('testID');
+  const myId = sessionStorage.getItem('token');
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const getInfo = useMutation(getUserInfo, {
     onSuccess: (data) => {
