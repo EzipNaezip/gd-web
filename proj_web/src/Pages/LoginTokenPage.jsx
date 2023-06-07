@@ -9,13 +9,12 @@ const LoginTokenPage = () => {
   // 정상적으로 토큰이 들어오면 세션 스토리지에 저장
   if (token) {
     sessionStorage.setItem("token", token);
+    const decodedToken = jwt_decode(token);
+    const payload = decodedToken.payload;
+
+    // 페이로드 사용
+    console.log(payload);
   }
-
-  const decodedToken = jwt_decode(token);
-  const payload = decodedToken.payload;
-
-  // 페이로드 사용
-  console.log(payload);
 
   navigate("/");
 
