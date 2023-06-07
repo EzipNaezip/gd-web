@@ -18,7 +18,6 @@ export default function Navigator() {
     onSuccess: (data) => {
       console.log('navigator : ', data);
       setUserInfo(data.data.data.user);
-      getInfo.mutate(myId);
     },
   });
 
@@ -35,7 +34,7 @@ export default function Navigator() {
     if (login && myId) getInfo.mutate(myId);
     else setLogin(false);
     // eslint-disable-next-line
-  }, []);
+  }, [login]);
 
   useEffect(() => {
     if (!show) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
