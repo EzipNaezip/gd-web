@@ -70,7 +70,7 @@ export default function Navigator() {
                   <Dropdown.Item
                     onClick={() => {
                       setLogin(false);
-                      window.localStorage.removeItem('token');
+                      sessionStorage.removeItem('token');
                       setShow(false);
                     }}
                     className="transition ease-in font-suiteLight hover:text-red-500"
