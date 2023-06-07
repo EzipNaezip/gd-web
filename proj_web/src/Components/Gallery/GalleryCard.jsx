@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import MainImageModal from '../Modals/MainImageModal';
+import MainImageModal from '../Main/MainImageModal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import { PostNumState } from '../../Atoms/PostNumState';

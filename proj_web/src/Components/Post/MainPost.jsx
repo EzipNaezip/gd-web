@@ -3,7 +3,7 @@ import PostUserComment from './PostUserComment';
 import PostComment from './PostComment';
 import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
-import ImageModal from '../Modals/ImageModal';
+import ImageModal from './ImageModal';
 import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
 
 export default function MainPost({ post, comment, fetch }) {

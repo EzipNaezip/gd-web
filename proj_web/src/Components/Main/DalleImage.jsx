@@ -1,4 +1,4 @@
-import ImageModal from '../Modals/ImageModal';
+import ImageModal from '../Post/ImageModal';
 import { useState } from 'react';
 
 export default function DalleImage({ id, url, serial }) {
