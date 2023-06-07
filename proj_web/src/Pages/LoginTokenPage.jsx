@@ -4,19 +4,18 @@ import jwt_decode from "jwt-decode";
 
 const LoginTokenPage = () => {
   const { token } = useParams();
-  var navigate = useNavigate();
+  const navigate = useNavigate();
 
   // 정상적으로 토큰이 들어오면 세션 스토리지에 저장
   if (token) {
+    const userInfo = jwt_decode(token); // 토큰 decode
     sessionStorage.setItem("token", token);
-    const decodedToken = jwt_decode(token);
-    const payload = decodedToken.payload;
+    sessionStorage.setItem("user", JSON.stringify(userInfo));
 
-    // 페이로드 사용
-    console.log(payload);
+    navigate("/");
+  } else {
+    console.log(`Invalid`);
   }
-
-  navigate("/");
 
   return (
     <div>
