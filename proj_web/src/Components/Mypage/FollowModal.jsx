@@ -15,9 +15,9 @@ export default function FollowModal({
     <Modal className="h-screen animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
         {followState === 'following' ? (
-          <h1 className="p-4 font-suiteBold">팔로잉 목록</h1>
+          <h1 className="pl-4 font-suiteBold">팔로잉 목록</h1>
         ) : (
-          <h1 className="p-4 font-suiteBold">팔로워 목록</h1>
+          <h1 className="pl-4 font-suiteBold">팔로워 목록</h1>
         )}
       </Modal.Header>
       <Modal.Body className="h-96">
