@@ -115,7 +115,7 @@ export default function MainMypage({ data, fetch, follow, following, followUser,
       </section>
       <MypageGalleryButtons />
       <div className="container">
-        <DiscoverImageGrid thumbnails={data.myPosts} />
+        <DiscoverImageGrid thumbnails={data.data.myPosts} />
       </div>
     </div>
   );
