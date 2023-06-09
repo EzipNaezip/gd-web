@@ -47,7 +47,7 @@ export default function MypagePage({ setApiCall }) {
           data={info}
           follow={getFollowerInfo.data}
           following={getFollowingInfo.data}
-          fetch={getInfo.refetch}
+          fetch={getInfo.refetch()}
           setApiCall={setApiCall}
         />
       ) : (
