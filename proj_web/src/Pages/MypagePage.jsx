@@ -18,7 +18,7 @@ export default function MypagePage({ setApiCall }) {
     },
   });
 
-  const getFollowerInfo = useQuery('followerInfo', getFollower, {
+  const getFollowerInfo = useQuery(['followerInfo', { userId: params.userId }], () => getFollower(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
     onSuccess: (data) => {
@@ -26,7 +26,7 @@ export default function MypagePage({ setApiCall }) {
     },
   });
 
-  const getFollowingInfo = useQuery('followingInfo', getFollowing, {
+  const getFollowingInfo = useQuery(['followingInfo', { userId: params.userId }], () => getFollowing(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
     onSuccess: (data) => {
