@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from 'flobite-react';
 // import UserProfileCard from './UserProfileCard';
 
-export default function FollowerModal({
+export default function FollowModal({
   state,
   followerShow,
   followerList,
