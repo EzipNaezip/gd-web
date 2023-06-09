@@ -5,6 +5,10 @@ import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
 import ImageModal from './ImageModal';
 import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
+import ScrollToDiscover from '../Main/ScrollToDiscover';
+import MainImageGrid from '../Main/MainImageGrid';
+import { useQuery } from 'react-query';
+import { getExample } from '../../Query/MainExampleQuery';
 
 export default function MainPost({ post, comment, fetch }) {
   const [like, setLike] = useState(false);
@@ -12,6 +16,14 @@ export default function MainPost({ post, comment, fetch }) {
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
   const baseURL = 'http://api.ezipnaezip.life:8080';
+
+  const getImages = useQuery('getExample', getExample, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (data) => {
+      console.log('example : ', data);
+    },
+  });
 
   useEffect(() => {
     if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
@@ -176,7 +188,10 @@ export default function MainPost({ post, comment, fetch }) {
           </div>
         </div>
       ) : (
-        <></>
+        <>
+          <ScrollToDiscover />
+          {getImages.data ? <MainImageGrid thumbnails={getImages.data.data.data.example} /> : <></>}
+        </>
       )}
     </>
   );
