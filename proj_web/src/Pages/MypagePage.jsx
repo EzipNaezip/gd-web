@@ -37,14 +37,14 @@ export default function MypagePage({ setApiCall }) {
   const followUser = useMutation(setFollow, {
     onSuccess: (data) => {
       console.log('follow success : ', data);
-      getInfo.refetch({ userId: params.userId });
+      getInfo.refetch();
     },
   });
 
   const unfollowUser = useMutation(setUnfollow, {
     onSuccess: (data) => {
       console.log('unfollow success : ', data);
-      getInfo.refetch({ userId: params.userId });
+      getInfo.refetch();
     },
   });
 
