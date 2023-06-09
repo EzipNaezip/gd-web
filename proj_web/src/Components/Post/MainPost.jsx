@@ -29,7 +29,7 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
   };
 
   const timeSlicing = () => {
-    return post.timestamp.substring(0, 9);
+    return post.timestamp.substring(0, 10);
   };
 
   useEffect(() => {
