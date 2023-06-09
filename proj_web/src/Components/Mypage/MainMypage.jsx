@@ -104,8 +104,8 @@ export default function MainMypage({ data, fetch, follow, following, followUser,
               </>
             ) : (
               <FollowButton
-                state={data.isFollow}
-                user={data.user}
+                state={data.user.isFollow}
+                user={data.user.userId}
                 followUser={followUser}
                 unfollowUser={unfollowUser}
               />
