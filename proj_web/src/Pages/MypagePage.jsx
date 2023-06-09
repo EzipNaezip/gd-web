@@ -50,7 +50,7 @@ export default function MypagePage({ setApiCall }) {
 
   return (
     <>
-      {info ? (
+      {info && getFollowerInfo.data && getFollowingInfo.data ? (
         <MainMypage
           data={info}
           follower={getFollowerInfo.data.data.follower}
