@@ -22,7 +22,6 @@ export default function PostPage() {
       console.log('comments : ', data.data.data.commentList);
     },
   });
-
   const fetchData = () => {
     posts.mutate(params.postNum);
     comments.mutate({ postNum: params.postNum });

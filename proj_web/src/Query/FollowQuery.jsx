@@ -2,14 +2,14 @@ import axios from 'axios';
 
 const token = sessionStorage.getItem('token');
 
-export async function getFollower() {
-  return await axios.get('http://api.ezipnaezip.life:8080/follow/followers', {
+export async function getFollower(userId) {
+  return await axios.get(`http://api.ezipnaezip.life:8080/follow/followers/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 }
 
-export async function getFollwing() {
-  return await axios.get('http://api.ezipnaezip.life:8080/follow/followings', {
+export async function getFollowing(userId) {
+  return await axios.get(`http://api.ezipnaezip.life:8080/follow/followings/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 }

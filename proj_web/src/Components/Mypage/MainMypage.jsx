@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
 
-export default function MainMypage({ data, fetch, setApiCall }) {
+export default function MainMypage({ data, fetch, follow, following, setApiCall }) {
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);

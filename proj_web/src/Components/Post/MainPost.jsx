@@ -13,10 +13,6 @@ export default function MainPost({ post, comment, fetch }) {
   const [imgShow, setImgShow] = useState(false);
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
-  useEffect(() => {
-    if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
-  }, [imgShow]);
-
   const onImageHandler = (e) => {
     setImage(e.target.src);
     setImgShow(true);
@@ -30,6 +26,10 @@ export default function MainPost({ post, comment, fetch }) {
       return post.writerId.profileImgUrl;
     else return `${baseURL}${post.writerId.profileImgUrl}`;
   };
+
+  useEffect(() => {
+    if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
+  }, [imgShow]);
 
   return (
     <>
