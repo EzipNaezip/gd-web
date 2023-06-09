@@ -75,15 +75,15 @@ export default function MainMypage({ data, fetch, follower, following, followUse
                 <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400">Follower</p>
               </div>
             </button>
-            {/*<FollowModal*/}
-            {/*  state={followState}*/}
-            {/*  followerShow={followShow}*/}
-            {/*  followerList={follower}*/}
-            {/*  followingList={following}*/}
-            {/*  followUser={followUser}*/}
-            {/*  unfollowUser={unfollowUser}*/}
-            {/*  onClose={onFollowHandler}*/}
-            {/*/>*/}
+            <FollowModal
+              state={followState}
+              followerShow={followShow}
+              followerList={follower}
+              followingList={following}
+              followUser={followUser}
+              unfollowUser={unfollowUser}
+              onClose={onFollowHandler}
+            />
           </div>
           <div className="mt-3">
             {isLogin && data.user.isMe ? (

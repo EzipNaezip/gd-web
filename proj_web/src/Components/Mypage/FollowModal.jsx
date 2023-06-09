@@ -21,7 +21,7 @@ export default function FollowerModal({
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
           <>
-            {followerList || followingList ? (
+            {followerList && followingList ? (
               <>
                 {state === 'following' ? (
                   <>
