@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import MainMypage from '../Components/Mypage/MainMypage';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { getUserInfo } from '../Query/MypageQuery';
 import { useParams } from 'react-router-dom';
-import { getFollower, getFollowing } from '../Query/FollowQuery';
+import { getFollower, getFollowing, setFollow, setUnfollow } from '../Query/FollowQuery';
 
 export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
@@ -34,6 +34,18 @@ export default function MypagePage({ setApiCall }) {
     },
   });
 
+  const followUser = useMutation(setFollow, {
+    onSuccess: (data) => {
+      console.log('follow success : ', data);
+    },
+  });
+
+  const unfollowUser = useMutation(setUnfollow, {
+    onSuccess: (data) => {
+      console.log('unfollow success : ', data);
+    },
+  });
+
   useEffect(() => {
     console.log('params : ', params);
     // getInfo.refetch();
@@ -47,6 +59,8 @@ export default function MypagePage({ setApiCall }) {
           data={info}
           follow={getFollowerInfo.data}
           following={getFollowingInfo.data}
+          followUser={followUser.mutate}
+          unfollowUser={unfollowUser.mutate}
           fetch={getInfo.refetch}
           setApiCall={setApiCall}
         />

@@ -8,11 +8,10 @@ import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
 
-export default function MainMypage({ data, fetch, follow, following, setApiCall }) {
+export default function MainMypage({ data, fetch, follow, following, followUser, unfollowUser, setApiCall }) {
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
-  const [followingDirection, setFollowingDirection] = useState(-1);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
@@ -53,7 +52,6 @@ export default function MainMypage({ data, fetch, follow, following, setApiCall 
             <button
               onClick={() => {
                 setFollowShow(true);
-                setFollowingDirection(0);
                 setFollowState('following');
               }}
             >
@@ -67,7 +65,6 @@ export default function MainMypage({ data, fetch, follow, following, setApiCall 
             <button
               onClick={() => {
                 setFollowShow(true);
-                setFollowingDirection(1);
                 setFollowState('follower');
               }}
             >
@@ -80,13 +77,14 @@ export default function MainMypage({ data, fetch, follow, following, setApiCall 
             </button>
             <FollowModal
               state={followState}
-              followDirection={followingDirection}
               followerShow={followShow}
+              followUser={followUser}
+              unfollowUser={unfollowUser}
               onClose={onFollowHandler}
             />
           </div>
           <div className="mt-3">
-            {isLogin && !data.user.isMe ? (
+            {isLogin && data.user.isMe ? (
               <>
                 <Button
                   size="xs"
