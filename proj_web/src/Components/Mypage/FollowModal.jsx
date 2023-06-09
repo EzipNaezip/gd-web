@@ -35,7 +35,9 @@ export default function FollowModal({
               )}
             </>
           ) : (
-            <></>
+            <>
+              <p className="font-suiteLight">리스트를 불러올 수 없습니다</p>
+            </>
           )}
         </ListGroup>
       </Modal.Body>
