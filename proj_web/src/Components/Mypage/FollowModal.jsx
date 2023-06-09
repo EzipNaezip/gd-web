@@ -36,7 +36,14 @@ export default function FollowModal({
             </>
           ) : (
             <>
-              <p className="font-suiteLight">리스트를 불러올 수 없습니다</p>
+              <p
+                className="font-suiteLight"
+                onClick={() => {
+                  console.log(followerList, followingList);
+                }}
+              >
+                리스트를 불러올 수 없습니다
+              </p>
             </>
           )}
         </ListGroup>
