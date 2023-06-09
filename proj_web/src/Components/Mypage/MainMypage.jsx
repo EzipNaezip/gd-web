@@ -103,7 +103,12 @@ export default function MainMypage({ data, fetch, follow, following, followUser,
                 />
               </>
             ) : (
-              <FollowButton />
+              <FollowButton
+                state={data.isFollow}
+                user={data.user}
+                followUser={followUser}
+                unfollowUser={unfollowUser}
+              />
             )}
           </div>
         </div>
