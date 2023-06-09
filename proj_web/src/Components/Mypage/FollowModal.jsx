@@ -14,20 +14,16 @@ export default function FollowModal({
   return (
     <Modal className="h-screen animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
-        <h1 className="pl-4">{followState}</h1>
+        {followState === 'following' ? (
+          <h1 className="p-4 font-suiteBold">팔로잉 목록</h1>
+        ) : (
+          <h1 className="p-4 font-suiteBold">팔로워 목록</h1>
+        )}
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
           {followingList && followerList ? (
             <>
-              {/*<p*/}
-              {/*  className="font-suiteLight"*/}
-              {/*  onClick={() => {*/}
-              {/*    console.log(followerList, followingList);*/}
-              {/*  }}*/}
-              {/*>*/}
-              {/*  리스트를 불러왔습니다.*/}
-              {/*</p>*/}
               {followState === 'following' ? (
                 <>
                   {followingList.length ? (
