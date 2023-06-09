@@ -53,14 +53,14 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                   <>
                     {!post.follow ? (
                       <Button
-                        className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover"
+                        className="transition ease-in border-2 border-ezip-green bg-ezip-green hover:bg-ezip-green_hover"
                         onClick={() => follow(post.writerId.userId)}
                       >
                         팔로우
                       </Button>
                     ) : (
                       <Button
-                        className="transition ease-in border-2 border-ezip-green bg-white hover:bg-white_hover"
+                        className="transition ease-in border-2 border-ezip-green bg-white text-ezip-green hover:bg-white_hover"
                         onClick={() => unfollow(post.writerId.userId)}
                       >
                         팔로잉
