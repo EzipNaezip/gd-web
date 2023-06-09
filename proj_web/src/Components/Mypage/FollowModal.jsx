@@ -18,18 +18,24 @@ export default function FollowModal({
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
-          {state === 'following' ? (
+          {followingList && followerList ? (
             <>
-              {followingList.map((user) => (
-                <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
-              ))}
+              {state === 'following' ? (
+                <>
+                  {followingList.map((user) => (
+                    <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                  ))}
+                </>
+              ) : (
+                <>
+                  {followerList.map((user) => (
+                    <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                  ))}
+                </>
+              )}
             </>
           ) : (
-            <>
-              {followerList.map((user) => (
-                <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
-              ))}
-            </>
+            <></>
           )}
         </ListGroup>
       </Modal.Body>
