@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
 
-export default function MainMypage({ data, fetch, follow, following, followUser, unfollowUser, setApiCall }) {
+export default function MainMypage({ data, fetch, follower, following, followUser, unfollowUser, setApiCall }) {
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
@@ -78,6 +78,8 @@ export default function MainMypage({ data, fetch, follow, following, followUser,
             <FollowModal
               state={followState}
               followerShow={followShow}
+              followerList={follower}
+              followingList={following}
               followUser={followUser}
               unfollowUser={unfollowUser}
               onClose={onFollowHandler}

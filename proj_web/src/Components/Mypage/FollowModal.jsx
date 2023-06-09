@@ -4,10 +4,15 @@ import UserProfileCard from './UserProfileCard';
 // import FollowButton from "./FollowButton";
 // import CollectionItem from "../Collection/CollectionItem";
 
-export default function FollowerModal({ state, followerShow, followUser, unfollowUser, onClose }) {
-  const userList = new Array(24);
-  for (let i = 0; i < userList.length; i++) userList[i] = i;
-
+export default function FollowerModal({
+  state,
+  followerShow,
+  followerList,
+  followingList,
+  followUser,
+  unfollowUser,
+  onClose,
+}) {
   return (
     <Modal className="h-screen animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
@@ -15,9 +20,19 @@ export default function FollowerModal({ state, followerShow, followUser, unfollo
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
-          {userList.map((val) => (
-            <UserProfileCard state={state} userId={val} followUser={followUser} unfollowUser={unfollowUser} />
-          ))}
+          {state === 'following' ? (
+            <>
+              {followingList.map((user) => (
+                <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
+              ))}
+            </>
+          ) : (
+            <>
+              {followerList.map((user) => (
+                <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
+              ))}
+            </>
+          )}
         </ListGroup>
       </Modal.Body>
     </Modal>

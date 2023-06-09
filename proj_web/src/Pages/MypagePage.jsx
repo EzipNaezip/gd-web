@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MainMypage from '../Components/Mypage/MainMypage';
 import { useMutation, useQuery } from 'react-query';
 import { getUserInfo } from '../Query/MypageQuery';
@@ -48,19 +48,13 @@ export default function MypagePage({ setApiCall }) {
     },
   });
 
-  useEffect(() => {
-    console.log('params : ', params);
-    // getInfo.refetch();
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <>
       {info ? (
         <MainMypage
           data={info}
-          follow={getFollowerInfo.data}
-          following={getFollowingInfo.data}
+          follower={getFollowerInfo.data.data.follower}
+          following={getFollowingInfo.data.data.following}
           followUser={followUser.mutate}
           unfollowUser={unfollowUser.mutate}
           fetch={getInfo.refetch}
