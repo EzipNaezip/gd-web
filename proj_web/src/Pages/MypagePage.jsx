@@ -53,8 +53,8 @@ export default function MypagePage({ setApiCall }) {
       {info && getFollowerInfo.data && getFollowingInfo.data ? (
         <MainMypage
           data={info}
-          follower={getFollowerInfo.data.data.follower}
-          following={getFollowingInfo.data.data.following}
+          follower={getFollowerInfo.data}
+          following={getFollowingInfo.data}
           followUser={followUser.mutate}
           unfollowUser={unfollowUser.mutate}
           fetch={getInfo.refetch}
