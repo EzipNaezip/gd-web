@@ -9,7 +9,7 @@ export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
   const params = useParams();
 
-  const getInfo = useQuery(['userInfo', { userId: params.userId }], () => getUserInfo(params.userId), {
+  const getInfo = useQuery(['userInfo', params.userId], getUserInfo, {
     refetchOnWindowFocus: false,
     retry: 0,
     onSuccess: (data) => {
