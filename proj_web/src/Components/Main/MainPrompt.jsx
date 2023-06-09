@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 import { deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
 import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
-// import { useRecoilState } from 'recoil';
-// import { PromptCreateState } from '../../Atoms/PromptCreateState';
+import { useSetRecoilState } from 'recoil';
+import { PromptCreateState } from '../../Atoms/PromptCreateState';
 import { Button } from 'flowbite-react';
-import ScrollToDiscover from './ScrollToDiscover';
-import MainImageGrid from './MainImageGrid';
-import { getExample } from '../../Query/MainExampleQuery';
 
 export default function MainPrompt() {
   const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
-  // const [created, setCreated] = useRecoilState(PromptCreateState);
   const [errored, setErrored] = useState(null);
   const [save, setSave] = useState(false);
+  const setCreated = useSetRecoilState(PromptCreateState);
+
   const createDalle = useMutation(testDalleAxios, {
     onSuccess: (data) => {
       console.log('create : ', data);
       setImages(data);
+      setCreated(true);
     },
     onError: (error) => {
       setErrored(error);
@@ -27,10 +26,10 @@ export default function MainPrompt() {
   });
   const stopDalle = useMutation(stopDalleImage, {
     onSuccess: (data) => {
-      console.log('stop : ', data);
+      setCreated(false);
     },
     onError: (error) => {
-      setErrored(error);
+      setCreated(error);
     },
   });
   const storeDalle = useMutation(storeDalleImage, {
@@ -43,16 +42,9 @@ export default function MainPrompt() {
       setSave(false);
     },
   });
-  const getImages = useQuery('getExample', getExample, {
-    refetchOnWindowFocus: false,
-    retry: 0,
-    onSuccess: (data) => {
-      console.log('example : ', data);
-    },
-  });
 
   useEffect(() => {
-    // setCreated(false);
+    setCreated(false);
     // eslint-disable-next-line
   }, []);
 
@@ -222,16 +214,6 @@ export default function MainPrompt() {
           )}
         </>
       </form>
-      <>
-        {!images ? (
-          <>
-            <ScrollToDiscover />
-            {getImages.data ? <MainImageGrid thumbnails={getImages.data.data.data.example} /> : <></>}
-          </>
-        ) : (
-          <></>
-        )}
-      </>
     </div>
   );
 }
