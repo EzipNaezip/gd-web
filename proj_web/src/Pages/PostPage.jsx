@@ -24,8 +24,8 @@ export default function PostPage() {
   });
 
   const fetchData = () => {
-    posts.mutate(params.postNum);
-    comments.mutate({ postNum: params.postNum });
+    posts.mutate(Number(params.postNum));
+    comments.mutate({ postNum: Number(params.postNum) });
   };
 
   useEffect(() => {

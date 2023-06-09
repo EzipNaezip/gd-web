@@ -13,7 +13,6 @@ export default function MainMypage({ data, fetch, setApiCall }) {
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
   const [followingDirection, setFollowingDirection] = useState(-1);
-  //follow list show & following or follower
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
@@ -87,7 +86,7 @@ export default function MainMypage({ data, fetch, setApiCall }) {
             />
           </div>
           <div className="mt-3">
-            {isLogin && data.user.isMe ? (
+            {isLogin && !data.user.isMe ? (
               <>
                 <Button
                   size="xs"
