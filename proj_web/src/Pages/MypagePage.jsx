@@ -9,7 +9,7 @@ export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
   const params = useParams();
 
-  const getInfo = useQuery(['userInfo', { userId: params.userId }], getUserInfo, {
+  const getInfo = useQuery(['userInfo', { userId: params.userId }], () => getUserInfo(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
     onSuccess: (data) => {
@@ -36,7 +36,7 @@ export default function MypagePage({ setApiCall }) {
 
   useEffect(() => {
     console.log('params : ', params);
-    getInfo.refetch();
+    // getInfo.refetch();
     // eslint-disable-next-line
   }, []);
 
