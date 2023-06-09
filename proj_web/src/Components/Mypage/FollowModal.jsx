@@ -33,7 +33,9 @@ export default function FollowModal({
                       ))}
                     </>
                   ) : (
-                    <></>
+                    <>
+                      <p className="p-4 border font-suiteLight text-sm">팔로잉 목록이 없습니다.</p>
+                    </>
                   )}
                 </>
               ) : (
@@ -45,7 +47,9 @@ export default function FollowModal({
                       ))}
                     </>
                   ) : (
-                    <></>
+                    <>
+                      <p className="p-4 border font-suiteLight text-sm">팔로워 목록이 없습니다.</p>
+                    </>
                   )}
                 </>
               )}
