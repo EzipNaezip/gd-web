@@ -36,7 +36,7 @@ export default function MypagePage({ setApiCall }) {
 
   useEffect(() => {
     console.log('params : ', params);
-    getInfo.mutate(params.userId);
+    getInfo.refetch();
     // eslint-disable-next-line
   }, []);
 
