@@ -23,7 +23,7 @@ export default function FollowerModal({
           <>
             {followerList && followingList ? (
               <>
-                {state === 'following' ? (
+                {state ? (
                   <>
                     {followingList.map((user) => (
                       <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
