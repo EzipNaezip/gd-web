@@ -15,7 +15,7 @@ export default function UserProfileCard({ user, followUser, unfollowUser }) {
 
   return (
     <>
-      <ListGroup.Item>
+      <ListGroup.Item className="focus:ring-0">
         <div className="flex justify-between w-full">
           <div className="flex justify-start">
             <Avatar className="mr-3" alt="User settings" img={checkImgURL()} rounded={true} />
