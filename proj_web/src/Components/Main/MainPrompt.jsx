@@ -17,7 +17,6 @@ export default function MainPrompt() {
     onSuccess: (data) => {
       console.log('create : ', data);
       setImages(data);
-      setCreated(true);
     },
     onError: (error) => {
       setErrored(error);
@@ -25,10 +24,10 @@ export default function MainPrompt() {
   });
   const stopDalle = useMutation(stopDalleImage, {
     onSuccess: (data) => {
-      setCreated(false);
+      console.log('stop : ', data);
     },
     onError: (error) => {
-      setCreated(error);
+      setErrored(error);
     },
   });
   const storeDalle = useMutation(storeDalleImage, {
@@ -43,7 +42,7 @@ export default function MainPrompt() {
   });
 
   useEffect(() => {
-    setCreated(false);
+    // setCreated(false);
     // eslint-disable-next-line
   }, []);
 
