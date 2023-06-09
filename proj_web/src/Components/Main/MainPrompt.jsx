@@ -3,14 +3,14 @@ import { useMutation } from 'react-query';
 import { deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
 import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
-import { useRecoilState } from 'recoil';
-import { PromptCreateState } from '../../Atoms/PromptCreateState';
+// import { useRecoilState } from 'recoil';
+// import { PromptCreateState } from '../../Atoms/PromptCreateState';
 import { Button } from 'flowbite-react';
 
 export default function MainPrompt() {
   const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
-  const [created, setCreated] = useRecoilState(PromptCreateState);
+  // const [created, setCreated] = useRecoilState(PromptCreateState);
   const [errored, setErrored] = useState(null);
   const [save, setSave] = useState(false);
   const createDalle = useMutation(testDalleAxios, {
@@ -51,7 +51,7 @@ export default function MainPrompt() {
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">
       {!errored ? (
         <>
-          {created ? (
+          {images ? (
             <>
               <h1 className="text-2xl font-suiteBold text-center mb-4">인테리어가 완성되었습니다!</h1>
             </>

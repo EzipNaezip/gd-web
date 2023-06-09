@@ -59,9 +59,9 @@ export default function MainPost({ post, comment, fetch }) {
             </div>
             <div className="overflow-y-scroll border-l border-r border-b text-sm">
               <p className="mt-2 p-4">{post.description}</p>
-              <div className="flex mr-2 text-gray-600 font-suiteMedium text-sm p-3">
+              <div className="flex text-gray-600 font-suiteMedium text-sm p-3">
                 {post.tagIds.map((tag) => (
-                  <p># {DiscoverFilterList.get(tag)}</p>
+                  <p className="mr-2"># {DiscoverFilterList.get(tag)}</p>
                 ))}
               </div>
               <div className="font-suiteBold text-sm p-3">좋아요 {post.likesCount}개</div>
