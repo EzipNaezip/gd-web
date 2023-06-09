@@ -65,8 +65,8 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
     });
     onClose();
     // 입력란 초기화
-    nameRef.current.value = user.name;
-    descriptionRef.current.value = user.description;
+    // nameRef.current.value = user.name;
+    // descriptionRef.current.value = user.description;
     setImgURL(user.profileImgUrl);
   };
 
