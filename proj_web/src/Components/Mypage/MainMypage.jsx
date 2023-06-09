@@ -78,6 +78,7 @@ export default function MainMypage({ data, fetch, follow, following, followUser,
             <FollowModal
               state={followState}
               followerShow={followShow}
+              fetch={fetch}
               followUser={followUser}
               unfollowUser={unfollowUser}
               onClose={onFollowHandler}
