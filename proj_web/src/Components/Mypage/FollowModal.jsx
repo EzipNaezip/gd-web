@@ -3,7 +3,7 @@ import { ListGroup, Modal } from 'flowbite-react';
 import UserProfileCard from './UserProfileCard';
 
 export default function FollowModal({
-  state,
+  followState,
   followerShow,
   followerList,
   followingList,
@@ -14,29 +14,23 @@ export default function FollowModal({
   return (
     <Modal className="h-screen animate-fade-in-down" size="md" popup={true} show={followerShow} onClose={onClose}>
       <Modal.Header>
-        <h1 className="pl-4">{state}</h1>
+        <h1 className="pl-4">{followState}</h1>
       </Modal.Header>
       <Modal.Body className="h-96">
         <ListGroup className="h-full overflow-auto">
           {followingList && followerList ? (
             <>
-              {state === 'following' ? (
+              {followState === 'following' ? (
                 <>
-                  {followingList.map((user) => {
-                    console.log(user, state);
-                    return (
-                      <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
-                    );
-                  })}
+                  {followingList.map((user) => (
+                    <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                  ))}
                 </>
               ) : (
                 <>
-                  {followerList.map((user) => {
-                    console.log(user, state);
-                    return (
-                      <UserProfileCard state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
-                    );
-                  })}
+                  {followerList.map((user) => (
+                    <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                  ))}
                 </>
               )}
             </>

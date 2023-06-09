@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar, ListGroup } from 'flowbite-react';
 import FollowButton from './FollowButton';
 
-export default function UserProfileCard({ state, user, followUser, unfollowUser }) {
+export default function UserProfileCard({ user, followUser, unfollowUser }) {
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
   return (
@@ -16,7 +16,7 @@ export default function UserProfileCard({ state, user, followUser, unfollowUser 
             </div>
           </div>
           <div className="w-24">
-            <FollowButton state={state} user={user} followUser={followUser} unfollowUser={unfollowUser} />
+            <FollowButton state={user.follow} user={user} followUser={followUser} unfollowUser={unfollowUser} />
           </div>
         </div>
       </ListGroup.Item>

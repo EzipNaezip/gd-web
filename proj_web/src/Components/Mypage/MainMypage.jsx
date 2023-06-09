@@ -76,7 +76,7 @@ export default function MainMypage({ data, fetch, follower, following, followUse
               </div>
             </button>
             <FollowModal
-              state={followState}
+              followState={followState}
               followerShow={followShow}
               followerList={follower}
               followingList={following}
