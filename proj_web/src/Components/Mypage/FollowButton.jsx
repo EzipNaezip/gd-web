@@ -13,7 +13,7 @@ export default function FollowButton({ state, user, followUser, unfollowUser }) 
           className="w-full px-1 bg-white ring-2 ring-inset ring-ezip-green hover:bg-ezip-bg hover:text-ezip-green_hover hover:ring-ezip-green_hover duration-75 "
           onClick={(e) => {
             e.preventDefault();
-            followUser(user);
+            unfollowUser(user);
             setFollowed(false);
           }}
         >
@@ -25,7 +25,7 @@ export default function FollowButton({ state, user, followUser, unfollowUser }) 
           className="w-full px-1 bg-ezip-green hover:bg-ezip-green_hover duration-75"
           onClick={(e) => {
             e.preventDefault();
-            unfollowUser(false);
+            followUser(user);
             setFollowed(true);
           }}
         >
