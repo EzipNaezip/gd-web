@@ -28,6 +28,10 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
     else return `${baseURL}${post.writerId.profileImgUrl}`;
   };
 
+  const timeSlicing = () => {
+    return post.timestamp.substring(0, 9);
+  };
+
   useEffect(() => {
     if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
   }, [imgShow]);
@@ -160,7 +164,7 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                     <></>
                   )}
                 </div>
-                <div className="font-suiteMedium text-right mr-3">{post.timestamp}</div>
+                <div className="font-suiteMedium text-right mr-3">{timeSlicing()}</div>
               </div>
             </div>
             <>
