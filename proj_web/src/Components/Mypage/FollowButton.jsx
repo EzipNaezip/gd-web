@@ -13,7 +13,9 @@ export default function FollowButton({ state, user, fetch, followUser, unfollowU
         <Button
           size="xs"
           className="w-full px-1 bg-white ring-2 ring-inset ring-ezip-green hover:bg-ezip-bg hover:text-ezip-green_hover hover:ring-ezip-green_hover duration-75 "
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(user, state);
             unfollowUser(user);
             fetch(params.userId);
             setFollowed(false);
@@ -25,8 +27,10 @@ export default function FollowButton({ state, user, fetch, followUser, unfollowU
         <Button
           size="xs"
           className="w-full px-1 bg-ezip-green hover:bg-ezip-green_hover duration-75"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             followUser(user);
+            console.log(user, state);
             fetch(params.userId);
             setFollowed(true);
           }}
