@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListGroup, Modal } from 'flowbite-react';
-// import UserProfileCard from './UserProfileCard';
+import UserProfileCard from './UserProfileCard';
 
 export default function FollowModal({
   followState,
@@ -20,27 +20,39 @@ export default function FollowModal({
         <ListGroup className="h-full overflow-auto">
           {followingList && followerList ? (
             <>
-              <p
-                className="font-suiteLight"
-                onClick={() => {
-                  console.log(followerList, followingList);
-                }}
-              >
-                리스트를 불러왔습니다.
-              </p>
-              {/*{followState === 'following' ? (*/}
-              {/*  <>*/}
-              {/*    {followingList.map((user) => (*/}
-              {/*      <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />*/}
-              {/*    ))}*/}
-              {/*  </>*/}
-              {/*) : (*/}
-              {/*  <>*/}
-              {/*    {followerList.map((user) => (*/}
-              {/*      <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />*/}
-              {/*    ))}*/}
-              {/*  </>*/}
-              {/*)}*/}
+              {/*<p*/}
+              {/*  className="font-suiteLight"*/}
+              {/*  onClick={() => {*/}
+              {/*    console.log(followerList, followingList);*/}
+              {/*  }}*/}
+              {/*>*/}
+              {/*  리스트를 불러왔습니다.*/}
+              {/*</p>*/}
+              {followState === 'following' ? (
+                <>
+                  {followingList.length ? (
+                    <>
+                      {followingList.map((user) => (
+                        <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                      ))}
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ) : (
+                <>
+                  {followerList.length ? (
+                    <>
+                      {followerList.map((user) => (
+                        <UserProfileCard user={user} followUser={followUser} unfollowUser={unfollowUser} />
+                      ))}
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              )}
             </>
           ) : (
             <>
