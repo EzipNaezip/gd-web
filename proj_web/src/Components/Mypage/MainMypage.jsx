@@ -52,7 +52,7 @@ export default function MainMypage({ data, fetch, follower, following, followUse
             <button
               onClick={() => {
                 setFollowShow(true);
-                setFollowState(0);
+                setFollowState('following');
               }}
             >
               <div className="w-20">
@@ -65,7 +65,7 @@ export default function MainMypage({ data, fetch, follower, following, followUse
             <button
               onClick={() => {
                 setFollowShow(true);
-                setFollowState(1);
+                setFollowState('follower');
               }}
             >
               <div className="w-20">
