@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
 import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
 // import { useRecoilState } from 'recoil';
 // import { PromptCreateState } from '../../Atoms/PromptCreateState';
 import { Button } from 'flowbite-react';
+import ScrollToDiscover from './ScrollToDiscover';
+import MainImageGrid from './MainImageGrid';
+import { getExample } from '../../Query/MainExampleQuery';
 
 export default function MainPrompt() {
   const [prompt, setPrompt] = useState('');
@@ -38,6 +41,13 @@ export default function MainPrompt() {
   const deleteDalle = useMutation(deleteDalleImage, {
     onSuccess: (data) => {
       setSave(false);
+    },
+  });
+  const getImages = useQuery('getExample', getExample, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (data) => {
+      console.log('example : ', data);
     },
   });
 
@@ -212,6 +222,16 @@ export default function MainPrompt() {
           )}
         </>
       </form>
+      <>
+        {!images ? (
+          <>
+            <ScrollToDiscover />
+            {getImages.data ? <MainImageGrid thumbnails={getImages.data.data.data.example} /> : <></>}
+          </>
+        ) : (
+          <></>
+        )}
+      </>
     </div>
   );
 }
