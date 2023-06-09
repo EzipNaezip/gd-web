@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from 'flowbite-react';
+import { useParams } from 'react-router-dom';
 
 export default function FollowButton({ state, user, fetch, followUser, unfollowUser }) {
   const [followed, setFollowed] = useState(state);
+  const params = useParams();
 
   // GalleryCardckarh: 사용자 상태를 참조하여 컴포넌트 상태 관리
   return (
@@ -14,7 +16,7 @@ export default function FollowButton({ state, user, fetch, followUser, unfollowU
           onClick={(e) => {
             e.preventDefault();
             unfollowUser(user);
-            fetch();
+            fetch(params.userId);
             setFollowed(false);
           }}
         >
