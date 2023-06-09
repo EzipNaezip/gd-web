@@ -155,6 +155,8 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
                 저장하기
               </Button>
             </div>
+            <hr className="mt-3" />
+            <p className="w-full text-xs font-suiteLight text-red-500">회원탈퇴</p>
           </form>
         </div>
       </Modal.Body>

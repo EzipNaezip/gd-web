@@ -5,8 +5,9 @@ import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
 import ImageModal from './ImageModal';
 import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
+import { Link } from 'react-router-dom';
 
-export default function MainPost({ post, comment, fetch }) {
+export default function MainPost({ post, follow, unfollow, comment, fetch }) {
   const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(false);
   const [image, setImage] = useState(null);
@@ -41,7 +42,9 @@ export default function MainPost({ post, comment, fetch }) {
             <div className="grid grid-cols-2 border rounded-t-lg p-4">
               <div className="flex items-center">
                 <img className="w-8 h-8 rounded-full shadow-lg mr-3" src={checkImgURL()} alt="" />
-                <h1 className="font-suiteBold text-lg">{post.writerId.name}</h1>
+                <h1 className="font-suiteBold text-lg">
+                  <Link to={`/mypage/${post.writerId.userId}`}>{post.writerId.name}</Link>
+                </h1>
               </div>
               <div className="flex justify-end">
                 {post.isMe ? (
@@ -49,9 +52,16 @@ export default function MainPost({ post, comment, fetch }) {
                 ) : (
                   <>
                     {!post.follow ? (
-                      <Button className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover">팔로우</Button>
+                      <Button className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover" onClick={follow}>
+                        팔로우
+                      </Button>
                     ) : (
-                      <></>
+                      <Button
+                        className="transition ease-in border-2 border-ezip-green bg-white hover:bg-white_hover"
+                        onClick={unfollow}
+                      >
+                        팔로잉
+                      </Button>
                     )}
                   </>
                 )}
