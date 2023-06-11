@@ -40,11 +40,13 @@ export default function PostPage() {
   const like = useMutation(setLike, {
     onSuccess: (data) => {
       console.log('like : ', data);
+      fetchData();
     },
   });
   const unLike = useMutation(setUnlike, {
     onSuccess: (data) => {
       console.log('unLike : ', data);
+      fetchData();
     },
   });
   const bookmark = useMutation(setBookmark, {
