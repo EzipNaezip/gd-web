@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MypageFilterButton from './MypageFilterButton';
 
 export default function MypageGalleryButton({ setCursor, cursor }) {
