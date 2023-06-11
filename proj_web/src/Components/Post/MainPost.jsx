@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 
 export default function MainPost({ post, comment, follow, unfollow, bookmarking, liking, fetch }) {
   const [like, setLike] = useState(false);
-  const [bookMark, setBookMark] = useState(post.bookmark);
+  const [bookMark, setBookMark] = useState(false);
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
   const baseURL = 'http://api.ezipnaezip.life:8080';
