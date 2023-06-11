@@ -73,15 +73,21 @@ export default function PostPage() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex-col max-w-3xl gap-5">
-        <MainPost
-          post={post}
-          comment={comment}
-          follow={followUser.mutate}
-          unfollow={unfollowUser.mutate}
-          bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
-          liking={{ set: like.mutate, remove: unLike.mutate }}
-          fetch={fetchData}
-        />
+        <>
+          {post && comment ? (
+            <MainPost
+              post={post}
+              comment={comment}
+              follow={followUser.mutate}
+              unfollow={unfollowUser.mutate}
+              bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
+              liking={{ set: like.mutate, remove: unLike.mutate }}
+              fetch={fetchData}
+            />
+          ) : (
+            <></>
+          )}
+        </>
       </div>
     </div>
   );

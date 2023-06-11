@@ -8,8 +8,8 @@ import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
 import { Link, useParams } from 'react-router-dom';
 
 export default function MainPost({ post, comment, follow, unfollow, bookmarking, liking, fetch }) {
-  const [like, setLike] = useState(null);
-  const [bookMark, setBookMark] = useState(null);
+  const [like, setLike] = useState(post.bookmark);
+  const [bookMark, setBookMark] = useState(post.like);
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
   const baseURL = 'http://api.ezipnaezip.life:8080';
@@ -36,12 +36,6 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
   useEffect(() => {
     if (!imgShow) document.body.style.overflow = 'auto'; // 스크롤바 보이도록 설정
   }, [imgShow]);
-
-  useEffect(() => {
-    setLike(post.like);
-    setBookMark(post.bookmark);
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <>
