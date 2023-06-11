@@ -5,14 +5,15 @@ import PostCarousel from './PostCarousel';
 import { Button } from 'flowbite-react';
 import ImageModal from './ImageModal';
 import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-export default function MainPost({ post, follow, unfollow, comment, fetch }) {
-  const [like, setLike] = useState(false);
-  const [bookMark, setBookMark] = useState(false);
+export default function MainPost({ post, comment, follow, unfollow, bookmarking, liking, fetch }) {
+  const [like, setLike] = useState(post.like);
+  const [bookMark, setBookMark] = useState(post.bookmark);
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
   const baseURL = 'http://api.ezipnaezip.life:8080';
+  const params = useParams();
 
   const onImageHandler = (e) => {
     setImage(e.target.src);
@@ -84,12 +85,7 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
               <div className="font-suiteBold text-sm p-3">좋아요 {post.likesCount}개</div>
               <div className="grid grid-cols-2 p-3">
                 <div>
-                  <button
-                    onClick={() => {
-                      setLike(!like);
-                    }}
-                    className="mr-2"
-                  >
+                  <button className="mr-2">
                     {!like ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -98,6 +94,11 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                         strokeWidth={1.5}
                         stroke="currentColor"
                         className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-red-500 duration-300 w-6 h-6"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setLike(!like);
+                          liking.set(params.postId);
+                        }}
                       >
                         <path
                           strokeLinecap="round"
@@ -113,6 +114,11 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                         strokeWidth={1.5}
                         stroke="currentColor"
                         className="fill-red-500 duration-300 w-6 h-6"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setLike(!like);
+                          liking.remove(params.postId);
+                        }}
                       >
                         <path
                           strokeLinecap="round"
@@ -123,11 +129,7 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                     )}
                   </button>
                   {!post.isMe ? (
-                    <button
-                      onClick={() => {
-                        setBookMark(!bookMark);
-                      }}
-                    >
+                    <button>
                       {!bookMark ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -136,6 +138,11 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                           strokeWidth={1.5}
                           stroke="currentColor"
                           className="transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:fill-ezip-green duration-300 w-6 h-6"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setBookMark(!bookMark);
+                            bookmarking.set(params.postId);
+                          }}
                         >
                           <path
                             strokeLinecap="round"
@@ -151,6 +158,11 @@ export default function MainPost({ post, follow, unfollow, comment, fetch }) {
                           strokeWidth={1.5}
                           stroke="currentColor"
                           className="fill-ezip-green duration-300 w-6 h-6"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setBookMark(!bookMark);
+                            bookmarking.remove(params.postId);
+                          }}
                         >
                           <path
                             strokeLinecap="round"

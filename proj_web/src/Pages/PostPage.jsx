@@ -5,6 +5,8 @@ import { inquirePost } from '../Query/PostQuery';
 import { getComment } from '../Query/CommentQuery';
 import { useParams } from 'react-router';
 import { setFollow, setUnfollow } from '../Query/FollowQuery';
+import { setLike, setUnlike } from '../Query/LikeQuery';
+import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
 
 export default function PostPage() {
   const [post, setPost] = useState(null);
@@ -26,15 +28,33 @@ export default function PostPage() {
   const followUser = useMutation(setFollow, {
     onSuccess: (data) => {
       console.log('follow success : ', data);
-      posts.mutate(params.postNum);
-      comments.mutate({ postNum: params.postNum });
+      fetchData();
     },
   });
   const unfollowUser = useMutation(setUnfollow, {
     onSuccess: (data) => {
       console.log('unfollow success : ', data);
-      posts.mutate(params.postNum);
-      comments.mutate({ postNum: params.postNum });
+      fetchData();
+    },
+  });
+  const like = useMutation(setLike, {
+    onSuccess: (data) => {
+      console.log('like : ', data);
+    },
+  });
+  const unLike = useMutation(setUnlike, {
+    onSuccess: (data) => {
+      console.log('unLike : ', data);
+    },
+  });
+  const bookmark = useMutation(setBookmark, {
+    onSuccess: (data) => {
+      console.log('bookmark : ', data);
+    },
+  });
+  const unBookmark = useMutation(unsetBookMark, {
+    onSuccess: (data) => {
+      console.log('unBookmark : ', data);
     },
   });
   const fetchData = () => {
@@ -53,9 +73,11 @@ export default function PostPage() {
       <div className="flex-col max-w-3xl gap-5">
         <MainPost
           post={post}
+          comment={comment}
           follow={followUser.mutate}
           unfollow={unfollowUser.mutate}
-          comment={comment}
+          bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
+          liking={{ set: like.mutate, remove: unLike.mutate }}
           fetch={fetchData}
         />
       </div>

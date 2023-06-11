@@ -1,7 +1,7 @@
 import React from 'react';
 import GalleryCard from '../Gallery/GalleryCard';
 
-export default function DiscoverImageGrid({ thumbnails }) {
+export default function DiscoverImageGrid({ thumbnails, bookmarking }) {
   return (
     <div className="container max-w-xl md:max-w-full">
       {thumbnails ? (
@@ -11,7 +11,7 @@ export default function DiscoverImageGrid({ thumbnails }) {
               <>
                 {thumbnails.map((image) => (
                   <div className="grid gap-2">
-                    <GalleryCard data={image} isMain={false} />
+                    <GalleryCard data={image} isMain={false} bookmarking={bookmarking} />
                   </div>
                 ))}
               </>

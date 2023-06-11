@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import MypageFilterButton from './MypageFilterButton';
 
-export default function MypageGalleryButton() {
+export default function MypageGalleryButton({ setCursor, cursor }) {
   const filterArray = [
     { key: 0, name: '갤러리' },
     { key: 1, name: '북마크' },
   ];
-  const [cursor, setCursor] = useState(0);
 
   return (
     <>

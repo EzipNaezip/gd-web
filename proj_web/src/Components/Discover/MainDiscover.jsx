@@ -4,7 +4,7 @@ import { tagListing, topListing } from '../../Query/FilterQuery';
 import DiscoverButtons from './DiscoverButtons';
 import DiscoverImageGrid from './DiscoverImageGrid';
 
-export default function MainDiscover() {
+export default function MainDiscover({ bookmarking, liking }) {
   const [thumbnails, setThumbnails] = useState(null);
   const [cursor, setCursor] = useState(null);
   const topData = useMutation(topListing, {
@@ -41,7 +41,7 @@ export default function MainDiscover() {
       <div className="mt-10">
         {thumbnails ? (
           <>
-            <DiscoverImageGrid thumbnails={thumbnails} />
+            <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} />
           </>
         ) : (
           <></>

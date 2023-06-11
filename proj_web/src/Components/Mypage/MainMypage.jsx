@@ -8,7 +8,17 @@ import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
 
-export default function MainMypage({ data, fetch, follower, following, followUser, unfollowUser, setApiCall }) {
+export default function MainMypage({
+  data,
+  fetch,
+  follower,
+  following,
+  followUser,
+  unfollowUser,
+  bookmarking,
+  setApiCall,
+}) {
+  const [cursor, setCursor] = useState(0);
   const [profileShow, setProfileShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
@@ -115,9 +125,13 @@ export default function MainMypage({ data, fetch, follower, following, followUse
           </div>
         </div>
       </section>
-      <MypageGalleryButtons />
+      <MypageGalleryButtons setCursor={setCursor} cursor={cursor} />
       <div className="container">
-        <DiscoverImageGrid thumbnails={data.myPosts} />
+        {cursor === 0 ? (
+          <DiscoverImageGrid thumbnails={data.myPosts} bookmarking={bookmarking} />
+        ) : (
+          <DiscoverImageGrid thumbnails={data.bookmarkedPosts} bookmarking={bookmarking} />
+        )}
       </div>
     </div>
   );
