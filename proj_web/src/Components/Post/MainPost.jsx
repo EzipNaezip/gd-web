@@ -8,7 +8,7 @@ import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
 import { Link, useParams } from 'react-router-dom';
 
 export default function MainPost({ post, comment, follow, unfollow, bookmarking, liking, fetch }) {
-  const [like, setLike] = useState(post.like);
+  const [like, setLike] = useState(false);
   const [bookMark, setBookMark] = useState(post.bookmark);
   const [image, setImage] = useState(null);
   const [imgShow, setImgShow] = useState(false);
