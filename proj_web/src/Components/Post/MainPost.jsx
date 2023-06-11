@@ -97,7 +97,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                         onClick={(e) => {
                           e.preventDefault();
                           setLike(!like);
-                          liking.set(params.postId);
+                          liking.set(params.postNum);
                         }}
                       >
                         <path
@@ -117,7 +117,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                         onClick={(e) => {
                           e.preventDefault();
                           setLike(!like);
-                          liking.remove(params.postId);
+                          liking.remove(params.postNum);
                         }}
                       >
                         <path
@@ -141,7 +141,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                           onClick={(e) => {
                             e.preventDefault();
                             setBookMark(!bookMark);
-                            bookmarking.set(params.postId);
+                            bookmarking.set(params.postNum);
                           }}
                         >
                           <path
@@ -161,7 +161,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                           onClick={(e) => {
                             e.preventDefault();
                             setBookMark(!bookMark);
-                            bookmarking.remove(params.postId);
+                            bookmarking.remove(params.postNum);
                           }}
                         >
                           <path
