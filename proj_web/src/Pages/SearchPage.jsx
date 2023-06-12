@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { searchListing } from '../Query/FilterQuery';
@@ -17,6 +17,11 @@ export default function SearchPage() {
       },
     },
   );
+
+  useEffect(() => {
+    console.log('params : ', params.keyword);
+    // eslint-disable-next-line
+  }, []);
   return (
     <div>
       <h1>SEARCH PAGE</h1>
