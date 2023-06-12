@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'flowbite-react';
 
-export default function WithdrawModal({ show, setShow, setProfileShow }) {
+export default function WithdrawModal({ show, setShow, setProfileShow, withdraw }) {
   const onClose = (e) => {
     e.preventDefault();
     setProfileShow(true);
@@ -40,7 +40,8 @@ export default function WithdrawModal({ show, setShow, setProfileShow }) {
               <Button
                 color="failure"
                 onClick={(e) => {
-                  onClose(e);
+                  e.preventDefault();
+                  withdraw();
                 }}
               >
                 탈퇴하기

@@ -88,6 +88,7 @@ export default function Navigator() {
                     onClick={() => {
                       setLogin(false);
                       sessionStorage.removeItem('token');
+                      sessionStorage.removeItem('userId');
                       setShow(false);
                     }}
                     className="transition ease-in font-suiteLight hover:text-red-500"

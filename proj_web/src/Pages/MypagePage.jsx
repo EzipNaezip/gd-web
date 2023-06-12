@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MainMypage from '../Components/Mypage/MainMypage';
 import { useMutation, useQuery } from 'react-query';
-import { getUserInfo } from '../Query/MypageQuery';
+import { deleteUserInfo, getUserInfo } from '../Query/MypageQuery';
 import { useParams } from 'react-router-dom';
 import { getFollower, getFollowing, setFollow, setUnfollow } from '../Query/FollowQuery';
 import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
@@ -16,6 +16,11 @@ export default function MypagePage({ setApiCall }) {
     onSuccess: (data) => {
       console.log('mypage : ', data);
       setInfo(data.data.data);
+    },
+  });
+  const withdraw = useMutation(deleteUserInfo, {
+    onSuccess: (data) => {
+      console.log(data);
     },
   });
   const getFollowerInfo = useQuery(['followerInfo', { userId: params.userId }], () => getFollower(params.userId), {
@@ -65,6 +70,11 @@ export default function MypagePage({ setApiCall }) {
           followUser={followUser.mutate}
           unfollowUser={unfollowUser.mutate}
           bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
+          withdraw={() => {
+            withdraw.mutate(sessionStorage.getItem('userId'));
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('token');
+          }}
           fetch={getInfo.refetch}
           setApiCall={setApiCall}
         />

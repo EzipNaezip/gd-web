@@ -17,6 +17,7 @@ export default function MainMypage({
   followUser,
   unfollowUser,
   bookmarking,
+  withdraw,
   setApiCall,
 }) {
   const [cursor, setCursor] = useState(0);
@@ -111,7 +112,12 @@ export default function MainMypage({
                   fetch={fetch}
                   setApiCall={setApiCall}
                 />
-                <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} setProfileShow={setProfileShow} />
+                <WithdrawModal
+                  show={withdrawShow}
+                  setShow={setWithdrawShow}
+                  setProfileShow={setProfileShow}
+                  withdraw={withdraw}
+                />
               </>
             ) : (
               <FollowButton
