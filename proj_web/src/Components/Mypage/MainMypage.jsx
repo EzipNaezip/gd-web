@@ -67,7 +67,7 @@ export default function MainMypage({
             >
               <div className="w-20">
                 <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">
-                  {data.user.following.length}
+                  {data.user.followCount}
                 </h3>
                 <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400">Following</p>
               </div>
@@ -80,7 +80,7 @@ export default function MainMypage({
             >
               <div className="w-20">
                 <h3 className="text-2xl font-suiteBold leading-tight text-gray-900 dark:text-white">
-                  {data.user.follower.length}
+                  {data.user.followerCount}
                 </h3>
                 <p className="text-lg font-suiteMedium text-gray-500 dark:text-gray-400">Follower</p>
               </div>
