@@ -9,7 +9,7 @@ export async function getUserInfo(userId) {
 }
 
 export async function deleteUserInfo(userId) {
-  return await axios.delete(`http://api.ezipnaezip.life:8080/user/user/${userId}`, {
+  return await axios.delete(`http://api.ezipnaezip.life:8080/user/delete/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 }
