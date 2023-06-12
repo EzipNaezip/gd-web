@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MainImageModal from '../Main/MainImageModal';
@@ -13,6 +13,7 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [bookMark, setBookMark] = useState(data.bookmark);
+  const [mypageRender, setMypageRender] = useState(true);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
@@ -23,6 +24,11 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   const handleMouseLeave = () => {
     setButtonShow(false);
   };
+
+  useEffect(() => {
+    if (isMypage && data.user.isMe) setMypageRender(false);
+    else setMypageRender(true);
+  }, [isMypage, data.user.isMe]);
 
   return (
     <div className="relative">
@@ -39,7 +45,7 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
             //{buttonShow && isLogin ? (작업용 로그인 고정
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-white px-2 py-2 rounded">
               <div className="flex">
-                {!data.isMe && !isMypage ? (
+                {!data.isMe && mypageRender ? (
                   <>
                     {!bookMark ? (
                       <svg
