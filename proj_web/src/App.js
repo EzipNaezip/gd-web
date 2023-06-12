@@ -41,6 +41,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/discover" element={<DiscoverPage />} />
+            <Route path="/discover/:keyword" element={} />
             <Route path="/post/:postNum" element={<PostPage />} />
             <Route path="/mypage/:userId" element={<MypagePage setApiCall={setCall} />} />
             <Route path="/policy" element={<PolicyPage />} />

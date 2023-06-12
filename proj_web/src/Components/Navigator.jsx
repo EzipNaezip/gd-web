@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar, Dropdown, Avatar, TextInput, Button } from 'flowbite-react';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { Navbar, Dropdown, Avatar, Button } from 'flowbite-react';
 import MainLogin from './Login/MainLogin';
 import { useRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
@@ -110,7 +109,41 @@ export default function Navigator() {
             발견
           </Navbar.Link>
         </Navbar.Collapse>
-        <TextInput className="w-80 hidden md:block mr-4 ml-auto" icon={MagnifyingGlassIcon} sizing="sm" />
+        <div>
+          <form>
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-suiteMedium text-gray-900 sr-only dark:text-white"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                  <path
+                    fillRule="evenodd"
+                    d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="키워드를 입력해주세요"
+                required
+              >
+                <button
+                  type="submit"
+                  className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  검색
+                </button>
+              </input>
+            </div>
+          </form>
+        </div>
       </Navbar>
     </>
   );
