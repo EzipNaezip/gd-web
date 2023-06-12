@@ -131,7 +131,7 @@ export default function MainMypage({
           <DiscoverImageGrid thumbnails={data.myPosts} bookmarking={bookmarking} bookmarkRender={false} />
         ) : (
           <>
-            {!data.user.isMe ? (
+            {data.user.isMe ? (
               <DiscoverImageGrid thumbnails={data.bookmarkedPosts} bookmarking={bookmarking} bookmarkRender={true} />
             ) : (
               <DiscoverImageGrid thumbnails={data.bookmarkedPosts} bookmarking={bookmarking} bookmarkRender={false} />
