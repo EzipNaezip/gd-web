@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MainImageModal from '../Main/MainImageModal';
@@ -9,11 +9,10 @@ GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
+export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender }) {
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [bookMark, setBookMark] = useState(data.bookmark);
-  const [mypageRender, setMypageRender] = useState(true);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
 
@@ -24,13 +23,6 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   const handleMouseLeave = () => {
     setButtonShow(false);
   };
-
-  useEffect(() => {
-    if (!isMypage) return setMypageRender(true);
-    else if (isMypage && !data.user.isMe) return setMypageRender(true);
-    else return setMypageRender(false);
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <div className="relative">
@@ -47,7 +39,7 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
             //{buttonShow && isLogin ? (작업용 로그인 고정
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-white px-2 py-2 rounded">
               <div className="flex">
-                {!data.isMe && mypageRender ? (
+                {!data.isMe && bookmarkRender ? (
                   <>
                     {!bookMark ? (
                       <svg

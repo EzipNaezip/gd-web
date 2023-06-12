@@ -41,7 +41,7 @@ export default function MainDiscover({ bookmarking, liking }) {
       <div className="mt-10">
         {thumbnails ? (
           <>
-            <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} isMypage={false} />
+            <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} bookmarkRender={true} />
           </>
         ) : (
           <></>
