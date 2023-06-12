@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import { LoginState } from '../Atoms/LoginState';
 import { useMutation } from 'react-query';
 import { getUserInfo } from '../Query/MypageQuery';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navigator() {
   const [userInfo, setUserInfo] = useState(null);
@@ -13,6 +13,8 @@ export default function Navigator() {
   const [show, setShow] = useState(false);
   const myId = sessionStorage.getItem('userId');
   const baseURL = 'http://api.ezipnaezip.life:8080';
+  const searchRef = useRef(null);
+  const navigate = useNavigate();
   const getInfo = useMutation(getUserInfo, {
     onSuccess: (data) => {
       console.log('navigator : ', data);
@@ -20,13 +22,12 @@ export default function Navigator() {
     },
   });
 
-  const searchRef = useRef(null);
-
   const handleSearch = (e) => {
     e.preventDefault();
     const keyword = searchRef.current.value; // ref를 통해 input의 값을 가져옴
     // 입력된 검색어에 대한 작업 수행
     console.log('검색어:', keyword);
+    navigate(`/discover/${keyword}`);
     // ...검색에 필요한 작업 수행
   };
 
