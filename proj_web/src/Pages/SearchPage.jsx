@@ -7,11 +7,13 @@ import { searchListing } from '../Query/FilterQuery';
 export default function SearchPage() {
   const params = useParams();
   const search = useQuery(
-    ['search', params.keyword],
+    ['search', { keyword: params.keyword }],
     () => {
       searchListing(params.keyword);
     },
     {
+      refetchOnWindowFocus: false,
+      retry: 0,
       onSuccess: (data) => {
         console.log('search : ', data);
       },
