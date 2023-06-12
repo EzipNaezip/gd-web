@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PostUserComment from './PostUserComment';
 import PostComment from './PostComment';
 import PostCarousel from './PostCarousel';
-import { Button } from 'flowbite-react';
 import ImageModal from './ImageModal';
 import { DiscoverFilterList } from '../Discover/DiscoverFilterList';
 import { Link, useParams } from 'react-router-dom';
@@ -57,12 +56,13 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                 ) : (
                   <>
                     {!post.follow ? (
-                      <Button
-                        className="transition ease-in border-2 border-ezip-green bg-ezip-green hover:bg-ezip-green_hover"
+                      <button
+                        type="button"
+                        className="transition ease-in text-white bg-ezip-green border-2 border-ezip-green hover:bg-ezip-green hover:border-ezip-green_hover focus:ring-4 focus:ring-ezip-green_hover font-suiteMedium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
                         onClick={() => follow(post.writerId.userId)}
                       >
                         팔로우
-                      </Button>
+                      </button>
                     ) : (
                       <button
                         type="button"
