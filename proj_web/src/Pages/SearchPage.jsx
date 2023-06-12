@@ -36,7 +36,7 @@ export default function SearchPage() {
         <>
           <h1>SEARCH PAGE</h1>
           <DiscoverImageGrid
-            thumbnails={search.data.data.postList}
+            thumbnails={search.data.data.data.postList}
             bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
             bookmarkRender={true}
           />
