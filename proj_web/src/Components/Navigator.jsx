@@ -133,7 +133,7 @@ export default function Navigator() {
             </div>
             <button
               type="submit"
-              className="transition ease-in p-2.5 ml-2 text-sm font-suiteMedium text-white bg-ezip-green rounded-lg border border-ezip-green hover:bg-ezip-green_hover hover:border-ezip-green_hover focus:ring-ezip-green "
+              className="transition ease-in p-2 ml-2 text-sm font-suiteMedium text-white bg-ezip-green rounded-lg hover:bg-ezip-green_hover"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                 <path
