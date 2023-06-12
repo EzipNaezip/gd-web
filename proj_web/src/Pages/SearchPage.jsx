@@ -35,7 +35,7 @@ export default function SearchPage() {
       {search.data ? (
         <>
           <h1 className="text-3xl font-suiteBold mb-6">검색하신 "{params.keyword}"에 대한 결과입니다.</h1>
-          <br className="mb-6" />
+          <hr className="mb-6" />
           <DiscoverImageGrid
             thumbnails={search.data.data.data.postList}
             bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
@@ -44,7 +44,7 @@ export default function SearchPage() {
         </>
       ) : (
         <>
-          <h1 className="font-suiteMedium">검색 결과를 불러오지 못했습니다</h1>
+          <h1 className="text-3xl font-suiteBold animate-pulse delay-50">검색 결과를 불러오는 중 입니다.</h1>
         </>
       )}
     </div>
