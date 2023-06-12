@@ -5,7 +5,7 @@ import { editUserInfo, upload } from '../../Query/MypageQuery';
 import { useParams } from 'react-router-dom';
 import WithdrawModal from './WithdrawModal';
 
-export default function ProfileSettingModal({ user, profileShow, fetch, setApiCall, onClose }) {
+export default function ProfileSettingModal({ user, profileShow, setProfileShow, fetch, setApiCall }) {
   const [imgFile, setImgFile] = useState(null);
   const [imgURL, setImgURL] = useState('');
   const [returnURL, setReturnURL] = useState('');
@@ -74,7 +74,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
 
   return (
     <>
-      <WithdrawModal show={withdrawShow} setShow={setwithdrawShow} />
+      <WithdrawModal show={withdrawShow} setProfileShow={setProfileShow} setShow={setwithdrawShow} />
       <Modal
         className="h-screen animate-fade-in-down"
         dismissible
@@ -86,7 +86,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
           nameRef.current.value = user.name;
           descriptionRef.current.value = user.description;
           setUploadState(false);
-          onClose();
+          setProfileShow(false);
         }}
       >
         <Modal.Header>
@@ -164,6 +164,7 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
                 className="mt-6 w-full flex items-center justify-center text-xs font-suiteMedium text-red-500"
                 onClick={(e) => {
                   e.preventDefault();
+                  profileShow(false);
                   setwithdrawShow(true);
                 }}
               >

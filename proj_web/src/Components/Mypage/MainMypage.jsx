@@ -34,13 +34,6 @@ export default function MainMypage({
     else return `${baseURL}${data.user.profileImgUrl}`;
   };
 
-  const onFollowHandler = () => {
-    setFollowShow(false);
-  };
-  const onProfileHandler = () => {
-    setProfileShow(false);
-  };
-
   return (
     <div className="flex flex-col gap-y-5">
       <section className="flex flex-col items-center bg-white dark:bg-gray-900 antialiased  border-b">
@@ -92,7 +85,9 @@ export default function MainMypage({
               followingList={following}
               followUser={followUser}
               unfollowUser={unfollowUser}
-              onClose={onFollowHandler}
+              onClose={() => {
+                setFollowShow(false);
+              }}
             />
           </div>
           <div className="mt-3">
@@ -109,9 +104,9 @@ export default function MainMypage({
                 <ProfileSettingModal
                   user={data.user}
                   profileShow={profileShow}
+                  setProfileShow={profileShow}
                   fetch={fetch}
                   setApiCall={setApiCall}
-                  onClose={onProfileHandler}
                 />
               </>
             ) : (

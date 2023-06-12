@@ -1,10 +1,15 @@
 import React from 'react';
 import { Button, Modal } from 'flowbite-react';
 
-export default function WithdrawModal({ show, setShow }) {
+export default function WithdrawModal({ show, setShow, setProfileShow }) {
+  const onClose = () => {
+    setShow(false);
+    setProfileShow(true);
+  };
+
   return (
     <Modal>
-      <Modal show={show} size="md" popup onClose={setShow(false)}>
+      <Modal show={show} size="md" popup onClose={onClose}>
         <Modal.Header />
         <Modal.Body>
           <div className="text-center">
@@ -24,10 +29,10 @@ export default function WithdrawModal({ show, setShow }) {
             </svg>
             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">정말로 탈퇴하시겠습니까?</h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={setShow(false)}>
+              <Button color="failure" onClick={onClose}>
                 탈퇴하기
               </Button>
-              <Button color="gray" onClick={setShow(false)}>
+              <Button color="gray" onClick={onClose}>
                 취소하기
               </Button>
             </div>
