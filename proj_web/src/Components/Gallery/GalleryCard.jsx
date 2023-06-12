@@ -9,7 +9,7 @@ GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default function GalleryCard({ data, isMain, bookmarking }) {
+export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [bookMark, setBookMark] = useState(data.bookmark);
@@ -39,7 +39,7 @@ export default function GalleryCard({ data, isMain, bookmarking }) {
             //{buttonShow && isLogin ? (작업용 로그인 고정
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-white px-2 py-2 rounded">
               <div className="flex">
-                {!data.isMe ? (
+                {!data.isMe && !isMypage ? (
                   <>
                     {!bookMark ? (
                       <svg

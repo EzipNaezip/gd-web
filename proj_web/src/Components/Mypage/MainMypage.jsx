@@ -128,9 +128,9 @@ export default function MainMypage({
       <MypageGalleryButtons setCursor={setCursor} cursor={cursor} />
       <div className="container">
         {cursor === 0 ? (
-          <DiscoverImageGrid thumbnails={data.myPosts} bookmarking={bookmarking} />
+          <DiscoverImageGrid thumbnails={data.myPosts} bookmarking={bookmarking} isMypage={true} />
         ) : (
-          <DiscoverImageGrid thumbnails={data.bookmarkedPosts} bookmarking={bookmarking} />
+          <DiscoverImageGrid thumbnails={data.bookmarkedPosts} bookmarking={bookmarking} isMypage={true} />
         )}
       </div>
     </div>
