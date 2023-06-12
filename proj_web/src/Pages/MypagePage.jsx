@@ -21,6 +21,8 @@ export default function MypagePage({ setApiCall }) {
   const withdraw = useMutation(deleteUserInfo, {
     onSuccess: (data) => {
       console.log(data);
+      sessionStorage.removeItem('userId');
+      sessionStorage.removeItem('token');
     },
   });
   const getFollowerInfo = useQuery(['followerInfo', { userId: params.userId }], () => getFollower(params.userId), {
@@ -72,8 +74,6 @@ export default function MypagePage({ setApiCall }) {
           bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
           withdraw={() => {
             withdraw.mutate(sessionStorage.getItem('userId'));
-            sessionStorage.removeItem('userId');
-            sessionStorage.removeItem('token');
           }}
           fetch={getInfo.refetch}
           setApiCall={setApiCall}
