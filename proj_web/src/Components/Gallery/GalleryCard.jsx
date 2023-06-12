@@ -26,10 +26,11 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   };
 
   useEffect(() => {
-    if (!isMypage) setMypageRender(true);
-    else if (isMypage && !data.user.isMe) setMypageRender(true);
-    else setMypageRender(false);
-  }, [isMypage, data.user.isMe]);
+    if (!isMypage) return setMypageRender(true);
+    else if (isMypage && !data.user.isMe) return setMypageRender(true);
+    else return setMypageRender(false);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="relative">
