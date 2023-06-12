@@ -1,10 +1,9 @@
 import React from 'react';
 import { Button, Modal } from 'flowbite-react';
 
-export default function WithdrawModal({ show, setShow, setProfileShow }) {
+export default function WithdrawModal({ show, setShow }) {
   const onClose = (e) => {
     e.preventDefault();
-    setProfileShow(true);
     setShow(false);
   };
 

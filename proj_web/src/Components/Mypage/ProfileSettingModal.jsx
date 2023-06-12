@@ -74,7 +74,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
 
   return (
     <>
-      <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} setProfileShow={setProfileShow} />
+      <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} />
       <Modal
         className="h-screen animate-fade-in-down"
         dismissible
@@ -165,7 +165,6 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
                 onClick={(e) => {
                   e.preventDefault();
                   setWithdrawShow(true);
-                  profileShow(false);
                 }}
               >
                 회원탈퇴
