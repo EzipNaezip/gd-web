@@ -64,12 +64,9 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                         팔로우
                       </Button>
                     ) : (
-                      <Button
-                        className="transition ease-in border-2 border-ezip-green bg-white text-ezip-green hover:bg-white_hover"
-                        onClick={() => unfollow(post.writerId.userId)}
-                      >
-                        팔로잉
-                      </Button>
+                      <div className="transition ease-in rounded-lg border-2 border-ezip-green bg-white text-ezip-green hover:bg-white_hover">
+                        <Button onClick={() => unfollow(post.writerId.userId)}>팔로잉</Button>
+                      </div>
                     )}
                   </>
                 )}
