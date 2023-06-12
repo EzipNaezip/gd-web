@@ -95,7 +95,7 @@ export default function MainMypage({
             />
           </div>
           <div className="mt-3">
-            {isLogin && data.user.userID === myId ? (
+            {isLogin && data.user.userId === myId ? (
               <>
                 <Button
                   size="xs"
