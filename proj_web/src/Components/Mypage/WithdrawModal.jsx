@@ -9,7 +9,7 @@ export default function WithdrawModal({ show, setShow, setProfileShow }) {
   };
 
   return (
-    <Modal>
+    <Modal className="h-screen animate-fade-in-down">
       <Modal
         show={show}
         size="md"
