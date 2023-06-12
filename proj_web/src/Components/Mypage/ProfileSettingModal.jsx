@@ -10,7 +10,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
   const [imgURL, setImgURL] = useState('');
   const [returnURL, setReturnURL] = useState('');
   const [uploadState, setUploadState] = useState(false);
-  const [withdrawShow, setwithdrawShow] = useState(false);
+  const [withdrawShow, setWithdrawShow] = useState(false);
   const nameRef = useRef('');
   const descriptionRef = useRef('');
   const fileInput = useRef(null);
@@ -74,7 +74,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
 
   return (
     <>
-      <WithdrawModal show={withdrawShow} setProfileShow={setProfileShow} setShow={setwithdrawShow} />
+      <WithdrawModal show={withdrawShow} setProfileShow={setProfileShow} setShow={setWithdrawShow} />
       <Modal
         className="h-screen animate-fade-in-down"
         dismissible
@@ -162,10 +162,9 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
               <hr className="mt-6" />
               <p
                 className="mt-6 w-full flex items-center justify-center text-xs font-suiteMedium text-red-500"
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   profileShow(false);
-                  setwithdrawShow(true);
+                  setWithdrawShow(true);
                 }}
               >
                 회원탈퇴
