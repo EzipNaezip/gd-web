@@ -8,19 +8,13 @@ import DiscoverImageGrid from '../Components/Discover/DiscoverImageGrid';
 export default function SearchPage() {
   const params = useParams();
 
-  const search = useQuery(
-    ['search', { keyword: params.keyword }],
-    () => {
-      searchListing(params.keyword);
+  const search = useQuery(['search', { keyword: params.keyword }], () => searchListing(params.keyword), {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (data) => {
+      console.log('search : ', data);
     },
-    {
-      refetchOnWindowFocus: false,
-      retry: 0,
-      onSuccess: (data) => {
-        console.log('search : ', data);
-      },
-    },
-  );
+  });
   const bookmark = useMutation(setBookmark, {
     onSuccess: (data) => {
       console.log('bookmark : ', data);
@@ -48,7 +42,9 @@ export default function SearchPage() {
           />
         </>
       ) : (
-        <></>
+        <>
+          <h1 className="font-suiteMedium">검색 결과를 불러오지 못했습니다</h1>
+        </>
       )}
     </div>
   );
