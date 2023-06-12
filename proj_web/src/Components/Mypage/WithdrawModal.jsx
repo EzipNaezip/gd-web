@@ -3,8 +3,8 @@ import { Button, Modal } from 'flowbite-react';
 
 export default function WithdrawModal({ show, setShow, setProfileShow }) {
   const onClose = () => {
-    setShow(false);
     setProfileShow(true);
+    setShow(false);
   };
 
   return (

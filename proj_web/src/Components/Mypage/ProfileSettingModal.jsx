@@ -163,8 +163,8 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
               <p
                 className="mt-6 w-full flex items-center justify-center text-xs font-suiteMedium text-red-500"
                 onClick={() => {
-                  profileShow(false);
                   setWithdrawShow(true);
+                  profileShow(false);
                 }}
               >
                 회원탈퇴
