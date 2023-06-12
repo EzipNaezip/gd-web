@@ -162,7 +162,10 @@ export default function ProfileSettingModal({ user, profileShow, fetch, setApiCa
               <hr className="mt-6" />
               <p
                 className="mt-6 w-full flex items-center justify-center text-xs font-suiteMedium text-red-500"
-                onClick={() => setwithdrawShow(true)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setwithdrawShow(true);
+                }}
               >
                 회원탈퇴
               </p>
