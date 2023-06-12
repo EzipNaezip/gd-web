@@ -7,6 +7,7 @@ import { Button } from 'flowbite-react';
 import { useRecoilValue } from 'recoil';
 import { LoginState } from '../../Atoms/LoginState';
 import DiscoverImageGrid from '../Discover/DiscoverImageGrid';
+import WithdrawModal from './WithdrawModal';
 
 export default function MainMypage({
   data,
@@ -20,6 +21,7 @@ export default function MainMypage({
 }) {
   const [cursor, setCursor] = useState(0);
   const [profileShow, setProfileShow] = useState(false);
+  const [withdrawShow, setWithdrawShow] = useState(false);
   const [followShow, setFollowShow] = useState(false);
   const [followState, setFollowState] = useState(null);
   const baseURL = 'http://api.ezipnaezip.life:8080';
@@ -105,9 +107,11 @@ export default function MainMypage({
                   user={data.user}
                   profileShow={profileShow}
                   setProfileShow={setProfileShow}
+                  setWithdrawShow={setWithdrawShow}
                   fetch={fetch}
                   setApiCall={setApiCall}
                 />
+                <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} setProfileShow={setProfileShow} />
               </>
             ) : (
               <FollowButton

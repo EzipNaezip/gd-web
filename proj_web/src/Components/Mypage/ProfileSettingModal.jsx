@@ -3,14 +3,12 @@ import { Modal, Button } from 'flowbite-react';
 import { useMutation } from 'react-query';
 import { editUserInfo, upload } from '../../Query/MypageQuery';
 import { useParams } from 'react-router-dom';
-import WithdrawModal from './WithdrawModal';
 
-export default function ProfileSettingModal({ user, profileShow, setProfileShow, fetch, setApiCall }) {
+export default function ProfileSettingModal({ user, profileShow, setProfileShow, setWithdrawShow, fetch, setApiCall }) {
   const [imgFile, setImgFile] = useState(null);
   const [imgURL, setImgURL] = useState('');
   const [returnURL, setReturnURL] = useState('');
   const [uploadState, setUploadState] = useState(false);
-  const [withdrawShow, setWithdrawShow] = useState(false);
   const nameRef = useRef('');
   const descriptionRef = useRef('');
   const fileInput = useRef(null);
@@ -74,7 +72,6 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
 
   return (
     <>
-      <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} />
       <Modal
         className="h-screen animate-fade-in-down"
         dismissible
@@ -165,6 +162,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
                 onClick={(e) => {
                   e.preventDefault();
                   setWithdrawShow(true);
+                  setProfileShow(false);
                 }}
               >
                 회원탈퇴
