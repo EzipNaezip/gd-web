@@ -104,7 +104,7 @@ export default function MainMypage({
                 <ProfileSettingModal
                   user={data.user}
                   profileShow={profileShow}
-                  setProfileShow={profileShow}
+                  setProfileShow={setProfileShow}
                   fetch={fetch}
                   setApiCall={setApiCall}
                 />

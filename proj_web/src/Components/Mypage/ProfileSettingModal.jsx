@@ -74,7 +74,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
 
   return (
     <>
-      <WithdrawModal show={withdrawShow} setProfileShow={setProfileShow} setShow={setWithdrawShow} />
+      <WithdrawModal show={withdrawShow} setShow={setWithdrawShow} setProfileShow={setProfileShow} />
       <Modal
         className="h-screen animate-fade-in-down"
         dismissible
