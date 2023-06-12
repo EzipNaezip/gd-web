@@ -27,7 +27,7 @@ export default function MainMypage({
   const [followState, setFollowState] = useState(null);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
-  const myId = sessionStorage.getItem('userId');
+  const myId = Number(sessionStorage.getItem('userId'));
 
   const checkImgURL = () => {
     const regExpHttp = /http:/g;
