@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Card, Modal } from 'flowbite-react';
 
 export default function MainImageModal({ img, imgShow, onClose }) {
+  const inputRef = useRef(null);
   const baseURL = 'http://api.ezipnaezip.life:8080';
 
   const handleCopy = () => {
-    const textToCopy = img.prompt;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard
-        .writeText(textToCopy)
-        .then(() => {
-          console.log('Text copied to clipboard: ', textToCopy);
-          // 복사 성공 시 필요한 추가 작업을 수행하세요.
-        })
-        .catch((error) => {
-          console.error('Error copying text to clipboard: ', error);
-          // 복사 실패 시 필요한 추가 작업을 수행하세요.
-        });
-    } else {
-      console.error('Clipboard API not supported.');
-      // 클립보드 API가 지원되지 않을 때 대체 동작을 수행하세요.
+    if (inputRef.current) {
+      const range = document.createRange();
+      range.selectNode(inputRef.current);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
     }
   };
 
@@ -30,6 +23,13 @@ export default function MainImageModal({ img, imgShow, onClose }) {
         <Button className="transition ease-in bg-ezip-green hover:bg-ezip-green_hover" onClick={handleCopy}>
           Copy
         </Button>
+        <input
+          ref={inputRef}
+          type="text"
+          value={img.prompt}
+          readOnly
+          style={{ position: 'absolute', left: '-9999px' }}
+        />
       </Card>
     </Modal>
   );
