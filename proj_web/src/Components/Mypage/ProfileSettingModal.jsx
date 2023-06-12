@@ -162,7 +162,8 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
               <hr className="mt-6" />
               <p
                 className="mt-6 w-full flex items-center justify-center text-xs font-suiteMedium text-red-500"
-                onClick={() => {
+                onClick={(e) => {
+                  e.preventDefault();
                   setWithdrawShow(true);
                   profileShow(false);
                 }}
