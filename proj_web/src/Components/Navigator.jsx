@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navbar, Dropdown, Avatar, Button } from 'flowbite-react';
 import MainLogin from './Login/MainLogin';
 import { useRecoilState } from 'recoil';
@@ -19,6 +19,16 @@ export default function Navigator() {
       setUserInfo(data.data.data.user);
     },
   });
+
+  const searchRef = useRef(null);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const keyword = searchRef.current.value; // ref를 통해 input의 값을 가져옴
+    // 입력된 검색어에 대한 작업 수행
+    console.log('검색어:', keyword);
+    // ...검색에 필요한 작업 수행
+  };
 
   const checkImgURL = () => {
     const regExpHttp = /http:/g;
@@ -128,12 +138,13 @@ export default function Navigator() {
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 font-suiteMedium text-sm rounded-lg focus:ring-ezip-green focus:border-ezip-green block w-full pl-10 p-2.5"
                 placeholder="키워드를 입력하세요"
+                ref={searchRef}
                 required
               />
             </div>
             <button
-              type="submit"
               className="transition ease-in p-2 ml-2 text-sm font-suiteMedium text-white bg-ezip-green rounded-lg hover:bg-ezip-green_hover"
+              onClick={handleSearch}
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                 <path
