@@ -36,11 +36,17 @@ export default function SearchPage() {
         <>
           <h1 className="text-3xl font-suiteBold mb-6">검색하신 "{params.keyword}"에 대한 결과입니다.</h1>
           <hr className="mb-6" />
-          <DiscoverImageGrid
-            thumbnails={search.data.data.data.postList}
-            bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
-            bookmarkRender={true}
-          />
+          {search.data.data.data.postList.length ? (
+            <DiscoverImageGrid
+              thumbnails={search.data.data.data.postList}
+              bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
+              bookmarkRender={true}
+            />
+          ) : (
+            <>
+              <p className="text-base font-suiteMedium">검색 결과가 없습니다.</p>
+            </>
+          )}
         </>
       ) : (
         <>
