@@ -58,7 +58,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                     {!post.follow ? (
                       <button
                         type="button"
-                        className="transition ease-in text-white bg-ezip-green border-2 border-ezip-green hover:bg-ezip-green hover:border-ezip-green_hover focus:ring-4 focus:ring-ezip-green_hover font-suiteMedium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+                        className="transition ease-in text-white bg-ezip-green border-2 border-ezip-green hover:bg-ezip-green_hover hover:border-ezip-green_hover font-suiteMedium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
                         onClick={() => follow(post.writerId.userId)}
                       >
                         팔로우
@@ -66,7 +66,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                     ) : (
                       <button
                         type="button"
-                        className="transition ease-in text-ezip-green bg-white border-2 border-ezip-green hover:bg-white_hover focus:ring-4 focus:ring-ezip-green font-suiteMedium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+                        className="transition ease-in text-ezip-green bg-white border-2 border-ezip-green hover:bg-white_hover hover:border-ezip-green_hover font-suiteMedium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
                         onClick={() => unfollow(post.writerId.userId)}
                       >
                         팔로잉
