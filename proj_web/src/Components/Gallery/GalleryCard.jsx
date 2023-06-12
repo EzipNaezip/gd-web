@@ -26,8 +26,9 @@ export default function GalleryCard({ data, isMain, bookmarking, isMypage }) {
   };
 
   useEffect(() => {
-    if (isMypage && data.user.isMe) setMypageRender(false);
-    else setMypageRender(true);
+    if (!isMypage) setMypageRender(true);
+    else if (isMypage && !data.user.isMe) setMypageRender(true);
+    else setMypageRender(false);
   }, [isMypage, data.user.isMe]);
 
   return (
