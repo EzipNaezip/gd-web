@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { searchListing } from '../Query/FilterQuery';
+import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
 // import DiscoverImageGrid from '../Components/Discover/DiscoverImageGrid';
 
 export default function SearchPage() {
   const params = useParams();
+
   const search = useQuery(
     ['search', { keyword: params.keyword }],
     () => {
@@ -19,6 +21,16 @@ export default function SearchPage() {
       },
     },
   );
+  const bookmark = useMutation(setBookmark, {
+    onSuccess: (data) => {
+      console.log('bookmark : ', data);
+    },
+  });
+  const unBookmark = useMutation(unsetBookMark, {
+    onSuccess: (data) => {
+      console.log('unBookmark : ', data);
+    },
+  });
 
   useEffect(() => {
     console.log('params : ', params.keyword);
@@ -26,9 +38,18 @@ export default function SearchPage() {
   }, []);
   return (
     <div>
-      <h1>SEARCH PAGE</h1>
-      <p>{search.data}</p>
-      {/*<DiscoverImageGrid thumbnails={} bookmarking={} bookmarkRender={}/>*/}
+      {search.data ? (
+        <>
+          <h1>SEARCH PAGE</h1>
+          <DiscoverImageGrid
+            thumbnails={search.data.data.postList}
+            bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
+            bookmarkRender={true}
+          />
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
