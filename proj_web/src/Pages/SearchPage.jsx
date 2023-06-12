@@ -3,7 +3,7 @@ import { useMutation, useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { searchListing } from '../Query/FilterQuery';
 import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
-// import DiscoverImageGrid from '../Components/Discover/DiscoverImageGrid';
+import DiscoverImageGrid from '../Components/Discover/DiscoverImageGrid';
 
 export default function SearchPage() {
   const params = useParams();
