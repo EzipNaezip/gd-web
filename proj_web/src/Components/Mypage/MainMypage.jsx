@@ -27,6 +27,7 @@ export default function MainMypage({
   const [followState, setFollowState] = useState(null);
   const baseURL = 'http://api.ezipnaezip.life:8080';
   const isLogin = useRecoilValue(LoginState);
+  const myId = sessionStorage.getItem('userId');
 
   const checkImgURL = () => {
     const regExpHttp = /http:/g;
@@ -94,7 +95,7 @@ export default function MainMypage({
             />
           </div>
           <div className="mt-3">
-            {isLogin && data.user.isMe ? (
+            {isLogin && data.user.userID === myId ? (
               <>
                 <Button
                   size="xs"
