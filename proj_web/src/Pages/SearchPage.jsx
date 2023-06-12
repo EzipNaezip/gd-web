@@ -34,7 +34,8 @@ export default function SearchPage() {
     <div>
       {search.data ? (
         <>
-          <h1 className="text-xl font-suiteBold mb-6">검색하신 {params.keyword}에 대한 결과입니다.</h1>
+          <h1 className="text-3xl font-suiteBold mb-6">검색하신 "{params.keyword}"에 대한 결과입니다.</h1>
+          <br className="mb-6" />
           <DiscoverImageGrid
             thumbnails={search.data.data.data.postList}
             bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
