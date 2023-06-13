@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import MainImageModal from '../Main/MainImageModal';
-import { useRecoilValue } from 'recoil';
-import { LoginState } from '../../Atoms/LoginState';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import MainImageModal from "../Main/MainImageModal";
+import { useRecoilValue } from "recoil";
+import { LoginState } from "../../Atoms/LoginState";
 
 GalleryCard.propTypes = {
   url: PropTypes.string.isRequired,
@@ -13,7 +13,7 @@ export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender 
   const [modalShow, setModalShow] = useState(false);
   const [buttonShow, setButtonShow] = useState(false);
   const [bookMark, setBookMark] = useState(data.bookmark);
-  const baseURL = 'http://api.ezipnaezip.life:8080';
+  const baseURL = "http://api.ezipnaezip.life:8080";
   const isLogin = useRecoilValue(LoginState);
 
   const handleMouseEnter = () => {
@@ -29,14 +29,9 @@ export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender 
       {!isMain ? (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link to={`/post/${data.postNum}`}>
-            <img
-              className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60"
-              src={`${baseURL}${data.thumbnailImgUrl}`}
-              alt="img"
-            />
+            <img loading="lazy" className="transition ease-in h-auto max-w-full rounded-md hover:opacity-60" src={`${baseURL}${data.thumbnailImgUrl}`} alt="img" />
           </Link>
           {buttonShow && isLogin ? (
-            //{buttonShow && isLogin ? (작업용 로그인 고정
             <button className="absolute bottom-0 right-0 mb-2 mr-2 text-white px-2 py-2 rounded">
               <div className="flex">
                 {!data.isMe && bookmarkRender ? (
@@ -54,11 +49,7 @@ export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender 
                           bookmarking.set(data.postNum);
                         }}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                       </svg>
                     ) : (
                       <svg
@@ -73,11 +64,7 @@ export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender 
                           bookmarking.remove(data.postNum);
                         }}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
                       </svg>
                     )}
                   </>
@@ -92,12 +79,7 @@ export default function GalleryCard({ data, isMain, bookmarking, bookmarkRender 
         </div>
       ) : (
         <>
-          <img
-            className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70"
-            src={`${baseURL}${data.imgUrl}`}
-            alt="img"
-            onClick={() => setModalShow(true)}
-          />
+          <img loading="lazy" className="transition ease-in h-auto max-w-full rounded-md hover:opacity-70" src={`${baseURL}${data.imgUrl}`} alt="img" onClick={() => setModalShow(true)} />
           <MainImageModal img={data} imgShow={modalShow} onClose={() => setModalShow(false)} />
         </>
       )}

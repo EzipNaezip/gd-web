@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useMutation } from 'react-query';
-import { deleteComment, editComment } from '../../Query/CommentQuery';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useMutation } from "react-query";
+import { deleteComment, editComment } from "../../Query/CommentQuery";
+import { Link } from "react-router-dom";
 
 export default function PostComment({ comment, fetch }) {
   const [editState, setEditState] = useState(false);
-  const [editText, setEditText] = useState('');
-  const baseURL = 'http://api.ezipnaezip.life:8080';
+  const [editText, setEditText] = useState("");
+  const baseURL = "http://api.ezipnaezip.life:8080";
 
   const edit = useMutation(editComment, {
     onSuccess: (data) => {
@@ -24,17 +24,16 @@ export default function PostComment({ comment, fetch }) {
     const regExpHttp = /http:/g;
     const regExpHttps = /https:/g;
 
-    if (regExpHttp.test(comment.user.profileImgUrl) || regExpHttps.test(comment.user.profileImgUrl))
-      return comment.user.profileImgUrl;
+    if (regExpHttp.test(comment.user.profileImgUrl) || regExpHttps.test(comment.user.profileImgUrl)) return comment.user.profileImgUrl;
     else return `${baseURL}${comment.user.profileImgUrl}`;
   };
 
   return (
-    <div className="p-3">
-      <div className="w-full flex p-2 text-gray-500 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-400">
+    <section>
+      <div className="w-full flex p-2 border-b text-gray-500 bg-white">
         {!editState ? (
           <div className="flex w-full items-center">
-            <img className="w-8 h-8 rounded-full shadow-lg" src={checkImgURL()} alt="profileImage" />
+            <img className="w-8 h-8 rounded-full" src={checkImgURL()} alt="profileImage" />
             <div className="ml-3 text-sm font-normal">
               <Link className="w-full" to={`/mypage/${comment.user.userId}`}>
                 <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">{comment.user.name}</span>
@@ -109,6 +108,6 @@ export default function PostComment({ comment, fetch }) {
           <></>
         )}
       </div>
-    </div>
+    </section>
   );
 }
