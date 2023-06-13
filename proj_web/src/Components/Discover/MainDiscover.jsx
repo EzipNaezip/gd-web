@@ -46,7 +46,7 @@ export default function MainDiscover({ bookmarking }) {
         }}
       />
       <hr className="mt-6" />
-      <div className="mt-10">
+      <div className="mt-10 mb-10">
         {thumbnails ? (
           <>
             <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} bookmarkRender={true} />
