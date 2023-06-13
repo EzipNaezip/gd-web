@@ -14,8 +14,12 @@ export async function topListing() {
   });
 }
 
-export async function tagListing(tagName) {
+export async function tagListing(tagName, display) {
   return await axios.get(`http://api.ezipnaezip.life:8080/posts/filter/${tagName}`, {
+    params: {
+      start: 0,
+      display,
+    },
     headers: {
       Authorization: `Bearer ${token}`,
     },
