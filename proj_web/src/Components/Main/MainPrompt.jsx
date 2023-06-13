@@ -155,7 +155,7 @@ export default function MainPrompt() {
                   <div className="w-full">
                     <div className="flex justify-end">
                       <Button
-                        className="transition ease-in mt-6 w-24 bg-ezip-green hover:bg-ezip-green_hover"
+                        className="transition ease-in mt-6 mr-3 w-16 bg-ezip-green hover:bg-ezip-green_hover"
                         onClick={() => {
                           if (images.response[0].chatLogSerialNumber)
                             storeDalle.mutate(images.response[0].chatLogSerialNumber);
@@ -177,7 +177,7 @@ export default function MainPrompt() {
                         </svg>
                       </Button>
                       <Button
-                        className="transition ease-in mt-6 w-24 border bg-white hover:bg-white_hover"
+                        className="transition ease-in mt-6 w-16 border bg-white hover:bg-white_hover"
                         onClick={() => {
                           if (images.response[0].chatLogSerialNumber)
                             deleteDalle.mutate(images.response[0].chatLogSerialNumber);
