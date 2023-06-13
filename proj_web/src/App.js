@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import LoginTokenPage from './Pages/LoginTokenPage';
 import SearchPage from './Pages/SearchPage';
+import RequireAuth from './Utilities/RequireAuth';
 
 export default function App() {
   const [apiCall, setApiCall] = useState(false);
@@ -41,10 +42,38 @@ export default function App() {
         <section className="content md:container md:mx-auto mt-6 mb-6 px-4">
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/discover" element={<DiscoverPage />} />
-            <Route path="/discover/:keyword" element={<SearchPage />} />
-            <Route path="/post/:postNum" element={<PostPage />} />
-            <Route path="/mypage/:userId" element={<MypagePage setApiCall={setCall} />} />
+            <Route
+              path="/discover"
+              element={
+                <RequireAuth>
+                  <DiscoverPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/discover/:keyword"
+              element={
+                <RequireAuth>
+                  <SearchPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/post/:postNum"
+              element={
+                <RequireAuth>
+                  <PostPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/mypage/:userId"
+              element={
+                <RequireAuth>
+                  <MypagePage setApiCall={setCall} />
+                </RequireAuth>
+              }
+            />
             <Route path="/policy" element={<PolicyPage />} />
             <Route path="/login/:token" element={<LoginTokenPage />} />
           </Routes>
