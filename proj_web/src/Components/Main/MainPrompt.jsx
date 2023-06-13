@@ -149,12 +149,8 @@ export default function MainPrompt() {
               {images.response.length > 1 ? (
                 <div className="grid w-full">
                   <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {images.map((image) => (
-                      <DalleImage
-                        id={image.response.itemId}
-                        url={image.response.url}
-                        serial={image.response.chatLogSerialNumber}
-                      />
+                    {images.response.map((image) => (
+                      <DalleImage id={image.itemId} url={image.url} serial={image.chatLogSerialNumber} />
                     ))}
                   </div>
                   <div className="w-full">
