@@ -9,15 +9,9 @@ export async function getPostList({ start, display }) {
   });
 }
 
-export async function inquirePost(postNum) {
+export async function inquirePost(postNum, start, display) {
   return await axios.get(`http://api.ezipnaezip.life:8080/posts/list/${postNum}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-}
-
-export async function searchPost({ start, display, keyword }) {
-  return await axios.get('http://api.ezipnaezip.life:8080/posts/search', {
-    params: { start, display, keyword },
+    params: { start, display },
     headers: { Authorization: `Bearer ${token}` },
   });
 }

@@ -3,10 +3,13 @@ import { useMutation } from 'react-query';
 import { tagListing, topListing } from '../../Query/FilterQuery';
 import DiscoverButtons from './DiscoverButtons';
 import DiscoverImageGrid from './DiscoverImageGrid';
+import useIntersectionObserver from '../../Utilities/useIntersectionObserver';
 
 export default function MainDiscover({ bookmarking }) {
   const [thumbnails, setThumbnails] = useState(null);
+  const [endPoint, setEndPoint] = useState(20);
   const [cursor, setCursor] = useState(null);
+
   const topData = useMutation(topListing, {
     onSuccess: (data) => {
       console.log('topData: ', data);
@@ -16,9 +19,11 @@ export default function MainDiscover({ bookmarking }) {
   const filteredData = useMutation(tagListing, {
     onSuccess: (data) => {
       console.log('filteredData: ', data);
+      setEndPoint(endPoint + 20);
       setThumbnails(data.data.data.postList);
     },
   });
+  const setObservationTarget = useIntersectionObserver(filteredData.mutate, endPoint);
 
   useEffect(() => {
     topData.mutate();
@@ -46,6 +51,7 @@ export default function MainDiscover({ bookmarking }) {
         ) : (
           <></>
         )}
+        {!filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}
       </div>
     </>
   );
