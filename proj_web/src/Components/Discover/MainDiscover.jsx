@@ -8,7 +8,7 @@ import useIntersectionObserver from '../../Utilities/useIntersectionObserver';
 export default function MainDiscover({ bookmarking }) {
   const [thumbnails, setThumbnails] = useState(null);
   const [endPoint, setEndPoint] = useState(20);
-  const [cursor, setCursor] = useState('TOP 30');
+  const [cursor, setCursor] = useState(null);
 
   const topData = useMutation(topListing, {
     onSuccess: (data) => {
