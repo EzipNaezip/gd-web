@@ -159,8 +159,8 @@ export default function MainPrompt() {
                         <Button
                           className="transition ease-in mt-6 w-24 bg-ezip-green hover:bg-ezip-green_hover"
                           onClick={() => {
-                            if (images[0].response.chatLogSerialNumber)
-                              storeDalle.mutate(images[0].response.chatLogSerialNumber);
+                            if (images.response[0].chatLogSerialNumber)
+                              storeDalle.mutate(images.response[0].chatLogSerialNumber);
                           }}
                         >
                           <svg
@@ -182,8 +182,8 @@ export default function MainPrompt() {
                         <Button
                           className="transition ease-in mt-6 w-24 border-2 border-ezip-green bg-white hover:bg-white_hover"
                           onClick={() => {
-                            if (images[0].response.chatLogSerialNumber)
-                              deleteDalle.mutate(images[0].response.chatLogSerialNumber);
+                            if (images.response[0].chatLogSerialNumber)
+                              deleteDalle.mutate(images.response[0].chatLogSerialNumber);
                           }}
                         >
                           <svg
