@@ -189,7 +189,11 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                 )}
               </div>
               <PostUserComment className="p-4" postNum={post.postNum} fetch={fetch} commentLen={comment.length} />
-              <div className="flex-col rounded-b-lg border-l border-r border-b max-h-96 overflow-y-scroll">
+              <div
+                className={`flex-col rounded-b-lg border-l border-r ${
+                  comment.length ? 'border-b' : ''
+                } max-h-96 overflow-y-scroll`}
+              >
                 {comment && comment.length > 0 ? (
                   <>
                     {comment.map((data) => {
