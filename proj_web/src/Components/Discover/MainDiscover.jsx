@@ -26,7 +26,10 @@ export default function MainDiscover({ bookmarking }) {
       console.log('더 불러올 데이터가 없습니다.');
     },
   });
-  const setObservationTarget = useIntersectionObserver(filteredData.mutate, cursor, endPoint);
+  const getDataScrolled = () => {
+    filteredData.mutate(cursor, endPoint);
+  };
+  const setObservationTarget = useIntersectionObserver(getDataScrolled);
 
   useEffect(() => {
     topData.mutate();
