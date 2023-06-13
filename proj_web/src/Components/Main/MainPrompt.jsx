@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
-import { createDalleImage, deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
-// import testDalleAxios from '../../Query/testDalleAxios';
+import { deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
+import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
 import { useSetRecoilState } from 'recoil';
 import { PromptCreateState } from '../../Atoms/PromptCreateState';
 import { Button } from 'flowbite-react';
 import MainLogin from '../Login/MainLogin';
 
-export default function MainPrompt({ storeDalle, removeDalle }) {
+export default function MainPrompt() {
   const [show, setShow] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
@@ -16,7 +16,7 @@ export default function MainPrompt({ storeDalle, removeDalle }) {
   const [save, setSave] = useState(false);
   const setCreated = useSetRecoilState(PromptCreateState);
 
-  const createDalle = useMutation(createDalleImage, {
+  const createDalle = useMutation(testDalleAxios, {
     onSuccess: (data) => {
       console.log('create : ', data);
       setImages(data);
