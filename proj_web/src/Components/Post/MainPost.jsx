@@ -71,7 +71,6 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                       >
                         팔로잉
                       </button>
-                      // <Button onClick={() => unfollow(post.writerId.userId)}>팔로잉</Button>
                     )}
                   </>
                 )}
@@ -189,7 +188,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                   <h1 className="p-4 font-suiteBold">댓글 0개</h1>
                 )}
               </div>
-              <PostUserComment className="p-4" postNum={post.postNum} fetch={fetch} />
+              <PostUserComment className="p-4" postNum={post.postNum} fetch={fetch} commentLen={comment.length} />
               <div className="flex-col rounded-b-lg border-l border-r border-b max-h-96 overflow-y-scroll">
                 {comment && comment.length > 0 ? (
                   <>
@@ -198,9 +197,7 @@ export default function MainPost({ post, comment, follow, unfollow, bookmarking,
                     })}
                   </>
                 ) : (
-                  <>
-                    <p className="p-4 text-sm font-suiteLight">아이디어에 대한 댓글을 남겨보세요!</p>
-                  </>
+                  <></>
                 )}
               </div>
             </>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { writeComment } from '../../Query/CommentQuery';
 
-export default function PostUserComment({ postNum, fetch }) {
+export default function PostUserComment({ postNum, fetch, commentLen }) {
   const [comment, setComment] = useState('');
   const write = useMutation(writeComment, {
     onSuccess: () => {
@@ -18,10 +18,9 @@ export default function PostUserComment({ postNum, fetch }) {
         write.mutate({ content: comment, postNum });
       }}
     >
-      <label htmlFor="chat" className="sr-only">
-        Your message
-      </label>
-      <div className="flex border items-center px-3 py-2 bg-gray-50 dark:bg-gray-700">
+      <div
+        className={`flex border ${commentLen ? '' : 'rounded-b-lg'} items-center px-3 py-2 bg-gray-50 dark:bg-gray-700`}
+      >
         <textarea
           id="chat"
           rows="1"
