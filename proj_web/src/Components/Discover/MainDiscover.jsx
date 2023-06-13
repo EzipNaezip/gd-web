@@ -22,6 +22,10 @@ export default function MainDiscover({ bookmarking }) {
       setEndPoint(endPoint + 20);
       setThumbnails(data.data.data.postList);
     },
+    onError: (error) => {
+      console.log('더 불러올 데이터가 없습니다.');
+      console.log(error);
+    },
   });
   const setObservationTarget = useIntersectionObserver(filteredData.mutate, cursor, endPoint);
 
