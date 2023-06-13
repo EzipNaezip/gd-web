@@ -90,6 +90,7 @@ export default function Navigator() {
                       sessionStorage.removeItem('token');
                       sessionStorage.removeItem('userId');
                       setShow(false);
+                      navigate('/');
                     }}
                     className="transition ease-in font-suiteLight hover:text-red-500"
                   >
