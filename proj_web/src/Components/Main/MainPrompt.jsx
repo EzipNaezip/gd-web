@@ -13,7 +13,6 @@ export default function MainPrompt() {
   const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
   const [errored, setErrored] = useState(null);
-  const [save, setSave] = useState(false);
   const setCreated = useSetRecoilState(PromptCreateState);
 
   const createDalle = useMutation(createDalleImage, {
@@ -36,12 +35,12 @@ export default function MainPrompt() {
   });
   const storeDalle = useMutation(storeDalleImage, {
     onSuccess: (data) => {
-      setSave(true);
+      console.log('store : ', data);
     },
   });
   const deleteDalle = useMutation(deleteDalleImage, {
     onSuccess: (data) => {
-      setSave(false);
+      console.log('delete : ', data);
     },
   });
 
@@ -155,53 +154,50 @@ export default function MainPrompt() {
                   </div>
                   <div className="w-full">
                     <div className="flex justify-end">
-                      {!save ? (
-                        <Button
-                          className="transition ease-in mt-6 w-24 bg-ezip-green hover:bg-ezip-green_hover"
-                          onClick={() => {
-                            if (images.response[0].chatLogSerialNumber)
-                              storeDalle.mutate(images.response[0].chatLogSerialNumber);
-                          }}
+                      <Button
+                        className="transition ease-in mt-6 w-24 bg-ezip-green hover:bg-ezip-green_hover"
+                        onClick={() => {
+                          if (images.response[0].chatLogSerialNumber)
+                            storeDalle.mutate(images.response[0].chatLogSerialNumber);
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-12 h-12"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-12 h-12"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                            />
-                          </svg>
-                        </Button>
-                      ) : (
-                        <Button
-                          className="transition ease-in mt-6 w-24 border-2 border-ezip-green bg-white hover:bg-white_hover"
-                          onClick={() => {
-                            if (images.response[0].chatLogSerialNumber)
-                              deleteDalle.mutate(images.response[0].chatLogSerialNumber);
-                          }}
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                          />
+                        </svg>
+                      </Button>
+                      <Button
+                        className="transition ease-in mt-6 w-24 border bg-white hover:bg-white_hover"
+                        onClick={() => {
+                          if (images.response[0].chatLogSerialNumber)
+                            deleteDalle.mutate(images.response[0].chatLogSerialNumber);
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="text-ezip-green w-12 h-12"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="text-ezip-green w-12 h-12"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                            />
-                          </svg>
-                        </Button>
-                      )}
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                          />
+                        </svg>
+                      </Button>
                     </div>
                   </div>
                   <div className="mt-14 rounded-lg border font-suiteLight p-4">
