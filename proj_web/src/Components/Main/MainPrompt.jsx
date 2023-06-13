@@ -6,8 +6,10 @@ import DalleImage from './DalleImage';
 import { useSetRecoilState } from 'recoil';
 import { PromptCreateState } from '../../Atoms/PromptCreateState';
 import { Button } from 'flowbite-react';
+import MainLogin from '../Login/MainLogin';
 
 export default function MainPrompt() {
+  const [show, setShow] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
   const [errored, setErrored] = useState(null);
@@ -50,6 +52,12 @@ export default function MainPrompt() {
 
   return (
     <div className="min-h-70vh flex flex-col sm:container justify-center px-4 pb-32">
+      <MainLogin
+        show={show}
+        onClose={() => {
+          setShow(false);
+        }}
+      />
       {!errored ? (
         <>
           {images ? (
@@ -90,15 +98,27 @@ export default function MainPrompt() {
                       setPrompt(e.currentTarget.value);
                     }}
                   />
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      createDalle.mutate(prompt);
-                    }}
-                    className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none font-suiteMedium rounded-r-lg border px-6 h-full border-gray-300"
-                  >
-                    생성
-                  </button>
+                  {sessionStorage.getItem('userId') ? (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        createDalle.mutate(prompt);
+                      }}
+                      className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none font-suiteMedium rounded-r-lg border px-6 h-full border-gray-300"
+                    >
+                      생성
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShow(true);
+                      }}
+                      className="absolute right-0 bottom-0 focus:ring-4 focus:outline-none font-suiteMedium rounded-r-lg border px-6 h-full border-gray-300"
+                    >
+                      생성
+                    </button>
+                  )}
                 </div>
               ) : (
                 <div>
