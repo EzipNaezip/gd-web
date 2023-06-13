@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import MainMypage from '../Components/Mypage/MainMypage';
 import { useMutation, useQuery } from 'react-query';
 import { deleteUserInfo, getUserInfo } from '../Query/MypageQuery';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getFollower, getFollowing, setFollow, setUnfollow } from '../Query/FollowQuery';
 import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
 
 export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
   const params = useParams();
+  const navigate = useNavigate();
 
   const getInfo = useQuery(['userInfo', { userId: params.userId }], () => getUserInfo(params.userId), {
     refetchOnWindowFocus: false,
@@ -23,6 +24,7 @@ export default function MypagePage({ setApiCall }) {
       console.log(data);
       sessionStorage.removeItem('userId');
       sessionStorage.removeItem('token');
+      navigate('/');
     },
   });
   const getFollowerInfo = useQuery(['followerInfo', { userId: params.userId }], () => getFollower(params.userId), {
