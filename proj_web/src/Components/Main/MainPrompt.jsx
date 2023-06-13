@@ -1,36 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useMutation } from "react-query";
-import { createDalleImage, deleteDalleImage, stopDalleImage, storeDalleImage } from "../../Query/DalleImageQuery";
+import React, { useEffect, useState } from 'react';
+import { useMutation } from 'react-query';
+import { createDalleImage, deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
 // import testDalleAxios from '../../Query/testDalleAxios';
-import DalleImage from "./DalleImage";
-import { useSetRecoilState } from "recoil";
-import { PromptCreateState } from "../../Atoms/PromptCreateState";
-import { Button } from "flowbite-react";
-import MainLogin from "../Login/MainLogin";
-import Swal from "sweetalert2";
+import DalleImage from './DalleImage';
+import { useSetRecoilState } from 'recoil';
+import { PromptCreateState } from '../../Atoms/PromptCreateState';
+import { Button } from 'flowbite-react';
+import MainLogin from '../Login/MainLogin';
+import Swal from 'sweetalert2';
 
 const Toast = Swal.mixin({
   toast: true,
-  position: "bottom-end",
+  position: 'bottom-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
   didOpen: (toast) => {
-    toast.addEventListener("mouseenter", Swal.stopTimer);
-    toast.addEventListener("mouseleave", Swal.resumeTimer);
+    toast.addEventListener('mouseenter', Swal.stopTimer);
+    toast.addEventListener('mouseleave', Swal.resumeTimer);
   },
 });
 
 export default function MainPrompt() {
   const [show, setShow] = useState(false);
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState('');
   const [images, setImages] = useState(null);
   const [errored, setErrored] = useState(null);
+  const [click, setClick] = useState(false);
   const setCreated = useSetRecoilState(PromptCreateState);
 
   const createDalle = useMutation(createDalleImage, {
     onSuccess: (data) => {
-      console.log("create : ", data);
+      console.log('create : ', data);
       setImages(data);
       setCreated(true);
     },
@@ -48,12 +49,12 @@ export default function MainPrompt() {
   });
   const storeDalle = useMutation(storeDalleImage, {
     onSuccess: (data) => {
-      console.log("store : ", data);
+      console.log('store : ', data);
     },
   });
   const deleteDalle = useMutation(deleteDalleImage, {
     onSuccess: (data) => {
-      console.log("delete : ", data);
+      console.log('delete : ', data);
     },
   });
 
@@ -79,14 +80,18 @@ export default function MainPrompt() {
               {!createDalle.isLoading ? (
                 <h1 className="text-3xl font-suiteBold text-center mb-10">새로운 인테리어를 찾아보세요!</h1>
               ) : (
-                <h1 className="text-3xl animate-pulse delay-50 font-suiteBold text-center mb-10">디자이너가 열심히 그리는 중...</h1>
+                <h1 className="text-3xl animate-pulse delay-50 font-suiteBold text-center mb-10">
+                  디자이너가 열심히 그리는 중...
+                </h1>
               )}
             </>
           )}
         </>
       ) : (
         <>
-          <h1 className="text-2xl font-suiteBold text-red-500 text-center mb-4">오류가 발생했습니다. 다시 시도해주세요!</h1>
+          <h1 className="text-2xl font-suiteBold text-red-500 text-center mb-4">
+            오류가 발생했습니다. 다시 시도해주세요!
+          </h1>
         </>
       )}
 
@@ -104,7 +109,7 @@ export default function MainPrompt() {
                       setPrompt(e.currentTarget.value);
                     }}
                   />
-                  {sessionStorage.getItem("userId") ? (
+                  {sessionStorage.getItem('userId') ? (
                     <button
                       onClick={(e) => {
                         e.preventDefault();
@@ -161,44 +166,98 @@ export default function MainPrompt() {
                   </div>
                   <div className="w-full">
                     <div className="flex justify-end">
-                      <Button
-                        className="transition ease-in mt-6 mr-3 w-16 bg-ezip-green hover:bg-ezip-green_hover"
-                        onClick={() => {
-                          if (images.response[0].chatLogSerialNumber) {
-                            storeDalle.mutate(images.response[0].chatLogSerialNumber);
-                            setImages(false);
-                            Toast.fire({
-                              icon: "success",
-                              title: "저장되었습니다!",
-                            });
-                          }
-                        }}
-                      >
-                        <svg className="w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                        </svg>
-                      </Button>
-                      <Button
-                        className="transition ease-in mt-6 w-16 border bg-white hover:bg-white_hover"
-                        onClick={() => {
-                          if (images.response[0].chatLogSerialNumber) {
-                            deleteDalle.mutate(images.response[0].chatLogSerialNumber);
-                            setImages(false);
-                            Toast.fire({
-                              icon: "warning",
-                              title: "삭제되었습니다!",
-                            });
-                          }
-                        }}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="text-ezip-green w-12 h-12">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                          />
-                        </svg>
-                      </Button>
+                      {!click ? (
+                        <>
+                          <Button
+                            className="transition ease-in mt-6 mr-3 w-16 bg-ezip-green hover:bg-ezip-green_hover"
+                            onClick={() => {
+                              if (images.response[0].chatLogSerialNumber) {
+                                setClick(true);
+                                storeDalle.mutate(images.response[0].chatLogSerialNumber);
+                                setImages(false);
+                                Toast.fire({
+                                  icon: 'success',
+                                  title: '저장되었습니다!',
+                                });
+                              }
+                            }}
+                          >
+                            <svg
+                              className="w-12"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                            </svg>
+                          </Button>
+                          <Button
+                            className="transition ease-in mt-6 w-16 border bg-white hover:bg-white_hover"
+                            onClick={() => {
+                              if (images.response[0].chatLogSerialNumber) {
+                                setClick(true);
+                                deleteDalle.mutate(images.response[0].chatLogSerialNumber);
+                                setImages(false);
+                                Toast.fire({
+                                  icon: 'warning',
+                                  title: '삭제되었습니다!',
+                                });
+                              }
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="text-ezip-green w-12 h-12"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m6 4.125l2.25 2.25m0 0l2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                              />
+                            </svg>
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button className="transition ease-in mt-6 mr-3 w-16 border bg-slate-400 hover:slate-500">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="w-12 h-12"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                          </Button>
+                          <Button className="transition ease-in mt-6 w-16 border bg-slate-400 hover:slate-500">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth="1.5"
+                              stroke="currentColor"
+                              className="w-12 h-12"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                          </Button>
+                        </>
+                      )}
                     </div>
                   </div>
                   <div className="mt-14 rounded-lg border font-suiteLight p-4">
@@ -209,7 +268,11 @@ export default function MainPrompt() {
                 <div className="grid">
                   <div className="mt-14 grid grid-cols-1 justify-items-center gap-3">
                     <div className="flex justify-center w-5/6">
-                      <DalleImage id={images.response[0].itemId} url={images.response[0].url} serial={images.response[0].chatLogSerialNumber} />
+                      <DalleImage
+                        id={images.response[0].itemId}
+                        url={images.response[0].url}
+                        serial={images.response[0].chatLogSerialNumber}
+                      />
                     </div>
                   </div>
                   <div className="mt-14 rounded-lg border font-suiteLight p-4">
