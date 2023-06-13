@@ -5,18 +5,15 @@ import { DiscoverFilterList } from './DiscoverFilterList';
 export default function DiscoverButtons({ cursor, setCursor, topHandler, filterHandler }) {
   const handleTopClick = (e) => {
     e.preventDefault();
-    const newCursor = e.target.innerText;
-    setCursor(newCursor, () => {
-      topHandler();
-    });
+    setCursor(e.target.innerText);
+    topHandler();
   };
 
   const handleFilterClick = (e) => {
     e.preventDefault();
     const newCursor = e.target.innerText;
-    setCursor(newCursor, () => {
-      filterHandler(newCursor);
-    });
+    filterHandler(newCursor);
+    setCursor(newCursor);
   };
 
   return (
