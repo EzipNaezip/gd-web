@@ -16,7 +16,7 @@ export default function MainLogin({ show, onClose }) {
               <div className="font-suiteLight text-center">다음의 방법으로 로그인 할 수 있어요</div>
               <div className="flex flex-col justify-center mt-20">
                 <GoogleOAuth />
-                <a href="policy" target="_blank" className="text-center text-xs hover:underline">
+                <a href="/policy" target="_blank" className="text-center text-xs hover:underline">
                   개인정보처리방침
                 </a>
               </div>

@@ -3,12 +3,12 @@ import { useMutation } from "react-query";
 import { tagListing, topListing } from "../../Query/FilterQuery";
 import DiscoverButtons from "./DiscoverButtons";
 import DiscoverImageGrid from "./DiscoverImageGrid";
-import useIntersectionObserver from "../../Utilities/useIntersectionObserver";
+// import useIntersectionObserver from '../../Utilities/useIntersectionObserver';
 
 export default function MainDiscover({ bookmarking }) {
   const [thumbnails, setThumbnails] = useState(null);
   const [endPoint, setEndPoint] = useState(20);
-  const [cursor, setCursor] = useState("TOP 30");
+  const [cursor, setCursor] = useState(null);
 
   const topData = useMutation(topListing, {
     onSuccess: (data) => {
@@ -18,18 +18,22 @@ export default function MainDiscover({ bookmarking }) {
   });
   const filteredData = useMutation(tagListing, {
     onSuccess: (data) => {
-      console.log(`${cursor} : `, data);
       setEndPoint(endPoint + 20);
       setThumbnails(data.data.data.postList);
+      console.log(`${cursor} : `, data);
     },
     onError: (error) => {
       console.log("더 불러올 데이터가 없습니다.");
     },
   });
-  const setObservationTarget = useIntersectionObserver(filteredData.mutate, cursor, endPoint);
+  // const setObservationTarget = useIntersectionObserver(() => {
+  //   console.log('cursor : ', cursor, ' endPoint : ', endPoint);
+  //   filteredData.mutate(cursor, endPoint);
+  // });
 
   useEffect(() => {
     topData.mutate();
+    setCursor("TOP 30");
     // eslint-disable-next-line
   }, []);
 
@@ -47,8 +51,14 @@ export default function MainDiscover({ bookmarking }) {
       />
       <hr className="mt-6" />
       <div className="container mt-10 mb-10">
-        {thumbnails ? <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} bookmarkRender={true} /> : <></>}
-        {cursor !== "TOP 30" && !filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}
+        {thumbnails ? (
+          <>
+            <DiscoverImageGrid thumbnails={thumbnails} bookmarking={bookmarking} bookmarkRender={true} />
+          </>
+        ) : (
+          <></>
+        )}
+        {/*{cursor !== 'TOP 30' && !filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}*/}
       </div>
     </>
   );

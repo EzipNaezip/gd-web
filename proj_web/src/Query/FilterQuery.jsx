@@ -14,11 +14,11 @@ export async function topListing() {
   });
 }
 
-export async function tagListing(tagName, display) {
+export async function tagListing(tagName) {
   return await axios.get(`http://api.ezipnaezip.life:8080/posts/filter/${tagName}`, {
     params: {
       start: 0,
-      display,
+      display: 30,
     },
     headers: {
       Authorization: `Bearer ${token}`,
