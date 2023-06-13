@@ -12,13 +12,13 @@ export default function DiscoverButtons({ cursor, setCursor, topHandler, filterH
             cursor={cursor}
             topHandler={(e) => {
               e.preventDefault();
-              setCursor(e.target.innerText);
               topHandler();
+              setCursor(e.target.innerText);
             }}
             filterHandler={(e) => {
               e.preventDefault();
-              setCursor(e.target.innerText);
               filterHandler(e.target.innerText);
+              setCursor(e.target.innerText);
             }}
           />
         ))}
