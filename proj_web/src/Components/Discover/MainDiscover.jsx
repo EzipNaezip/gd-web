@@ -18,9 +18,9 @@ export default function MainDiscover({ bookmarking }) {
   });
   const filteredData = useMutation(tagListing, {
     onSuccess: (data) => {
-      console.log(`${cursor} : `, data);
       setEndPoint(endPoint + 20);
       setThumbnails(data.data.data.postList);
+      console.log(`${cursor} : `, data);
     },
     onError: (error) => {
       console.log('더 불러올 데이터가 없습니다.');

@@ -17,8 +17,6 @@ export default function DiscoverButtons({ cursor, setCursor, topHandler, filterH
             }}
             filterHandler={(e) => {
               e.preventDefault();
-              console.log('prev curr : ', cursor);
-              console.log('changed curr : ', e.target.innerText);
               setCursor(e.target.innerText);
               filterHandler(e.target.innerText);
             }}
