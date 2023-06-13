@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
-import { deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
-import testDalleAxios from '../../Query/testDalleAxios';
+import { createDalleImage, deleteDalleImage, stopDalleImage, storeDalleImage } from '../../Query/DalleImageQuery';
+// import testDalleAxios from '../../Query/testDalleAxios';
 import DalleImage from './DalleImage';
 import { useSetRecoilState } from 'recoil';
 import { PromptCreateState } from '../../Atoms/PromptCreateState';
@@ -16,7 +16,7 @@ export default function MainPrompt() {
   const [save, setSave] = useState(false);
   const setCreated = useSetRecoilState(PromptCreateState);
 
-  const createDalle = useMutation(testDalleAxios, {
+  const createDalle = useMutation(createDalleImage, {
     onSuccess: (data) => {
       console.log('create : ', data);
       setImages(data);
