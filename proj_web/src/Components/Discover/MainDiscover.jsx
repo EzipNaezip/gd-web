@@ -26,13 +26,14 @@ export default function MainDiscover({ bookmarking }) {
       console.log('더 불러올 데이터가 없습니다.');
     },
   });
-  const getDataScrolled = () => {
+  const setObservationTarget = useIntersectionObserver(() => {
+    console.log('cursor : ', cursor, ' endPoint : ', endPoint);
     filteredData.mutate(cursor, endPoint);
-  };
-  const setObservationTarget = useIntersectionObserver(getDataScrolled);
+  });
 
   useEffect(() => {
     topData.mutate();
+    setCursor('TOP 30');
     // eslint-disable-next-line
   }, []);
 
