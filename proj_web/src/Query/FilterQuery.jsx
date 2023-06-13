@@ -27,7 +27,6 @@ export async function tagListing(tagName, display) {
 }
 
 export async function searchListing(keyword, display) {
-  console.log(keyword, display);
   return await axios.get('http://api.ezipnaezip.life:8080/posts/search', {
     params: {
       keyword,
