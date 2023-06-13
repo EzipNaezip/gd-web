@@ -7,7 +7,7 @@ export default function useIntersectionObserver(callback, data, endPoint) {
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        callback(data, endPoint);
+        setTimeout(1000, callback(data, endPoint));
       },
       { threshold: 1 },
     ),
