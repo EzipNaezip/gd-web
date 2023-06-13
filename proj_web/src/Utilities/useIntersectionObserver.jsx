@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import 'intersection-observer';
 
-export default function useIntersectionObserver(callback, data) {
+export default function useIntersectionObserver(callback, data, endPoint) {
   const [observationTarget, setObservationTarget] = useState(null);
   const observer = useRef(
     new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
-        callback(data);
+        callback(data, endPoint);
       },
       { threshold: 1 },
     ),

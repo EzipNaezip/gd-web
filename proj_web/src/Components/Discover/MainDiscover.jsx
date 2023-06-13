@@ -23,7 +23,7 @@ export default function MainDiscover({ bookmarking }) {
       setThumbnails(data.data.data.postList);
     },
   });
-  const setObservationTarget = useIntersectionObserver(filteredData.mutate, endPoint);
+  const setObservationTarget = useIntersectionObserver(filteredData.mutate, cursor, endPoint);
 
   useEffect(() => {
     topData.mutate();
