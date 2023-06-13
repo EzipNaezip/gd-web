@@ -18,11 +18,11 @@ export default function MainDiscover({ bookmarking }) {
   });
   const filteredData = useMutation(tagListing, {
     onSuccess: (data) => {
-      console.log('filteredData: ', data);
+      console.log(`${cursor} : `, data);
       setEndPoint(endPoint + 20);
       setThumbnails(data.data.data.postList);
     },
-    onError: () => {
+    onError: (error) => {
       console.log('더 불러올 데이터가 없습니다.');
     },
   });
@@ -42,7 +42,7 @@ export default function MainDiscover({ bookmarking }) {
           topData.mutate();
         }}
         filterHandler={(cursor) => {
-          filteredData.mutate(cursor);
+          filteredData.mutate(cursor, 20);
         }}
       />
       <hr className="mt-6" />

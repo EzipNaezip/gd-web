@@ -9,14 +9,15 @@ export default function DiscoverButtons({ cursor, setCursor, topHandler, filterH
         {[...DiscoverFilterList].map((filter) => (
           <DiscoverFilterButton
             data={filter}
-            setCursor={setCursor}
             cursor={cursor}
             topHandler={(e) => {
               e.preventDefault();
+              setCursor(e.target.innerText);
               topHandler();
             }}
             filterHandler={(e) => {
               e.preventDefault();
+              setCursor(e.target.innerText);
               filterHandler(e.target.innerText);
             }}
           />
