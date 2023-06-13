@@ -51,7 +51,7 @@ export default function MainDiscover({ bookmarking }) {
         ) : (
           <></>
         )}
-        {cursor !== 'TOP 30' && filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}
+        {cursor !== 'TOP 30' && !filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}
       </div>
     </>
   );
