@@ -3,7 +3,6 @@ import { useMutation } from "react-query";
 import { tagListing, topListing } from "../../Query/FilterQuery";
 import DiscoverButtons from "./DiscoverButtons";
 import DiscoverImageGrid from "./DiscoverImageGrid";
-// import useIntersectionObserver from '../../Utilities/useIntersectionObserver';
 
 export default function MainDiscover({ bookmarking }) {
   const [thumbnails, setThumbnails] = useState(null);
@@ -26,10 +25,6 @@ export default function MainDiscover({ bookmarking }) {
       console.log("더 불러올 데이터가 없습니다.");
     },
   });
-  // const setObservationTarget = useIntersectionObserver(() => {
-  //   console.log('cursor : ', cursor, ' endPoint : ', endPoint);
-  //   filteredData.mutate(cursor, endPoint);
-  // });
 
   useEffect(() => {
     topData.mutate();
@@ -58,7 +53,6 @@ export default function MainDiscover({ bookmarking }) {
         ) : (
           <></>
         )}
-        {/*{cursor !== 'TOP 30' && !filteredData.isLoading ? <div ref={setObservationTarget}></div> : <></>}*/}
       </div>
     </>
   );

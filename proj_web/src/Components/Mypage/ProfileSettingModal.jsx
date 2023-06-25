@@ -1,30 +1,28 @@
-import React, { useRef, useState } from 'react';
-import { Modal, Button } from 'flowbite-react';
-import { useMutation } from 'react-query';
-import { editUserInfo, upload } from '../../Query/MypageQuery';
-import { useParams } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import { Modal, Button } from "flowbite-react";
+import { useMutation } from "react-query";
+import { editUserInfo, upload } from "../../Query/MypageQuery";
+import { useParams } from "react-router-dom";
 
 export default function ProfileSettingModal({ user, profileShow, setProfileShow, setWithdrawShow, fetch, setApiCall }) {
   const [imgFile, setImgFile] = useState(null);
-  const [imgURL, setImgURL] = useState('');
-  const [returnURL, setReturnURL] = useState('');
+  const [imgURL, setImgURL] = useState("");
+  const [returnURL, setReturnURL] = useState("");
   const [uploadState, setUploadState] = useState(false);
-  const nameRef = useRef('');
-  const descriptionRef = useRef('');
+  const nameRef = useRef("");
+  const descriptionRef = useRef("");
   const fileInput = useRef(null);
   const params = useParams();
-  const baseURL = 'http://api.ezipnaezip.life:8080';
+  const baseURL = "http://api.ezipnaezip.life:8080";
 
   const uploadFile = useMutation(upload, {
     onSuccess: (data) => {
-      console.log('upload : ', data);
       setReturnURL(data.data.data.url);
     },
   });
 
   const editProfile = useMutation(editUserInfo, {
     onSuccess: (data) => {
-      console.log('edit : ', data);
       fetch(params.userId);
       setApiCall();
       setUploadState(false);
@@ -64,9 +62,6 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
       description: newDescription,
     });
     setProfileShow(false);
-    // 입력란 초기화
-    // nameRef.current.value = user.name;
-    // descriptionRef.current.value = user.description;
     setImgURL(user.profileImgUrl);
   };
 
@@ -111,7 +106,7 @@ export default function ProfileSettingModal({ user, profileShow, setProfileShow,
                   }}
                 />
               )}
-              <input type="file" ref={fileInput} onChange={handleFileImage} style={{ display: 'none' }} />
+              <input type="file" ref={fileInput} onChange={handleFileImage} style={{ display: "none" }} />
               <button
                 className="w-full items-center text-sm font-suiteLight"
                 onClick={(e) => {

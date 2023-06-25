@@ -6,7 +6,6 @@ export default function MainCollection() {
 
   for (let i = 0; i < iterate.length; i++) {
     iterate[i] = i;
-    console.log(i);
   }
 
   return (

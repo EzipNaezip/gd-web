@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import MainPost from '../Components/Post/MainPost';
-import { useMutation } from 'react-query';
-import { inquirePost } from '../Query/PostQuery';
-import { getComment } from '../Query/CommentQuery';
-import { useParams } from 'react-router';
-import { setFollow, setUnfollow } from '../Query/FollowQuery';
-import { setLike, setUnlike } from '../Query/LikeQuery';
-import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
+import React, { useEffect, useState } from "react";
+import MainPost from "../Components/Post/MainPost";
+import { useMutation } from "react-query";
+import { inquirePost } from "../Query/PostQuery";
+import { getComment } from "../Query/CommentQuery";
+import { useParams } from "react-router";
+import { setFollow, setUnfollow } from "../Query/FollowQuery";
+import { setLike, setUnlike } from "../Query/LikeQuery";
+import { setBookmark, unsetBookMark } from "../Query/BookMarkQuery";
 
 export default function PostPage() {
   const [post, setPost] = useState(null);
@@ -16,48 +16,38 @@ export default function PostPage() {
   const posts = useMutation(inquirePost, {
     onSuccess: (data) => {
       setPost(data.data.data.post);
-      console.log('posts : ', data);
     },
   });
   const comments = useMutation(getComment, {
     onSuccess: (data) => {
       setComment(data.data.data.commentList);
-      console.log('comments : ', data.data.data.commentList);
     },
   });
   const followUser = useMutation(setFollow, {
     onSuccess: (data) => {
-      console.log('follow success : ', data);
       fetchData();
     },
   });
   const unfollowUser = useMutation(setUnfollow, {
     onSuccess: (data) => {
-      console.log('unfollow success : ', data);
       fetchData();
     },
   });
   const like = useMutation(setLike, {
     onSuccess: (data) => {
-      console.log('like : ', data);
       fetchData();
     },
   });
   const unLike = useMutation(setUnlike, {
     onSuccess: (data) => {
-      console.log('unLike : ', data);
       fetchData();
     },
   });
   const bookmark = useMutation(setBookmark, {
-    onSuccess: (data) => {
-      console.log('bookmark : ', data);
-    },
+    onSuccess: (data) => {},
   });
   const unBookmark = useMutation(unsetBookMark, {
-    onSuccess: (data) => {
-      console.log('unBookmark : ', data);
-    },
+    onSuccess: (data) => {},
   });
   const fetchData = () => {
     posts.mutate(params.postNum);
@@ -65,7 +55,6 @@ export default function PostPage() {
   };
 
   useEffect(() => {
-    console.log('params : ', params);
     fetchData();
     // eslint-disable-next-line
   }, []);

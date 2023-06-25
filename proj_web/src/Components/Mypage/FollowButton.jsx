@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { Button } from 'flowbite-react';
+import React, { useState } from "react";
+import { Button } from "flowbite-react";
 
 export default function FollowButton({ state, user, followUser, unfollowUser }) {
   const [followed, setFollowed] = useState(state);
 
-  // GalleryCardckarh: 사용자 상태를 참조하여 컴포넌트 상태 관리
   return (
     <div className="w-full">
       {followed ? (

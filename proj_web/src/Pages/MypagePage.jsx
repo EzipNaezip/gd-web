@@ -1,67 +1,55 @@
-import React, { useState } from 'react';
-import MainMypage from '../Components/Mypage/MainMypage';
-import { useMutation, useQuery } from 'react-query';
-import { deleteUserInfo, getUserInfo } from '../Query/MypageQuery';
-import { useNavigate, useParams } from 'react-router-dom';
-import { getFollower, getFollowing, setFollow, setUnfollow } from '../Query/FollowQuery';
-import { setBookmark, unsetBookMark } from '../Query/BookMarkQuery';
+import React, { useState } from "react";
+import MainMypage from "../Components/Mypage/MainMypage";
+import { useMutation, useQuery } from "react-query";
+import { deleteUserInfo, getUserInfo } from "../Query/MypageQuery";
+import { useNavigate, useParams } from "react-router-dom";
+import { getFollower, getFollowing, setFollow, setUnfollow } from "../Query/FollowQuery";
+import { setBookmark, unsetBookMark } from "../Query/BookMarkQuery";
 
 export default function MypagePage({ setApiCall }) {
   const [info, setInfo] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
 
-  const getInfo = useQuery(['userInfo', { userId: params.userId }], () => getUserInfo(params.userId), {
+  const getInfo = useQuery(["userInfo", { userId: params.userId }], () => getUserInfo(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
     onSuccess: (data) => {
-      console.log('mypage : ', data);
       setInfo(data.data.data);
     },
   });
   const withdraw = useMutation(deleteUserInfo, {
     onSuccess: (data) => {
-      console.log(data);
-      sessionStorage.removeItem('userId');
-      sessionStorage.removeItem('token');
-      navigate('/');
+      sessionStorage.removeItem("userId");
+      sessionStorage.removeItem("token");
+      navigate("/");
     },
   });
-  const getFollowerInfo = useQuery(['followerInfo', { userId: params.userId }], () => getFollower(params.userId), {
+  const getFollowerInfo = useQuery(["followerInfo", { userId: params.userId }], () => getFollower(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
-    onSuccess: (data) => {
-      console.log('follower : ', data);
-    },
+    onSuccess: (data) => {},
   });
-  const getFollowingInfo = useQuery(['followingInfo', { userId: params.userId }], () => getFollowing(params.userId), {
+  const getFollowingInfo = useQuery(["followingInfo", { userId: params.userId }], () => getFollowing(params.userId), {
     refetchOnWindowFocus: false,
     retry: 0,
-    onSuccess: (data) => {
-      console.log('following : ', data);
-    },
+    onSuccess: (data) => {},
   });
   const followUser = useMutation(setFollow, {
     onSuccess: (data) => {
-      console.log('follow success : ', data);
       getInfo.refetch();
     },
   });
   const unfollowUser = useMutation(setUnfollow, {
     onSuccess: (data) => {
-      console.log('unfollow success : ', data);
       getInfo.refetch();
     },
   });
   const bookmark = useMutation(setBookmark, {
-    onSuccess: (data) => {
-      console.log('bookmark : ', data);
-    },
+    onSuccess: (data) => {},
   });
   const unBookmark = useMutation(unsetBookMark, {
-    onSuccess: (data) => {
-      console.log('unBookmark : ', data);
-    },
+    onSuccess: (data) => {},
   });
 
   return (
@@ -75,7 +63,7 @@ export default function MypagePage({ setApiCall }) {
           unfollowUser={unfollowUser.mutate}
           bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }}
           withdraw={() => {
-            withdraw.mutate(sessionStorage.getItem('userId'));
+            withdraw.mutate(sessionStorage.getItem("userId"));
           }}
           fetch={getInfo.refetch}
           setApiCall={setApiCall}

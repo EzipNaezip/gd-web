@@ -5,14 +5,10 @@ import { setBookmark, unsetBookMark } from "../Query/BookMarkQuery";
 
 function DiscoverPage() {
   const bookmark = useMutation(setBookmark, {
-    onSuccess: (data) => {
-      console.log("bookmark : ", data);
-    },
+    onSuccess: (data) => {},
   });
   const unBookmark = useMutation(unsetBookMark, {
-    onSuccess: (data) => {
-      console.log("unBookmark : ", data);
-    },
+    onSuccess: (data) => {},
   });
   return <MainDiscover bookmarking={{ set: bookmark.mutate, remove: unBookmark.mutate }} />;
 }
