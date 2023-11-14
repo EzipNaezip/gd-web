@@ -2,7 +2,7 @@
 
 <img  width="150" src="https://github.com/EzipNaezip/gd-app/assets/39869096/89a6d6c4-f08e-4b98-8b53-be7036eef66c"/>
 
-<p><b>이집내집</b></p>
+<p><b>이집내집 - 웹사이트</b></p>
 
 ![build](https://img.shields.io/badge/build-1.0.0-brightgreen?logo=github)
 ![hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FEzipNaezip&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)
