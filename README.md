@@ -2,6 +2,8 @@
 
 <img  width="150" src="https://github.com/EzipNaezip/gd-app/assets/39869096/89a6d6c4-f08e-4b98-8b53-be7036eef66c"/>
 
+<p><b>이집내집</b></p>
+
 ![build](https://img.shields.io/badge/build-1.0.0-brightgreen?logo=github)
 ![hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FEzipNaezip&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)
 
@@ -16,6 +18,8 @@
 </div>
 
 이집내집은 사용자의 인테리어 요구사항을 채팅을 통해 분석하고 AI 이미지 생성 기술을 활용하여 쉽고 편리하게 인테리어 디자인을 제공하는 서비스입니다. 사용자들은 전문적인 디자인 지식이 없이도 편리하게 인테리어 디자인을 할 수 있도록 도와 손쉽게 시각적으로 표현하고 디자인 할 수 있습니다.
+
+- Mobile First Design 설계로 반응형을 통해서 쉽게 모바일, 태블릿, 데스크톱을 대응했습니다.
 
 ## Features
 
